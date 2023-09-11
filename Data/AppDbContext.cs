@@ -3,8 +3,13 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Ecommerce_CyberKnight.Data {
     public class AppDbContext : DbContext {
-        public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
+        public AppDbContext(DbContextOptions options) : base(options) { }
+        
         public DbSet<itemDoPedido> itemDoPedidos { get; set; }
-
-    }
+        public DbSet <Pedido> Pedidos { get; set; }
+        public DbSet<Produto> Produtos { get; set; }
+        public DbSet<Endereco> Enderecoes { get; set; } 
+        public DbSet<Clientes> Clientes { get; set; }
+     } 
 }
+
