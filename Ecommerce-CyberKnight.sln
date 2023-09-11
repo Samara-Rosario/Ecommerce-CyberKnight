@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.7.34024.191
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ecommerce-CyberKnight", "Ecommerce-CyberKnight.csproj", "{BDD787F0-BFD2-44C0-A52D-03D57F7D345B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BDD787F0-BFD2-44C0-A52D-03D57F7D345B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BDD787F0-BFD2-44C0-A52D-03D57F7D345B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BDD787F0-BFD2-44C0-A52D-03D57F7D345B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BDD787F0-BFD2-44C0-A52D-03D57F7D345B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {DBB7E8E7-7C12-49E2-AB63-EF283661E254}
+	EndGlobalSection
+EndGlobal
