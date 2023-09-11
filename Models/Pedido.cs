@@ -8,6 +8,5 @@
         public string itensDoPedido { get; set; }
         public double formaPagamento { get; set; }
         public DateTime DataeHora { get; set; }
-
     }
 }
