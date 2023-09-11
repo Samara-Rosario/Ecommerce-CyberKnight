@@ -8,5 +8,7 @@
         public double preco {  get; set; }
         public int unidadeMedida { get; set; }
         public float estoque { get; set; }
+
+        public ICollection<itemDoPedido> ItensDoPedido { get; set; }
     }
 }
