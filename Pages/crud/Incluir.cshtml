@@ -1,0 +1,33 @@
+﻿@page
+@model Ecommerce_CyberKnight.Pages.crud.IncluirModel
+@{
+}
+
+<form>
+    Nome:
+    <imput asp-for="cliente.Nome"/>
+    <br />
+    CPF:
+    <imput asp-for="cliente.CPF"/>
+    <br />
+    DataNascimento:
+    <imput asp-for="cliente.DataNascimento" />
+    <br />
+    Email:
+    <imput asp-for="cliente.Email"/>
+    <br />
+    Login:
+    <imput asp-for="cliente.Login" />
+    <br />
+    Senha
+    <imput asp-for="cliente.Senha" />
+    <br />
+    Cep:
+    <imput asp-for="cliente.Cep" />
+    <br />
+    Endereço:
+    <imput asp-for="cliente.Endereco" />
+    <br />
+    <br />
+    <input type="submit" value="Enviar"/>
+</form>

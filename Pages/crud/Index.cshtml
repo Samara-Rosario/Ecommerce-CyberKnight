@@ -2,16 +2,30 @@
 @model Ecommerce_CyberKnight.Pages.crud.IndexModel
 @{
 }
-<table>
-    <thead>
-        <tr>
-            <td>valor1</td>
-            <td>valor2</td>
-            <td>Valor3</td>
-        </tr>
-    </thead>
-    <tbody>
 
+<h1>
+    @Model.Nome
+</h1>
 
-    </tbody>
-</table>
+@if(Model.Num != null){
+    
+    <table>
+        <thead>
+            <tr>
+                <td>valor1</td>
+                <td>valor2</td>
+                <td>Valor3</td>
+            </tr>
+        </thead>
+        <tbody>
+    @for(int i = 1; i<=10; i++){
+           <tr>
+               <td>@Model.Num</td>
+               <td>@i</td>
+               <td>@(Model.Num * i)</td>
+           </tr>             
+
+    }
+        </tbody>
+    </table>
+}
