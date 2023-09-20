@@ -5,9 +5,9 @@ namespace Ecommerce_CyberKnight.Models {
     public class Clientes {
 
         [Key]
-        public int Id { get; set; }
+        public int? Id { get; set; }
         public string Cpf {  get; set; }
-        public int IdEndereco { get; set; }
+        public int? IdEndereco { get; set; }
         public string Nome {  get; set; }
         public string Email {  get; set; }
         public string Telefone {  get; set; }
@@ -17,7 +17,7 @@ namespace Ecommerce_CyberKnight.Models {
 
    
         [ForeignKey("IdEndereco")]
-        public Endereco Endereco {  get; set; }
+        public Endereco? Endereco {  get; set; }
     
     }
 

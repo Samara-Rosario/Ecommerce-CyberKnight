@@ -1,7 +1,7 @@
 ﻿namespace Ecommerce_CyberKnight.Models
 {
     public class Produto{
-        public int Id { get; set; }
+        public int? Id { get; set; }
         public string Nome { get; set; }
         public string descricao { get; set; }
         public string categoria { get; set; }
