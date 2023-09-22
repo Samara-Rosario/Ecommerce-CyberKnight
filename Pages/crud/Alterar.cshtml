@@ -1,9 +1,11 @@
 ﻿@page
-@model Ecommerce_CyberKnight.Pages.crud.IncluirModel
+@model Ecommerce_CyberKnight.Pages.crud.AlterarModel
 @{
 }
-
 <form method="post">
+
+	<input type="hidden" asp-for="clientes.Id" />
+
 	Nome:
 	<input class="form-control" asp-for="clientes.Nome" />
 	<br />
@@ -29,5 +31,5 @@
 	<input class="form-control" asp-for="clientes.Senha" />
 	<br />
 	<br />
-	<input type="submit" class=" btn-success" value="Enviar" />
+	<input type="submit" class="btn btn-primary" value="Enviar" />
 </form>

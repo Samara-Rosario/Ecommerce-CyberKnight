@@ -2,6 +2,10 @@
 @model Ecommerce_CyberKnight.Pages.crud.ListarModel
 @{
 }
+
+<a class="btn btn-primary" asp-page="./Incluir">
+	Incluir
+</a>
 <table>
 	<thead>
 		<tr>
@@ -27,13 +31,19 @@
 				<td>@clientes.Login</td>
 				<td>@clientes.Senha</td>
 				<td>
-					<a>Editar</a>
+					<a
+						asp-page="./Alterar"
+						asp-route-id="@clientes.Id"
+					>
+						Editar
+
+					</a>
 					<form
 						method="post"
 						asp-page-handler="delete"
 						asp-route-id="@clientes.Id"
 					>
-						<button>Excluir</button>
+						<button class=" btn btn-danger">Excluir</button>
 					</form>
 				</td>
 			</tr>
