@@ -19,7 +19,7 @@ namespace Ecommerce_CyberKnight.Pages.crud{
         public async Task<IActionResult> OnPostAsync() {
             _context.Clientes.Add(cliente);
             await _context.SaveChangesAsync();
-            return Page();
+            return RedirectToPage("./listar");
 
         }
     }

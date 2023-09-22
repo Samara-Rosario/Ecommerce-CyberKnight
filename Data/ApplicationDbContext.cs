@@ -10,7 +10,7 @@ namespace Ecommerce_CyberKnight.Data {
         public DbSet<Produto> Produtos { get; set; }
         public DbSet<Endereco> Enderecoes { get; set; } 
         public DbSet<Clientes> Clientes { get; set; }
-
+        public object Cliente { get; internal set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder) {
             base.OnModelCreating(modelBuilder);
