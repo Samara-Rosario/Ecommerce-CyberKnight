@@ -1,9 +1,12 @@
 ﻿@page
-@model Ecommerce_CyberKnight.Pages.crud.IncluirModel
+@model Ecommerce_CyberKnight.Pages.crud.AlterarModel
 @{
 }
 
 <form method="post">
+
+
+    <input class="form-control" type="hidden" asp-for="cliente.Id" />
     Nome:
     <input class="form-control" asp-for="cliente.Nome" />
     <br />

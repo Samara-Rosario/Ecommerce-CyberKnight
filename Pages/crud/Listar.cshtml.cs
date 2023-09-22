@@ -32,7 +32,7 @@ namespace Ecommerce_CyberKnight.Pages.crud
             }
 
             //Redireciona para a página de listagem de Cliente
-            return RedirectToPage("./Listar");
+            return Page();
         }
     }
 }

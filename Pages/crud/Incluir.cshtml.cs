@@ -30,7 +30,7 @@ namespace Ecommerce_CyberKnight.Pages.crud{
                 Debug.WriteLine("=====================");
             }
 
-            return Page();
+            return RedirectToPage("./Listar");
 
         }
     }

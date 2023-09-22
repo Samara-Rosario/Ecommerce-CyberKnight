@@ -19,6 +19,6 @@ namespace Ecommerce_CyberKnight.Models {
         [ForeignKey("IdEndereco")]
         public Endereco? Endereco {  get; set; }
     
-    }
+    }   
 
 }
