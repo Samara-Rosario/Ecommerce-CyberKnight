@@ -3,33 +3,35 @@ using Ecommerce_CyberKnight.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
+using System.Runtime.CompilerServices;
 
 namespace Ecommerce_CyberKnight.Pages.crud
 {
-    public class AlterarModel : PageModel{
-        private readonly ApplicationDbContext _context;
+	public class AlterarModel : PageModel
+	{
 
-        public AlterarModel(ApplicationDbContext context) {
-            _context = context;
-        }
+		private readonly ApplicationDbContext _context;
 
-        // o [BindProperty] configura a aplicação para relacionar o atributo 'cliente' aos dados que estão vindo do front-end*/
-        [BindProperty]
-        public Clientes cliente { get; set; }
+		public AlterarModel(ApplicationDbContext context)
+		{
+			_context = context;
 
-        public async Task<IActionResult> OnGet(int id){
-            cliente = await _context.Clientes.FirstOrDefaultAsync(c => c.Id == id);
+		}
+		[BindProperty]
 
-            return Page();
-        }
+		public Clientes clientes{ get; set; }
+		public async Task<IActionResult> OnGet(int id){
+			clientes = await _context.Clientes.FirstOrDefaultAsync(c => c.Id == id);
 
-        public async Task<IActionResult> OnPostAsync() {
+			return Page();
+		}
 
+		public async Task<IActionResult> OnPostAsync()
+		{
+			_context.Attach(clientes).State = EntityState.Modified;
+			await _context.SaveChangesAsync();
 
-            _context.Attach(cliente).State = EntityState.Modified;
-            await _context.SaveChangesAsync();
-
-            return RedirectToPage("./Listar");
-        }
-    }
+			return RedirectToPage("./Listar");
+		}
+	}
 }
