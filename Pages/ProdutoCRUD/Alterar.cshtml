@@ -1,0 +1,30 @@
+﻿@page
+@model Ecommerce_CyberKnight.Pages.ProdutoCRUD.AlterarModel
+@{
+}
+
+<form method="post">
+
+
+    <input class="form-control" type="hidden" asp-for="produtos.Id" />
+    Nome:
+    <input class="form-control" asp-for="produtos.Nome" />
+    <br />
+    Descrição:
+    <input class="form-control" asp-for="produtos.descricao" />
+    <br />
+    Categoria
+    <input class="form-control" asp-for="produtos.categoria" />
+    <br />
+    Preço
+    <input class="form-control" asp-for="produtos.preco" />
+    <br />
+    Unidade de Medida
+    <input class="form-control" asp-for="produtos.unidadeMedida" />
+    <br />
+    Estoque
+    <input class="form-control" asp-for="produtos.estoque" />
+    <br />
+    <br />
+    <input type="submit" class="btn btn-outline-success" value="Enviar" />
+</form>
