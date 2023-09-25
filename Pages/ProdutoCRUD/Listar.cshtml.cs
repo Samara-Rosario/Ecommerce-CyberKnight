@@ -30,8 +30,10 @@ namespace Ecommerce_CyberKnight.Pages.ProdutoCRUD {
                 await _context.SaveChangesAsync();
             }
 
-			//Redireciona para a página de listagem de Produto
-			return Page();
+            Produto = await _context.Produtos.ToListAsync();
+
+            //Redireciona para a página de listagem de Produto
+            return Page();
         }
     }
 }
