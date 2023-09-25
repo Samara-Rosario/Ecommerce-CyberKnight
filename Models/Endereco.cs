@@ -6,7 +6,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace Ecommerce_CyberKnight.Models {
     [Owned]    
     public class Endereco {
-        public int Id { get; set; }
+        public int? Id { get; set; }
         public string Cep { get; set; }
         public string Cidade { get; set;}
         public string Bairro { get; set; }

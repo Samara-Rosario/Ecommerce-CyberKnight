@@ -1,0 +1,30 @@
+﻿@page
+@model Ecommerce_CyberKnight.Pages.crud.IncluirModel
+@{
+}
+
+<form method="post">
+    Nome:
+    <input class="form-control" asp-for="cliente.Nome" />
+    <br />
+    Cpf:
+    <input class="form-control" asp-for="cliente.Cpf" />
+    <br />
+    Email:
+    <input class="form-control" asp-for="cliente.Email" />
+    <br />
+    Telefone:
+    <input class="form-control" asp-for="cliente.Telefone" />
+    <br />
+    Cep:
+    <input class="form-control" asp-for="cliente.Cep" />
+    <br />
+    Login:
+    <input class="form-control" asp-for="cliente.Login" />
+    <br />
+    Senha:
+    <input class="form-control" asp-for="cliente.Senha" />
+    <br />
+    <br />
+    <input type="submit" class="btn btn-outline-success" value="Enviar" />
+</form>
