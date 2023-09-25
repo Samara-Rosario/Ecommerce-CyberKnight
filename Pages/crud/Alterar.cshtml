@@ -1,0 +1,35 @@
+﻿@page
+@model Ecommerce_CyberKnight.Pages.crud.AlterarModel
+@{
+}
+<form method="post">
+
+	<input type="hidden" asp-for="clientes.Id" />
+
+	Nome:
+	<input class="form-control" asp-for="clientes.Nome" />
+	<br />
+	CPF:
+	<input class="form-control" asp-for="clientes.Cpf" />
+	<br />
+	Email:
+	<input class="form-control" asp-for="clientes.Email" />
+	<br />
+	Telefone:
+	<input class="form-control" asp-for="clientes.Telefone" />
+	<br />
+	Cep:
+	<input class="form-control" asp-for="clientes.Cep" />
+	<br />
+	Endereco:
+	<input class="form-control" asp-for="clientes.Endereco" />
+	<br />
+	Login:
+	<input class="form-control" asp-for="clientes.Login" />
+	<br />
+	Senha:
+	<input class="form-control" asp-for="clientes.Senha" />
+	<br />
+	<br />
+	<input type="submit" class="btn btn-primary" value="Enviar" />
+</form>
