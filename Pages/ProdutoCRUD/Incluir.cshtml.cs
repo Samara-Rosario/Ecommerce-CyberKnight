@@ -37,7 +37,7 @@ namespace Ecommerce_CyberKnight.Pages.ProdutoCRUD
                 Debug.WriteLine("=====================");
             }
 
-            return Page();
+            return RedirectToPage("./Listar");
 
         }
     }
