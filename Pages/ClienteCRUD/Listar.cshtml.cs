@@ -14,7 +14,7 @@ namespace Ecommerce_CyberKnight.Pages.ClienteCRUD
             _context = context;
         }
 
-        public IList<Clientes> Clientes { get; set; }
+        public IList<Clientes> Clientes { get; set; } = new List<Clientes>();
         public async Task<IActionResult> OnGet() {
             Clientes = await _context.Clientes.ToListAsync();
 
@@ -32,7 +32,7 @@ namespace Ecommerce_CyberKnight.Pages.ClienteCRUD
             }
 
             //Redireciona para a página de listagem de Cliente
-            return Page();
+            return RedirectToPage("./Listar");
         }
     }
 }

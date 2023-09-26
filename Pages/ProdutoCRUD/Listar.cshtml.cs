@@ -13,11 +13,11 @@ namespace Ecommerce_CyberKnight.Pages.ProdutoCRUD {
             _context = context;
         }
 
-        public IList<Produto> Produto { get; set; }
+        public IList<Produto> Produtos { get; set; }
         public async Task<IActionResult> OnGet() {
-           Produto  = await _context.Produtos.ToListAsync();
+           Produtos  = await _context.Produtos.ToListAsync();
 
-            return Page();
+           return Page();
         }
 
         public async Task<IActionResult> OnPostDeleteAsync(int? id) {
@@ -30,10 +30,8 @@ namespace Ecommerce_CyberKnight.Pages.ProdutoCRUD {
                 await _context.SaveChangesAsync();
             }
 
-            Produto = await _context.Produtos.ToListAsync();
-
             //Redireciona para a página de listagem de Produto
-            return Page();
+            return RedirectToPage("./Listar");
         }
     }
 }
