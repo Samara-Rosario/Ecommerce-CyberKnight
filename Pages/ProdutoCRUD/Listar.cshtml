@@ -34,13 +34,13 @@
 				<td>
 					<a asp-page="./Alterar"
 					   asp-route-id="@Produto.Id"
-					   class="btn btn-light">
+					   class="btn btn-outline-primary">
 						Editar
 					</a>
 					<form method="post"
 						  asp-page-handler="delete"
 						  asp-route-id="@Produto.Id"
-						  class="btn btn-light">
+					>
 						<button class="btn btn-outline-primary">Excluir</button>
 					</form>
 				</td>

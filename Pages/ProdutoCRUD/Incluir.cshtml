@@ -5,23 +5,35 @@
 
 <h1>Incluir Novos Produtos</h1>
 <form method="post">
-    Nome:
-    <input class="form-control" asp-for="produto.Nome" />
+    <div class="col-4">
+        Nome:
+        <input class="form-control" asp-for="produto.Nome" />
+    </div>
     <br />
-    Descrição:
-    <input class="form-control" asp-for="produto.descricao" />
+    <div class="col-5">
+        Descrição:
+        <input class="form-control" asp-for="produto.descricao" />
+    </div>
     <br />
-    Categoria:
-    <input class="form-control" asp-for="produto.categoria" />
+    <div class="col-4">
+        Categoria:
+        <input class="form-control" asp-for="produto.categoria" />
+    </div>
     <br />
-    Preço:
-    <input class="form-control" asp-for="produto.preco" />
+    <div class="col-4">
+        Preço:
+        <input class="form-control" asp-for="produto.preco" />
+    </div>
     <br />
-    unidademedida:
-    <input class="form-control" asp-for="produto.unidadeMedida" />
+    <div class="col-4">
+        unidademedida:
+        <input class="form-control" asp-for="produto.unidadeMedida" />
+    </div>
     <br />
-    Estoque:
-    <input class="form-control" asp-for="produto.estoque" />
+    <div class="col-4">
+        Estoque:
+        <input class="form-control" asp-for="produto.estoque" />
+    </div>
     <br />
     <br />
     <input type="submit" class="btn btn-outline-success" value="Enviar" />

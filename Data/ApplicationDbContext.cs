@@ -11,6 +11,7 @@ namespace Ecommerce_CyberKnight.Data {
         public DbSet<Endereco> Enderecoes { get; set; } 
         public DbSet<Clientes> Clientes { get; set; }
         public DbSet<Categoria> Categorias { get; set; }
+        public DbSet<UnidadeMedida> unidadeMedidas { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder) {
