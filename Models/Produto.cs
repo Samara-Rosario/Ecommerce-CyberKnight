@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Ecommerce_CyberKnight.Models
 {
@@ -13,10 +14,7 @@ namespace Ecommerce_CyberKnight.Models
         [MaxLength(200, ErrorMessage = "O campo \"{0}\" deve ter tamanho igual a {1}")]
         [Required(ErrorMessage = "O campo \"{0}\" é de preenchimento obrigatório.")]
         public string descricao { get; set; }
-
-        [MaxLength(50, ErrorMessage = "O campo \"{0}\" deve ter tamanho igual a {1}")]
-        [Required(ErrorMessage = "O campo \"{0}\" é de preenchimento obrigatório.")]
-        public string categoria { get; set; }
+        public int? IdCategoria { get; set; }
 
         [Required(ErrorMessage = "O campo \"{0}\" é de preenchimento obrigatório.")]
         public double preco {  get; set; }
@@ -29,5 +27,8 @@ namespace Ecommerce_CyberKnight.Models
         public float estoque { get; set; }
 
         public ICollection<itemDoPedido> ItensDoPedido { get; set; }
+
+        [ForeignKey("IdCategoria")]
+        public Categoria categoria { get; set; }
     }
 }
