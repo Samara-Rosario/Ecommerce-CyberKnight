@@ -5,26 +5,33 @@
 
 <h1>Incluir Clientes</h1>
 <form method="post">
-    Nome:
+    
     <input class="form-control" asp-for="cliente.Nome" />
-    <br />
-    Cpf:
+    <label asp-for="cliente.Nome">Nome:</label>
+    
     <input class="form-control" asp-for="cliente.Cpf" />
+    </div>
     <br />
-    Email:
+    <div class="col-5">
+    <label asp-for="cliente.Cpf">Cpf:</label>
+    
+    <br />
+   
     <input class="form-control" asp-for="cliente.Email" />
     <br />
-    Telefone:
+    <label asp-for="cliente.Email">Email:</label>
+    
     <input class="form-control" asp-for="cliente.Telefone" />
     <br />
-    Cep:
+    <label asp-for="cliente.Telefone">Telefone:</label>
     <input class="form-control" asp-for="cliente.Cep" />
     <br />
-    Login:
+    <label asp-for="cliente.Cep">Cep:</label>
     <input class="form-control" asp-for="cliente.Login" />
     <br />
-    Senha:
+    <label asp-for="cliente.Login">Login:</label>
     <input class="form-control" asp-for="cliente.Senha" />
+    <label asp-for="cliente.Senha">Senha:</label>
     <br />
     <br />
     <input type="submit" class="btn btn-outline-success" value="Enviar" />
