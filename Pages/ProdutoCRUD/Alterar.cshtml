@@ -6,25 +6,38 @@
 
 <form method="post">
 
-
-    <input class="form-control" type="hidden" asp-for="produtos.Id" />
-    Nome:
-    <input class="form-control" asp-for="produtos.Nome" />
+    <div class="col-4">
+        <input class="form-control" type="hidden" asp-for="produtos.Id" />
+    </div>
+    <div class="col-4">
+         Nome:
+        <input class="form-control" asp-for="produtos.Nome" />
+    </div>
     <br />
-    Descrição:
-    <input class="form-control" asp-for="produtos.descricao" />
+    <div class="col-4">
+        Descrição:
+        <input class="form-control" asp-for="produtos.descricao" />
+    </div>
     <br />
-    Categoria
-    <input class="form-control" asp-for="produtos.categoria" />
+    <div class="col-4">
+        Categoria
+        <input class="form-control" asp-for="produtos.categoria" />
+    </div>
     <br />
-    Preço
-    <input class="form-control" asp-for="produtos.preco" />
+    <div class="col-4">
+        Preço
+        <input class="form-control" asp-for="produtos.preco" />
+    </div>
     <br />
-    Unidade de Medida
-    <input class="form-control" asp-for="produtos.unidadeMedida" />
+    <div class="clo-4">
+        Unidade de Medida
+        <input class="form-control" asp-for="produtos.unidadeMedida" />
+    </div>
     <br />
-    Estoque
-    <input class="form-control" asp-for="produtos.estoque" />
+    <div class="clo-4">
+        Estoque
+        <input class="form-control" asp-for="produtos.estoque" />
+    </div>
     <br />
     <br />
     <input type="submit" class="btn btn-outline-success" value="Enviar" />
