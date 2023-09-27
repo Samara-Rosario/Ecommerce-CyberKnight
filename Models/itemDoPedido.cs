@@ -9,9 +9,11 @@ namespace Ecommerce_CyberKnight.Models
         public int? IdPedido { get; set; }
         public int? IdProduto { get; set; }
 
+        [Required(ErrorMessage = "O campo \"{0}\" é obrigatório")]
+        [Display(Name = "Valor do item")]
         public double ValorItem {  get; set; }
 
-        [RegularExpression(@"[0-9]{1}", ErrorMessage = "O campo {0} deve ser preenchido com no mínimo 1 digito numérico")]
+        [Required(ErrorMessage = "O campo \"{0}\" é obrigatório")]
         public int Quantidade { get; set;}
 
         [ForeignKey("IdPedido")]

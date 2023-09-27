@@ -16,13 +16,13 @@ namespace Ecommerce_CyberKnight.Models
         public int? IdCliente { get; set; }
         public int? IdEndereco { get; set; }
 
-        [MinLength(7, ErrorMessage = "O campo {0} deve ter no mínimo {7} caracteres.")]
+        [MinLength(2, ErrorMessage = "O campo \"{0}\" deve ter no mínimo \"{1}\" caracteres.")]
         
         public string itensDoPedido { get; set; }
         [Required]
         public FormaPagamento formaPagamento { get; set; }
 
-        [DataType(DataType.Date, ErrorMessage = "O campo {0} deve ter uma data válida")]   
+        [DataType(DataType.Date, ErrorMessage = "O campo \"{0}\" deve ter uma data válida")]   
         public DateTime DataeHora { get; set; }
 
         public ICollection<itemDoPedido> ItensDoPedido { get; set; }
