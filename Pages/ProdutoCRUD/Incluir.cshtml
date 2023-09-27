@@ -4,47 +4,47 @@
 }
 
 <h1>Incluir Novos Produtos</h1>
+
+
 <form method="post">
+
+
+  <div class="row">
     <div class="col-4">
-        Nome:
+        <label asp-for="produto.Nome">nome:</label>
         <input class="form-control" asp-for="produto.Nome" />
-        <label> asp-for="produto.nome">nome:</label>
-        <span> asp-validation-for="produto.nome class="text-danger"><1/span>
+        <span asp-validation-for="produto.Nome" class="text-danger"></span>
     </div>
     <br />
     <div class="col-5">
-        Descrição:
+        <label asp-for="produto.descricao">descricao:</label>
         <input class="form-control" asp-for="produto.descricao" />
-        <label> asp-for="produto.descricao">descricao:</label>
-        <span> asp-validation-for="produto.descricao class="text-danger"><1 /span>
+        <span asp-validation-for="produto.descricao" class="text-danger"></span>
     </div>
+   </div>
     <br />
     <div class="col-4">
-        Categoria:
+        <label asp-for="produto.categoria">categoria:</label>
         <input class="form-control" asp-for="produto.categoria" />
-        <label> asp-for="produto.categoria">categoria:</label>
-        <span> asp-validation-for="produto.categoria class="text-danger"><1 /span>
+        <span asp-validation-for="produto.categoria" class="text-danger"></span>
     </div>
     <br />
     <div class="col-4">
-        Preço:
+        <label asp-for="produto.preco">preço:</label>
         <input class="form-control" asp-for="produto.preco" />
-        <label> asp-for="produto.preco">preço:</label>
-        <span> asp-validation-for="produto.preco class="text-danger"><1 /span>
+        <span asp-validation-for="produto.preco" class="text-danger"></span>
     </div>
     <br />
     <div class="col-4">
-        unidademedida:
+        <label asp-for="produto.unidadeMedida">unidade de medida:</label>
         <input class="form-control" asp-for="produto.unidadeMedida" />
-        <label> asp-for="produto.unidade de medida">unidade de medida:</label>
-        <span> asp-validation-for="produto.unidade de medida class="text-danger"><1 /span>
+        <span asp-validation-for="produto.unidadeMedida" class="text-danger"></span>
     </div>
     <br />
     <div class="col-4">
-        Estoque:
+        <label asp-for="produto.estoque">estoque:</label>
         <input class="form-control" asp-for="produto.estoque" />
-        <label> asp-for="produto.estoque">estoque:</label>
-        <span> asp-validation-for="produto.estoque class="text-danger"><1 /span>
+        <span asp-validation-for="produto.estoque" class="text-danger"></span>
     </div>
     <br />
     <br />
