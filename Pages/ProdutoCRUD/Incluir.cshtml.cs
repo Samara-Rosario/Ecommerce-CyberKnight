@@ -22,22 +22,24 @@ namespace Ecommerce_CyberKnight.Pages.ProdutoCRUD
 
         }
 
-        public async Task<IActionResult> OnPostAsync()
-        {
-            try
+        public async Task<IActionResult> OnPostAsync() {
+            var produto = new Produto();
+
+            bool validado = await TryUpdateModelAsync<Produto>(produto, "produto", p => p.Nome, p => p.preco, p => p.estoque, p => p.descricao);
+
+            if (validado)
             {
                 _context.Produtos.Add(produto);
-
                 await _context.SaveChangesAsync();
-            }
-            catch (Exception ex)
-            {
-                Debug.WriteLine("=====================");
-                Debug.WriteLine(ex);
-                Debug.WriteLine("=====================");
-            }
 
-            return RedirectToPage("./Listar");
+                return RedirectToPage("./Listar");
+            }
+            else { 
+                return Page();
+            
+            }
+                
+            
 
         }
     }
