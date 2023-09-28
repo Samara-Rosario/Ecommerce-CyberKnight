@@ -20,6 +20,24 @@ namespace Ecommerce_CyberKnight.Pages.crud{
         }
 
         public async Task<IActionResult> OnPostAsync() {
+            var cliente = new Clientes();
+
+            bool validado = await TryUpdateModelAsync<Clientes>(
+                cliente, "cliente", c => c.Nome, c => c.Cpf, c => c.Email, c => c.Telefone,
+                c => c.Cep, c => c.Login, c => c.Senha
+
+                );
+
+            if (validado) {
+                _context.Clientes.Add(cliente);
+                await _context.SaveChangesAsync();
+
+                return RedirectToPage("./Listar");
+            } else {
+                return Page();
+            }
+
+
             try {
                 _context.Clientes.Add(cliente);
 
