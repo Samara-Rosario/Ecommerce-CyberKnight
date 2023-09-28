@@ -19,19 +19,51 @@ namespace Ecommerce_CyberKnight.Pages.crud
 		}
 		[BindProperty]
 
-		public Clientes clientes{ get; set; }
-		public async Task<IActionResult> OnGet(int id){
-			clientes = await _context.Clientes.FirstOrDefaultAsync(c => c.Id == id);
+		public Clientes clientes { get; set; }
+		public async Task<IActionResult> OnGetAsync(int? Id) {
+			if (Id == null) { 
+			return NotFound();
+		}
+			clientes = await _context.Clientes.FirstOrDefaultAsync(c => c.Id == Id);
+
+			if(clientes == null){
+				return NotFound();
+			}
 
 			return Page();
 		}
 
 		public async Task<IActionResult> OnPostAsync()
 		{
+			if (!ModelState.IsValid)
+			{
+				return Page();
+			}
 			_context.Attach(clientes).State = EntityState.Modified;
-			await _context.SaveChangesAsync();
+			try
+			{
+				await _context.SaveChangesAsync();
+			}
+			catch (DbUpdateConcurrencyException error)
+			{
+				if (!ClienteAindaExiste(clientes.Id)){
+					return NotFound();
 
-			return RedirectToPage("./Listar");
+				}
+				else
+				{
+					throw;
+				}
+			} catch {
+				return Page();
+			}
+
+				return RedirectToPage("./Listar");
+
+			}
+
+		private bool ClienteAindaExiste(int? id){
+			return _context.Clientes.Any(c => c.Id == id);
 		}
 	}
 }
