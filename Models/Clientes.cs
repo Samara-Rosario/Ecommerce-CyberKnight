@@ -28,16 +28,16 @@ namespace Ecommerce_CyberKnight.Models {
 
 
 		[Required(ErrorMessage = "O campo \"{0}\" é de preechimento obrigatório")]
-		[MinLength(11, ErrorMessage = "O campo {0} deve ter no mínimo {1} caracteres.")]
+		[MinLength(8, ErrorMessage = "O campo {0} deve ter no mínimo {1} caracteres.")]
 		public string Cep {  get; set; }
 
 
 		[Required(ErrorMessage = "O campo \"{0}\" é de preechimento obrigatório")]
-		[MinLength(11, ErrorMessage = "O campo {0} deve ter no mínimo {1} caracteres.")]
+		[MinLength(8, ErrorMessage = "O campo {0} deve ter no mínimo {1} caracteres.")]
 		public string Login {  get; set; }
 
 		[Required(ErrorMessage = "O campo \"{0}\" é de preechimento obrigatório")]
-		[MinLength(11, ErrorMessage = "O campo {0} deve ter no mínimo {1} caracteres.")]
+		[MinLength(8, ErrorMessage = "O campo {0} deve ter no mínimo {1} caracteres.")]
 		public string Senha {  get; set; }
 
    

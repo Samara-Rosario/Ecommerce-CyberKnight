@@ -3,67 +3,67 @@
 @{
 }
 
-<h1>Editar Clientes</h1>
+<h1>Editar Clientes "@Model.clientes.Nome"</h1>
 <form method="post">
 
 	<input type="hidden" asp-for="clientes.Id" />
-	<br/>
+	<br	/>
 
 	<div class="col-5">
-	<label asp-for="clientes.Nome" class=" control-label">Nome:</label>
-	<input asp-for="clientes.Nome" />
-	<span asp-validation-for="clientes.Nome" class="text-danger"></span>
+		<label asp-for="clientes.Nome" class=" control-label">Nome:</label>
+		<input asp-for="clientes.Nome" class="form-control" />
+		<span asp-validation-for="clientes.Nome" class="text-danger"></span>
 	</div>
-	<br/>
+	<br	/>
 
 	<div class="col-5">
-	<label asp-for="clientes.Cpf" class=" control-label">CPF:</label>
-	<input asp-for="clientes.Cpf" />
-	<span asp-validation-for="clientes.Cpf" class="text-danger"></span>
+		<label asp-for="clientes.Cpf" class=" control-label">CPF:</label>
+		<input asp-for="clientes.Cpf" class="form-control" />
+		<span asp-validation-for="clientes.Cpf" class="text-danger"></span>
 	</div>
-	<br/>
+	<br	/>
 
 	<div class="col-5">
-	<label asp-for="clientes.Email" class=" control-label">Email:</label>
-	<input asp-for="clientes.Email" />
-	<span asp-validation-for="clientes.Email" class="text-danger"></span>
+		<label asp-for="clientes.Email" class="control-label">Email:</label>
+		<input asp-for="clientes.Email" class="form-control"/>
+		<span asp-validation-for="clientes.Email" class="text-danger"></span>
 	</div>
-	<br/>
+	<br	/>
 
 	<div class="col-5">
-	<label asp-for="clientes.Telefone" class=" control-label">Telefone:</label>
-	<input asp-for="clientes.Telefone" />
-	<span asp-validation-for="clientes.Telefone" class="text-danger"></span>
+		<label asp-for="clientes.Telefone" class=" control-label">Telefone:</label>
+		<input asp-for="clientes.Telefone" class="form-control" />
+		<span asp-validation-for="clientes.Telefone" class="text-danger"></span>
 	</div>
-	<br/>
+	<br	/>
 
 	<div class="col-5">
-	<label asp-for="clientes.Cep" class=" control-label">Cep:</label>
-	<input asp-for="clientes.Cep" />
-	<span asp-validation-for="clientes.Cep" class="text-danger"></span>
+		<label asp-for="clientes.Cep" class=" control-label">Cep:</label>
+		<input asp-for="clientes.Cep" class="form-control" />
+		<span asp-validation-for="clientes.Cep" class="text-danger"></span>
 	</div>
-	<br/>
+	<br	/>
 
 	<div class="col-5">
-	<label asp-for="clientes.Endereco" class=" control-label">Endereço:</label>
-	<input asp-for="clientes.Endereco" />
-	<span asp-validation-for="clientes.Endereco" class="text-danger"></span>
+		<label asp-for="clientes.Endereco" class=" control-label">Endereço:</label>
+		<input asp-for="clientes.Endereco" class="form-control" />
+		<span asp-validation-for="clientes.Endereco" class="text-danger"></span>
 	</div>
-	<br/>
+	<br	/>
 
 	<div class="col-5">
-	<label asp-for="clientes.Login" class=" control-label">Login:</label>
-	<input asp-for="clientes.Login" />
-	<span asp-validation-for="clientes.Login" class="text-danger"></span>
+		<label asp-for="clientes.Login" class=" control-label">Login:</label>
+		<input asp-for="clientes.Login"class="form-control" />
+		<span asp-validation-for="clientes.Login" class="text-danger"></span>
 	</div>
-	<br/>
+	<br	/>
 
 	<div class="col-5">
-	<label asp-for="clientes.Senha" class=" control-label">Senha:</label>
-	<input asp-for="clientes.Senha" />
-	<span asp-validation-for="clientes.Senha" class="text-danger"></span>
+		<label asp-for="clientes.Senha" class=" control-label">Senha:</label>
+		<input asp-for="clientes.Senha"class="form-control" />
+		<span asp-validation-for="clientes.Senha" class="text-danger"></span>
 	</div>
-	<br/>
+	<br	/>
 
 	<input type="submit" class="btn btn-primary" value="Enviar" />
 </form>
