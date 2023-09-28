@@ -5,26 +5,57 @@
 
 <h1>Incluir Clientes</h1>
 <form method="post">
-    Nome:
+    
+    <div class="col-4">
+    <label asp-for="cliente.Nome">Nome:</label>
     <input class="form-control" asp-for="cliente.Nome" />
+    <span asp-validation-for="cliente.Nome" class="text-danger"> </span>
+   
+    </div>
     <br />
-    Cpf:
+    <div class="col-4">
+    <label asp-for="cliente.Cpf">Cpf: </label>
     <input class="form-control" asp-for="cliente.Cpf" />
+    <span asp-validation-for="cliente.Cpf" class="text-danger"> </span>
+    
+    </div>
     <br />
-    Email:
+    <div class="col-4">
+    <label asp-for="cliente.Email">Email: </label>
     <input class="form-control" asp-for="cliente.Email" />
+    <span asp-validation-for="cliente.Email" class="text-danger"> </span>
+    </div>
     <br />
-    Telefone:
+    <div class="col-4">
+
+    <label asp-for="cliente.Telefone">Telefone: </label>
     <input class="form-control" asp-for="cliente.Telefone" />
+    <span asp-validation-for="cliente.Telefone" class="text-danger"> </span>
+   
+    </div>
     <br />
-    Cep:
+    <div class="col-4">
+    <label asp-for="cliente.Cep">Cep:</label>
     <input class="form-control" asp-for="cliente.Cep" />
+    <span asp-validation-for="cliente.Cep" class="text-danger"> </span>
+    </div>
     <br />
-    Login:
+    <div class="col-4">
+    
+    <label asp-for="cliente.Login">Login:</label>
     <input class="form-control" asp-for="cliente.Login" />
+    <span asp-validation-for="cliente.Login" class="text-danger"> </span>
+   
+    </div>
     <br />
-    Senha:
+    <div class="col-4">
+    <label asp-for="cliente.Senha">Senha:</label>
     <input class="form-control" asp-for="cliente.Senha" />
+    <span asp-validation-for="cliente.Senha" class="text-danger"> </span>
+    </div>
+    <br />
+    <div class="col-4">
+    
     <br />
     <br />
     <input type="submit" class="btn btn-outline-success" value="Enviar" />
