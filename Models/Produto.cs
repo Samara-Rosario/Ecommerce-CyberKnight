@@ -23,12 +23,12 @@ namespace Ecommerce_CyberKnight.Models
         [Required(ErrorMessage = "O campo \"{0}\" é de preenchimento obrigatório.")]
         public float estoque { get; set; }
 
-        public ICollection<itemDoPedido> ItensDoPedido { get; set; }
+        public ICollection<itemDoPedido>? ItensDoPedido { get; set; }
 
         [ForeignKey("IdCategoria")]
-        public Categoria categoria { get; set; }
+        public Categoria? categoria { get; set; }
 
         [ForeignKey("IdUnidadeMedida")]
-        public UnidadeMedida unidadeMedida { get; set; }
+        public UnidadeMedida? unidadeMedida { get; set; }
     }
 }
