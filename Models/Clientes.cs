@@ -13,9 +13,8 @@ namespace Ecommerce_CyberKnight.Models {
 
 		public int? IdEndereco { get; set; }
 
-		[Required(ErrorMessage = "O campo \"{0}\" é de preechimento obrigatório")]
-		[MinLength(100, ErrorMessage = "O campo {0} deve ter no mínimo {1} caracteres.")]
-		public string Nome {  get; set; }
+        [Required(ErrorMessage = "O campo \"{0}\" é de preechimento obrigatório")]
+        public string Nome {  get; set; }
 
 		[Required(ErrorMessage = "O campo \"{0}\" é de preechimento obrigatório")]
 		[EmailAddress(ErrorMessage = "O campo {0} deve conter um endereço de e-mail válido")]
@@ -28,16 +27,16 @@ namespace Ecommerce_CyberKnight.Models {
 
 
 		[Required(ErrorMessage = "O campo \"{0}\" é de preechimento obrigatório")]
-		[MinLength(11, ErrorMessage = "O campo {0} deve ter no mínimo {1} caracteres.")]
+		[MinLength(8, ErrorMessage = "O campo {0} deve ter no mínimo {1} caracteres (sem o traço).")]
 		public string Cep {  get; set; }
 
 
 		[Required(ErrorMessage = "O campo \"{0}\" é de preechimento obrigatório")]
-		[MinLength(11, ErrorMessage = "O campo {0} deve ter no mínimo {1} caracteres.")]
+		[MinLength(8, ErrorMessage = "O campo {0} deve ter no mínimo {1} caracteres.")]
 		public string Login {  get; set; }
 
 		[Required(ErrorMessage = "O campo \"{0}\" é de preechimento obrigatório")]
-		[MinLength(11, ErrorMessage = "O campo {0} deve ter no mínimo {1} caracteres.")]
+		[MinLength(6, ErrorMessage = "O campo {0} deve ter no mínimo {1} caracteres.")]
 		public string Senha {  get; set; }
 
    
