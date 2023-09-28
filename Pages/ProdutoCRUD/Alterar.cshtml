@@ -5,38 +5,45 @@
 <h1>Editar Produtos</h1>
 
 <form method="post">
+  <input class="form-control" type="hidden" asp-for="produtos.Id" />
+
+  <div class="row">
 
     <div class="col-4">
-        <input class="form-control" type="hidden" asp-for="produtos.Id" />
-    </div>
-    <div class="col-4">
-         Nome:
+        <label asp-for="produtos.Nome">Nome:</label>
         <input class="form-control" asp-for="produtos.Nome" />
+        <span asp-validation-for="produtos.Nome" class="text-danger"></span>
     </div>
     <br />
-    <div class="col-4">
-        Descrição:
+    <div class="col-5">
+        <label asp-for="produtos.descricao">Descrição:</label>
         <input class="form-control" asp-for="produtos.descricao" />
+        <span asp-validation-for="produtos.descricao" class="text-danger"></span>
     </div>
+  </div>
     <br />
     <div class="col-4">
-        Categoria:
+        <label asp-for="produtos.categoria">Categoria:</label>
         <input class="form-control" asp-for="produtos.categoria" />
+        <span asp-validation-for="produtos.categoria" class="text-danger"></span>
     </div>
     <br />
     <div class="col-4">
-        Preço:
+        <label asp-for="produtos.preco">Preço:</label>
         <input class="form-control" asp-for="produtos.preco" />
+        <span asp-validation-for="produtos.preco" class="text-danger"></span>
     </div>
     <br />
-    <div class="clo-4">
-        Unidade de Medida:
+    <div class="col-4">
+        <label asp-for="produtos.unidadeMedida">Unidade de Medida:</label>
         <input class="form-control" asp-for="produtos.unidadeMedida" />
+        <span asp-validation-for="produtos.unidadeMedida" class="text-danger"></span>
     </div>
     <br />
-    <div class="clo-4">
-        Estoque:
+    <div class="col-4">
+        <label asp-for="produtos.estoque">Estoque:</label>
         <input class="form-control" asp-for="produtos.estoque" />
+        <span asp-validation-for="produtos.estoque" class="text-danger"></span>
     </div>
     <br />
     <br />

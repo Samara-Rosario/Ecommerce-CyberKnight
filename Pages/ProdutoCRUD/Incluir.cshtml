@@ -4,35 +4,47 @@
 }
 
 <h1>Incluir Novos Produtos</h1>
+
+
 <form method="post">
+
+
+  <div class="row">
     <div class="col-4">
-        Nome:
+        <label asp-for="produto.Nome">nome:</label>
         <input class="form-control" asp-for="produto.Nome" />
+        <span asp-validation-for="produto.Nome" class="text-danger"></span>
     </div>
     <br />
     <div class="col-5">
-        Descrição:
+        <label asp-for="produto.descricao">descricao:</label>
         <input class="form-control" asp-for="produto.descricao" />
+        <span asp-validation-for="produto.descricao" class="text-danger"></span>
     </div>
+   </div>
     <br />
     <div class="col-4">
-        Categoria:
+        <label asp-for="produto.categoria">categoria:</label>
         <input class="form-control" asp-for="produto.categoria" />
+        <span asp-validation-for="produto.categoria" class="text-danger"></span>
     </div>
     <br />
     <div class="col-4">
-        Preço:
+        <label asp-for="produto.preco">preço:</label>
         <input class="form-control" asp-for="produto.preco" />
+        <span asp-validation-for="produto.preco" class="text-danger"></span>
     </div>
     <br />
     <div class="col-4">
-        unidademedida:
+        <label asp-for="produto.unidadeMedida">unidade de medida:</label>
         <input class="form-control" asp-for="produto.unidadeMedida" />
+        <span asp-validation-for="produto.unidadeMedida" class="text-danger"></span>
     </div>
     <br />
     <div class="col-4">
-        Estoque:
+        <label asp-for="produto.estoque">estoque:</label>
         <input class="form-control" asp-for="produto.estoque" />
+        <span asp-validation-for="produto.estoque" class="text-danger"></span>
     </div>
     <br />
     <br />
