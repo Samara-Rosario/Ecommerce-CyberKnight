@@ -5,8 +5,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using System.Runtime.CompilerServices;
 
-namespace Ecommerce_CyberKnight.Pages.crud
-{
+namespace Ecommerce_CyberKnight.Pages.ClienteCRUD{
 	public class AlterarModel : PageModel
 	{
 

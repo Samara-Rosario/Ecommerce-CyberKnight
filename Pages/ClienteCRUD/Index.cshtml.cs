@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace Ecommerce_CyberKnight.Pages.crud {
+namespace Ecommerce_CyberKnight.Pages.ClienteCRUD {
     public class IndexModel : PageModel {
 
         public string Nome { get; set; }

@@ -15,6 +15,6 @@ namespace Ecommerce_CyberKnight.Models {
 
 		[Required(ErrorMessage = "O campo \"{0}\" é obrigatório")]
 		public string NomeExtenso { get; set; }
-        public ICollection<Produto> Produtos { get; set; }
+        public ICollection<Produto>? Produtos { get; set; }
     }
 }

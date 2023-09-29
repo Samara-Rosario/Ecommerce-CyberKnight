@@ -1,0 +1,42 @@
+﻿@page
+@model Ecommerce_CyberKnight.Pages.UnidadeMedidaCRUD.ListarModel
+@{
+}
+
+<h1>Listagem de Unidade de Medida</h1>
+
+<a class="btn btn-outline-primary" asp-page="./Incluir">
+	Incluir
+</a>
+
+<table class="table">
+	<thead>
+		<tr>
+			<td>Id</td>
+			<td>Nome Extenso</td>
+			<td>Sigla</td>
+			<td>Ações</td>
+		</tr>
+	</thead>
+	<tbody>
+		@foreach (var UnidadeMedida in Model.unidadeMedidas) {
+			<tr>
+				<td>@UnidadeMedida.Id</td>
+				<td>@UnidadeMedida.NomeExtenso</td>
+				<td>@UnidadeMedida.Sigla</td>
+				<td>
+					<a asp-page="./Alterar"
+					   asp-route-id="@UnidadeMedida.Id"
+					   class="btn btn-outline-primary">
+						Editar
+					</a>
+					<form method="post"
+						  asp-page-handler="delete"
+						  asp-route-id="@UnidadeMedida.Id">
+						<button class="btn btn-outline-primary">Excluir</button>
+					</form>
+				</td>
+			</tr>
+		}
+	</tbody>
+</table>

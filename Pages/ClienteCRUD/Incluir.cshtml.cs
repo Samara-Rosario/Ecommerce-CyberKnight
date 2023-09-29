@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.Diagnostics;
 
-namespace Ecommerce_CyberKnight.Pages.crud{
+namespace Ecommerce_CyberKnight.Pages.ClienteCRUD{
     public class IncluirModel : PageModel{
 
         private readonly ApplicationDbContext _context;

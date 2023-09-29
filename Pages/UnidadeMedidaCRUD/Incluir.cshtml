@@ -1,0 +1,28 @@
+﻿@page
+@model Ecommerce_CyberKnight.Pages.UnidadeMedidaCRUD.IncluirModel
+@{
+}
+
+<h1>Incluir Novas Unidades de Medidas</h1>
+
+
+<form method="post">
+
+
+    <div class="row">
+        <div class="col-4">
+            <label asp-for="unidadeMedida.NomeExtenso">Nome Extenso:</label>
+            <input class="form-control" asp-for="unidadeMedida.NomeExtenso" />
+            <span asp-validation-for="unidadeMedida.NomeExtenso" class="text-danger"></span>
+        </div>
+        <br />
+        <div class="col-5">
+            <label asp-for="unidadeMedida.Sigla">Sigla:</label>
+            <input class="form-control" asp-for="unidadeMedida.Sigla" />
+            <span asp-validation-for="unidadeMedida.Sigla" class="text-danger"></span>
+        </div>
+    </div>
+    <br />
+    <br />
+    <input type="submit" class="btn btn-outline-success" value="Enviar" />
+</form>
