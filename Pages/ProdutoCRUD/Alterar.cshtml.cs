@@ -3,21 +3,29 @@ using Ecommerce_CyberKnight.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
+using System.ComponentModel.DataAnnotations;
 
 namespace Ecommerce_CyberKnight.Pages.ProdutoCRUD
 {
     public class AlterarModel : PageModel{
         private readonly ApplicationDbContext _context;
 
-        public AlterarModel(ApplicationDbContext context) {
-            _context = context;
-        }
+        private readonly IWebHostEnvironment _webHostEnvironment;
 
-        // o "[BindProperty]" configura a aplicação para relacionar o atributo 'cliente' aos dados que estão vindo do front-end*/
+        // o "[BindProperty]" configura a aplicação para relacionar o atributo 'produto' aos dados que estão vindo do front-end*/
         [BindProperty]
         public Produto produtos { get; set; }
+        public string CaminhoImagem { get; set; }
 
-        public async Task<IActionResult> OnGet(int id){
+        [BindProperty]
+        [Display(Name = "Imagem do Produto")]
+        public IFormFile ImagemProduto { get; set; }
+        public AlterarModel(ApplicationDbContext context, IWebHostEnvironment webHostEnvironment) {
+            _context = context;
+            _webHostEnvironment = webHostEnvironment;
+        }
+
+        public async Task<IActionResult> OnGetAsync(int? id){
             if(id == null) {
                 return NotFound();
             }
