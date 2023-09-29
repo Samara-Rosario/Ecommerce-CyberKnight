@@ -2,6 +2,7 @@ using Ecommerce_CyberKnight.Data;
 using Ecommerce_CyberKnight.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using System.ComponentModel.DataAnnotations;
 using System.Diagnostics;
 
 namespace Ecommerce_CyberKnight.Pages.ProdutoCRUD
@@ -10,9 +11,21 @@ namespace Ecommerce_CyberKnight.Pages.ProdutoCRUD
     {
         private readonly ApplicationDbContext _context;
 
-        public IncluirModel(ApplicationDbContext context)
-        {
+        private reandoly IWebHostEnvironment _ whe;
+        public string CaminhoImagem { get; set; }
+
+        [BindProperty]
+        [Display(Name = "Iamagem do produto")]
+        [Required(ErrorMessage = "0 Campo \ "{0}\" é de preenchimento obrigatório,")]
+        
+        public IFormFile ImagemProduto {  get; set; }
+        
+
+        public IncluirModel(ApplicationDbContext context, IWebHostEnvironment whe){
             _context = context;
+            _webHostEnviroment = whe;
+            CaminhoImagem = "~/img/produto/sem_imagem.jpg";
+            
         }
 
         [BindProperty]
