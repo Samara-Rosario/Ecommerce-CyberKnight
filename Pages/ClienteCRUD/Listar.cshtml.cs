@@ -22,6 +22,11 @@ namespace Ecommerce_CyberKnight.Pages.ClienteCRUD
         }
 
         public async Task<IActionResult> OnPostDeleteAsync(int? id) {
+            
+            if (id == null) {
+                return NotFound();
+            }
+            
             //Busca no banco de dados o cliente com o mesmo id procurado
             var clienteParaDeletar = await _context.Clientes.FirstOrDefaultAsync(c => c.Id == id);
 

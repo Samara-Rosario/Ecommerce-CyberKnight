@@ -21,7 +21,11 @@ namespace Ecommerce_CyberKnight.Pages.ProdutoCRUD {
         }
 
         public async Task<IActionResult> OnPostDeleteAsync(int? id) {
-			//Busca no banco de dados o Produto com o mesmo id procurado
+            if (id == null) {
+                return NotFound();
+            }
+            
+            //Busca no banco de dados o Produto com o mesmo id procurado
 			var ProdutoParaDeletar = await _context.Produtos.FirstOrDefaultAsync(p => p.Id == id);
 
 			//Verifica se foi retornado algum Produto do banco de dados
