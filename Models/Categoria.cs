@@ -20,6 +20,6 @@ namespace Ecommerce_CyberKnight.Models {
         [Required(ErrorMessage = "O campo \"{0}\" é de preenchimento obrigatório.")]
         public string? Descricao { get; set; }
 
-        public ICollection<Produto> Produtos { get; set; }
+        public ICollection<Produto>? Produtos { get; set; }
     }
 }

@@ -1,0 +1,28 @@
+﻿@page
+@model Ecommerce_CyberKnight.Pages.CategoriaCRUD.IncluirModel
+@{
+}
+
+<h1>Incluir Novas Categorias</h1>
+
+
+<form method="post">
+
+
+    <div class="row">
+        <div class="col-4">
+            <label asp-for="categoria.Nome">Nome:</label>
+            <input class="form-control" asp-for="categoria.Nome" />
+            <span asp-validation-for="categoria.Nome" class="text-danger"></span>
+        </div>
+        <br />
+        <div class="col-5">
+            <label asp-for="categoria.Descricao">Descrição:</label>
+            <input class="form-control" asp-for="categoria.Descricao" />
+            <span asp-validation-for="categoria.Descricao" class="text-danger"></span>
+        </div>
+    </div>
+    <br />
+    <br />
+    <input type="submit" class="btn btn-outline-success" value="Enviar" />
+</form>
