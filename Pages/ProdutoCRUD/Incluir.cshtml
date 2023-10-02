@@ -6,7 +6,7 @@
 <h1>Incluir Novos Produtos</h1>
 
 
-<form method="post">
+<form method="post" class=" mt-3" enctype="multipart/form-data">
 
 
   <div class="row">
@@ -45,6 +45,19 @@
         <label asp-for="produto.estoque">estoque:</label>
         <input class="form-control" asp-for="produto.estoque" />
         <span asp-validation-for="produto.estoque" class="text-danger"></span>
+    </div>
+
+    <div class=" form-group">
+        <label asp-for="ImagemProduto" class=" control-label"></label>
+        <div class="custom-file col-4 d-block">
+            <input asp-for="ImagemProduto" class="custom-file-input" accept="image/*" />
+            <label class="custom-file-label">clique aqui para incluir</label>
+        </div>
+        <span asp-validation-for="ImagemProduto" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <img src="@Model.CaminhoImagem" class="imagem-thumbnail" asp-append-version="true"/>
     </div>
     <br />
     <br />

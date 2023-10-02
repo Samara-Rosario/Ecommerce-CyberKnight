@@ -47,4 +47,3 @@ namespace CodigoApoio {
             await img.SaveAsync(caminhoArquivoImagem);            
         }
 	}
-}
