@@ -1,9 +1,11 @@
+using CodigoApoio;
 using Ecommerce_CyberKnight.Data;
 using Ecommerce_CyberKnight.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations;
+using System.Diagnostics;
 
 namespace Ecommerce_CyberKnight.Pages.ProdutoCRUD
 {
@@ -20,6 +22,7 @@ namespace Ecommerce_CyberKnight.Pages.ProdutoCRUD
         [BindProperty]
         [Display(Name = "Imagem do Produto")]
         public IFormFile ImagemProduto { get; set; }
+
         public AlterarModel(ApplicationDbContext context, IWebHostEnvironment webHostEnvironment) {
             _context = context;
             _webHostEnvironment = webHostEnvironment;
@@ -35,6 +38,8 @@ namespace Ecommerce_CyberKnight.Pages.ProdutoCRUD
                 return NotFound();
             }
 
+            CaminhoImagem = $"~/img/produto/{produtos.Id:D6}.jpg";
+
             return Page();
         }
 
@@ -46,13 +51,19 @@ namespace Ecommerce_CyberKnight.Pages.ProdutoCRUD
 
             try {
                 await _context.SaveChangesAsync();
+                //Se há uma imagem de produto submetia
+                if (ImagemProduto != null) {
+                    await AppUtils.ProcessarArquivoDeImagem(produtos.Id, ImagemProduto, _webHostEnvironment);
+
+                } 
             }catch (DbUpdateConcurrencyException error) {
                 if (!ProdutoAindaExiste(produtos.Id)) {
                     return NotFound();
                 } else {
                     throw;
                 }
-            } catch {
+            } catch(Exception err) {
+                Debug.WriteLine(err);
                 return Page();
             }
 

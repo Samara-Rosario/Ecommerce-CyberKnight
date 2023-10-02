@@ -12,8 +12,9 @@ namespace Ecommerce_CyberKnight {
             builder.Services.AddDbContext<ApplicationDbContext>(
                         options => options.UseMySql(
                                             builder.Configuration.GetConnectionString("ApplicationDbContext"),
-                                            _mySQLServerVersion
-                                        )
+                                            _mySQLServerVersion, 
+                                            opt => opt.EnableRetryOnFailure()
+										)
                         );
 
             // Add services to the container.

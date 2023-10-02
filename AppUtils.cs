@@ -6,7 +6,7 @@ using SixLabors.ImageSharp.Processing;
 using Microsoft.AspNetCore.Hosting;
 using SixLabors.ImageSharp.Formats.Jpeg;
 
-namespace CodigoApoio{
+namespace CodigoApoio {
     public static class AppUtils
     {
         public static async Task ProcessarArquivoDeImagem(int idProduto, IFormFile imagemProduto, IWebHostEnvironment whe)
@@ -46,5 +46,5 @@ namespace CodigoApoio{
             //cria um arquivo de imagem sobrescrevendo o existente, caso exista
             await img.SaveAsync(caminhoArquivoImagem);            
         }
-    }
+	}
 }

@@ -5,7 +5,7 @@ namespace Ecommerce_CyberKnight.Models
 {
     public class Produto{
         [Key]
-        public int? Id { get; set; }
+        public int Id { get; set; }
 
         [MaxLength(100, ErrorMessage = "O campo \"{0}\" deve ter tamanho igual a {1}")]
         [Required(ErrorMessage = "O campo \"{0}\" é de preenchimento obrigatório.")]
