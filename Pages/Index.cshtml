@@ -18,40 +18,13 @@
             {
                 <div class="col-3">
                     <div class="card h-100">
-                        <img src="~/img/produtos/tmt2.jpg" class="card-img-top" alt="...">
+                        <img src="~/img/produto/@String.Concat(produto.Id.ToString("D6"),".jpg")" class="card-img-top" alt="...">
                         <div class="card-body">
                             <h5 class="card-title">@produto.Nome </h5>
                             <p class="card-text">@produto.descricao</p>
                         </div>
                     </div>
                 </div>
-            <div class="col-3">
-                <div class="card h-100">
-                    <img src="~/img/produtos/Laranja.jpg" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">@produto.Nome </h5>
-                        <p class="card-text">@produto.descricao</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-3">
-                <div class="card h-100">
-                    <img src="~/img/produtos/Maça.jpg" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">@produto.Nome </h5>
-                        <p class="card-text">@produto.descricao</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-3">
-                <div class="card h-100">
-                    <img src="~/img/produtos/Banana.jpg" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">@produto.Nome </h5>
-                        <p class="card-text">@produto.descricao</p>
-                    </div>
-                </div>
-            </div>
                  
             }
 
