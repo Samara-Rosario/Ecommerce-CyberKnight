@@ -1,8 +1,9 @@
 ﻿using Ecommerce_CyberKnight.Models;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace Ecommerce_CyberKnight.Data {
-    public class ApplicationDbContext : DbContext {
+    public class ApplicationDbContext : IdentityDbContext<AppUser> {
         public ApplicationDbContext(DbContextOptions options) : base(options) { }
         
         public DbSet<itemDoPedido> itemDoPedidos { get; set; }
