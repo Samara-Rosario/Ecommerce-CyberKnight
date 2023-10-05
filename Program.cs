@@ -1,6 +1,8 @@
 using Ecommerce_CyberKnight.Data;
+using Microsoft.AspNetCore.Localization;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
+using System.Globalization;
 
 namespace Ecommerce_CyberKnight {
     public class Program {
@@ -15,5 +17,7 @@ namespace Ecommerce_CyberKnight {
             startup.Configure(app, builder.Environment);
 
         }
+
     }
+
 }

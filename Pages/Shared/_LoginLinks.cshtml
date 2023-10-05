@@ -1,0 +1,45 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using PageEstudo.Models
+
+@inject SignInManager<AppUser> SignInManager
+@inject UserManager<AppUser> UserManager
+
+@{
+    var appUser = await UserManager.GetUserAsync(User);
+
+    string nomeUser = "";
+
+    if (appUser != null) {
+        // Pega somente o primeiro nome do usuário
+        /*
+         * O método "String alvo".IndexOf(" ") procura a primeira ocorrência da string que está entre parenteses
+         * e retorna a posição dela na string ultilizada
+         */
+        nomeUser = @appUser.Nome.Substring(0, appUser.Nome.IndexOf(" "));
+    }
+}
+
+<ul class="navbar-nav">
+    @if (SignInManager.IsSignedIn(User))
+    {
+        <li class="nav-item">
+            <a id="manage" class="nav-link text-dark" asp-area="" asp-page="/Index" title="Manage">
+                Olá,  @nomeUser!
+            </a>
+        </li>
+        <li class="nav-item">
+            <form id="logoutForm" class="form-inline" asp-area="" asp-page="/Login" asp-page-handler="logout" asp-route-returnURL="@Url.Page("/Index", new { area = "" })">
+                <button id="logout" type="submit" class="nav-link btn btn-link text-dark">Sair</button>
+            </form>
+        </li>
+    }
+    else
+    {
+        <li class="nav-item">
+            <a class="nav-link text-dark" id="register" asp-area="" asp-page="/NovoCliente">Quero me cadastrar</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link text-dark" id="login" asp-area="" asp-page="/Login">Entrar</a>
+        </li>
+    }
+</ul>
