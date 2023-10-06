@@ -13,13 +13,11 @@
     <thead>
         <tr>
             <td>Id</td>
-            <td>Cpf</td>
+            <td>CPF</td>
             <td>Nome</td>
             <td>Email</td>
             <td>Telefone</td>
-            <td>Cep</td>
-            <td>Login</td>
-            <td>Senha</td>
+            <td>Data de Nascimento</td>
             <td>Ações</td>
         </tr>
     </thead>
@@ -31,9 +29,7 @@
                 <td>@cliente.Nome</td>
                 <td>@cliente.Email</td>
                 <td>@cliente.Telefone</td>
-                <td>@cliente.Cep</td>
-                <td>@cliente.Login</td>
-                <td>@cliente.Senha</td>
+                <td>@cliente.DataDeNascimento</td>
                 <td>
                     <a asp-page="./Alterar"
                        asp-route-id="@cliente.Id"

@@ -14,7 +14,7 @@
     </div>
     <br />
     <div class="col-4">
-    <label asp-for="cliente.Cpf">Cpf: </label>
+    <label asp-for="cliente.Cpf">CPF: </label>
     <input class="form-control" asp-for="cliente.Cpf" />
     <span asp-validation-for="cliente.Cpf" class="text-danger"> </span>
     
@@ -34,27 +34,11 @@
    
     </div>
     <br />
-    <div class="col-4">
-    <label asp-for="cliente.Cep">Cep:</label>
-    <input class="form-control" asp-for="cliente.Cep" />
-    <span asp-validation-for="cliente.Cep" class="text-danger"> </span>
+    <div class="col-5">
+     <label asp-for="cliente.DataDeNascimento" class=" control-label">Data de Nascimento:</label>
+     <input asp-for="cliente.DataDeNascimento" class="form-control" />
+     <span asp-validation-for="cliente.DataDeNascimento" class="text-danger"></span>
     </div>
-    <br />
-    <div class="col-4">
-    
-    <label asp-for="cliente.Login">Login:</label>
-    <input class="form-control" asp-for="cliente.Login" />
-    <span asp-validation-for="cliente.Login" class="text-danger"> </span>
-   
-    </div>
-    <br />
-    <div class="col-4">
-    <label asp-for="cliente.Senha">Senha:</label>
-    <input class="form-control" asp-for="cliente.Senha" />
-    <span asp-validation-for="cliente.Senha" class="text-danger"> </span>
-    </div>
-    <br />
-    <div class="col-4">
     
     <br />
     <br />

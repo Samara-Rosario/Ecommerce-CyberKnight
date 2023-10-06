@@ -25,8 +25,9 @@ namespace Ecommerce_CyberKnight.Models {
         [Required(ErrorMessage = "O campo \"{0}\" é de preenchimento obrigatório.")]
         public string Rua { get; set; }
 
-        [MaxLength(4, ErrorMessage = "O campo \"{0}\" deve ter tamanho igual a {1}")]
+        [Range(0, 9999, ErrorMessage = "O campo \"{0}\" deve ter tamanho entre 1 e 4 dígitos")]
         [Required(ErrorMessage = "O campo \"{0}\" é de preenchimento obrigatório.")]
+        [Display(Name ="Número")]
         public int Numero { get; set; }
 
         [MaxLength(100, ErrorMessage = "O campo \"{0}\" deve ter tamanho igual a {1}")]
@@ -36,5 +37,9 @@ namespace Ecommerce_CyberKnight.Models {
         [MaxLength(150, ErrorMessage = "O campo \"{0}\" deve ter tamanho igual a {1}")]
         [Required(ErrorMessage = "O campo \"{0}\" é de preenchimento obrigatório.")]
         public string Complemento { get; set; }
+
+        [MaxLength(150, ErrorMessage = "O campo \"{0}\" deve ter tamanho igual a {1}")]
+        [Required(ErrorMessage = "O campo \"{0}\" é de preenchimento obrigatório.")]
+        public string Referencia { get; set; }
     }
 }
