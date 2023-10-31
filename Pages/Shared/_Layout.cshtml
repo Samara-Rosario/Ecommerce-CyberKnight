@@ -9,45 +9,109 @@
     <link rel="stylesheet" href="~/Ecommerce_CyberKnight.styles.css" asp-append-version="true" />
 </head>
 <body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container">
-                <a class="navbar-brand" asp-area="" asp-page="/Index">Ecommerce_CyberKnight</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
+   <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
+      <div class="col-md-3 mb-2 mb-md-0">
+        <a href="/" class="d-inline-flex link-body-emphasis text-decoration-none">
+          <svg class="bi" width="40" height="32" role="img" aria-label="Inicialização"><use xlink:href="#bootstrap"></use></svg>
+        </a>
+      </div>
+
+      <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
+        <li><a href="#" class="nav-link px-2 link-secondary"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Lar</font></font></a></li>
+        <li><a href="#" class="nav-link px-2"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Características</font></font></a></li>
+        <li><a href="#" class="nav-link px-2"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Preços</font></font></a></li>
+        <li><a href="#" class="nav-link px-2"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Perguntas frequentes</font></font></a></li>
+        <li><a href="#" class="nav-link px-2"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Sobre</font></font></a></li>
+      </ul>
+
+      <div class="col-md-3 text-end">
+        <button type="button" class="btn btn-outline-primary me-2"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Conecte-se</font></font></button>
+        <button type="button" class="btn btn-primary"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Inscrever-se</font></font></button>
+      </div>
+    </header>
+
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="d-flex flex-column flex-shrink-0 p-3 bg-body-tertiary" style="width: 280px;">
+                    <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
+                        <svg class="bi pe-none me-2" width="40" height="32"><use xlink:href="#bootstrap"></use></svg>
+                        <span class="fs-4"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Barra Lateral</font></font></span>
+                    </a>
+                    <hr>
+                    <ul class="nav nav-pills flex-column mb-auto">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Index">Home</a>
+                            <a href="#" class="nav-link active" aria-current="page">
+                                <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#home"></use></svg><font style="vertical-align: inherit;">
+                                    <font style="vertical-align: inherit;">
+                                        Lar
+                                    </font>
+                                </font>
+                            </a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/ProdutoCRUD/Listar">Produtos</a>
+                        <li>
+                            <a href="#" class="nav-link link-body-emphasis">
+                                <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#speedometer2"></use></svg><font style="vertical-align: inherit;">
+                                    <font style="vertical-align: inherit;">
+                                        Painel
+                                    </font>
+                                </font>
+                            </a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/ClienteCRUD/Listar">Clientes</a>
+                        <li>
+                            <a href="#" class="nav-link link-body-emphasis">
+                                <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#table"></use></svg><font style="vertical-align: inherit;">
+                                    <font style="vertical-align: inherit;">
+                                        Pedidos
+                                    </font>
+                                </font>
+                            </a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/CategoriaCRUD/Listar">Categorias</a>
+                        <li>
+                            <a href="#" class="nav-link link-body-emphasis">
+                                <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#grid"></use></svg><font style="vertical-align: inherit;">
+                                    <font style="vertical-align: inherit;">
+                                        Produtos
+                                    </font>
+                                </font>
+                            </a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/UnidadeMedidaCRUD/Listar">Unidade de Medida</a>
+                        <li>
+                            <a href="#" class="nav-link link-body-emphasis">
+                                <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#people-circle"></use></svg><font style="vertical-align: inherit;">
+                                    <font style="vertical-align: inherit;">
+                                        Clientes
+                                    </font>
+                                </font>
+                            </a>
                         </li>
                     </ul>
-                    <div class="align-self-end">
-                        <partial name="_LoginLinks"/>
+                    <hr>
+                    <div class="dropdown">
+                        <a href="#" class="d-flex align-items-center link-body-emphasis text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                            <img src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle me-2">
+                            <strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">mdo</font></font></strong>
+                        </a>
+                        <ul class="dropdown-menu text-small shadow">
+                            <li><a class="dropdown-item" href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Novo projeto...</font></font></a></li>
+                            <li><a class="dropdown-item" href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Configurações</font></font></a></li>
+                            <li><a class="dropdown-item" href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Perfil</font></font></a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sair</font></font></a></li>
+                        </ul>
                     </div>
                 </div>
             </div>
-        </nav>
-    </header>
-    <div class="container">
-        <partial name="_CookieConsentPartial" />
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
+
+        <div class="col">
+            <main role="main" class="pb-3">
+                <partial name="_CookieConsentPartial" />
+                @RenderBody()
+            </main> 
+
+        </div>
     </div>
+</div>
 
     <footer class="border-top footer text-muted">
         <div class="container">
