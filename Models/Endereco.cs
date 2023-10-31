@@ -7,10 +7,11 @@ namespace Ecommerce_CyberKnight.Models {
     [Owned]    
     public class Endereco {
         [Key]
-        public int? Id { get; set; }
+        public int Id { get; set; }
 
         [MaxLength(8, ErrorMessage = "O campo \"{0}\" deve ter tamanho igual a {1}")]
         [Required(ErrorMessage = "O campo \"{0}\" é de preenchimento obrigatório.")]
+        [RegularExpression(@"[0-9]{8}$", ErrorMessage = "O campo \"{0}\" deve ser preenchido com um CEP válido.")]
         public string Cep { get; set; }
 
         [MaxLength(100, ErrorMessage = "O campo \"{0}\" deve ter tamanho igual a {1}")]

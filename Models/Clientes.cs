@@ -5,7 +5,7 @@ namespace Ecommerce_CyberKnight.Models {
     public class Clientes {
 
         [Key]
-        public int? Id { get; set; }
+        public int Id { get; set; }
         
         [Required(ErrorMessage = "O campo \"{0}\" é de preechimento obrigatório")]
 		[RegularExpression(@"[0-9]{11}", ErrorMessage = "O campo {0} deve ser preenchido com 11 digitos numéricos")]

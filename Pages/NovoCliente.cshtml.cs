@@ -58,9 +58,9 @@ namespace Ecommerce_CyberKnight.Pages {
 		public async Task<IActionResult> OnPostAsync() {
 			//cria um novo objeto Cliente
 			var cliente = new Clientes();
-			cliente.Endereco = new Endereco();
+            cliente.Endereco = new Endereco();
 
-			Debug.WriteLine(ModelState.IsValid);
+            Debug.WriteLine(ModelState.IsValid);
 
 			//var senhasUsuario = new Senhas();
 			if (!await TryUpdateModelAsync(SenhasUsuarios, SenhasUsuarios.GetType(), nameof(SenhasUsuarios)))
@@ -95,8 +95,9 @@ namespace Ecommerce_CyberKnight.Pages {
 
 				//se a criação do usuário Identity foi bem sucedida
 				if (result.Succeeded) {
-					//associa o usuário ao perfil "cliente"
-					await _userManager.AddToRoleAsync(usuario, "cliente");
+					
+                    //associa o usuário ao perfil "cliente"
+                    await _userManager.AddToRoleAsync(usuario, "cliente");
 
 					//adiciona o novo objeto cliente ao contexto de banco de dados atual e salva no banco de dados
 					_context.Clientes.Add(cliente);
