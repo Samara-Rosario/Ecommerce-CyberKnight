@@ -1,0 +1,117 @@
+﻿@page
+@model Ecommerce_CyberKnight.Pages.NovoClienteModel
+@{
+}
+<form method="post">  
+
+    <div class="col-5">
+        <label asp-for="Cliente.Nome">Nome: </label>
+        <input asp-for="Cliente.Nome" />
+        <span asp-validation-for="Cliente.Nome" class="text-danger"></span>
+    </div>
+    <br	/>
+
+    <div class="col-5">
+        <label asp-for="Cliente.Email">Email: </label>
+        <input asp-for="Cliente.Email"/>
+        <span asp-validation-for="Cliente.Email" class="text-danger"></span>
+    </div>
+    <br	/>
+
+    <div class="col-5">
+        <label asp-for="Cliente.Cpf">CPF: </label>
+        <input asp-for="Cliente.Cpf"/>
+        <span asp-validation-for="Cliente.Cpf" class="text-danger"></span>
+    </div>
+    <br	/>
+
+    <div class="col-5">
+        <label asp-for="Cliente.Telefone">Telefone: </label>
+        <input asp-for="Cliente.Telefone"/>
+        <span asp-validation-for="Cliente.Telefone" class="text-danger"></span>
+    </div>
+    <br	/>
+
+    <div class="col-5">
+        <label asp-for="Cliente.DataDeNascimento">Data de Nascimento: </label>
+        <input asp-for="Cliente.DataDeNascimento" />
+        <span asp-validation-for="Cliente.DataDeNascimento" class="text-danger"></span>
+    </div>
+    <br	/>
+
+    <div class="col-5">
+        <label asp-for="Cliente.Endereco.Numero">Número: </label>
+        <input asp-for="Cliente.Endereco.Numero" />
+        <span asp-validation-for="Cliente.Endereco.Numero" class="text-danger"></span>
+    </div>
+    <br	/>
+
+    <div class="col-5">
+        <label asp-for="Cliente.Endereco.Cep">CEP: </label>
+        <input asp-for="Cliente.Endereco.Cep" />
+        <span asp-validation-for="Cliente.Endereco.Cep" class="text-danger"></span>
+    </div>
+    <br	/>
+
+    <div class="col-5">
+        <label asp-for="Cliente.Endereco.Cidade">Cidade: </label>
+        <input asp-for="Cliente.Endereco.Cidade" />
+        <span asp-validation-for="Cliente.Endereco.Cidade" class="text-danger"></span>
+    </div>
+    <br	/>
+
+    <div class="col-5">
+        <label asp-for="Cliente.Endereco.Bairro">Bairro: </label>
+        <input asp-for="Cliente.Endereco.Bairro" />
+        <span asp-validation-for="Cliente.Endereco.Bairro" class="text-danger"></span>
+    </div>
+    <br	/>
+
+    <div class="col-5">
+        <label asp-for="Cliente.Endereco.Rua">Rua: </label>
+        <input asp-for="Cliente.Endereco.Rua" />
+        <span asp-validation-for="Cliente.Endereco.Rua" class="text-danger"></span>
+    </div>
+    <br	/>
+
+    <div class="col-5">
+        <label asp-for="Cliente.Endereco.Logradouro">Logradouro: </label>
+        <input asp-for="Cliente.Endereco.Logradouro" />
+        <span asp-validation-for="Cliente.Endereco.Logradouro" class="text-danger"></span>
+    </div>
+    <br	/>
+
+    <div class="col-5">
+        <label asp-for="Cliente.Endereco.Complemento">Complemento: </label>
+        <input asp-for="Cliente.Endereco.Complemento" />
+        <span asp-validation-for="Cliente.Endereco.Complemento" class="text-danger"></span>
+    </div>
+    <br	/>
+
+    <div class="col-5">
+        <label asp-for="Cliente.Endereco.Referencia">Referência: </label>
+        <input asp-for="Cliente.Endereco.Referencia" />
+        <span asp-validation-for="Cliente.Endereco.Referencia" class="text-danger"></span>
+    </div>
+    <br	/>
+
+    <div class="col-5">
+        <label asp-for="SenhasUsuarios.Senha">Senha: </label>
+        <input asp-for=SenhasUsuarios.Senha" />
+        <span asp-validation-for="SenhasUsuarios.Senha" class="text-danger"></span>
+    </div>
+    <br	/>
+
+    <div class="col-5">
+        <label asp-for="SenhasUsuarios.ConfirmarSenha">Confirmar senha: </label>
+        <input asp-for="SenhasUsuarios.ConfirmarSenha" />
+        <span asp-validation-for="SenhasUsuarios.ConfirmarSenha" class="text-danger"></span>
+    </div>
+    <br	/>
+
+    <div asp-validation-summary="ModelOnly"></div>
+
+    <input type="submit" value="Cadastrar" class="btn btn-outline-info" />
+
+
+</form>

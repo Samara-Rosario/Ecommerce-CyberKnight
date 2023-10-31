@@ -1,0 +1,28 @@
+﻿@page
+@model Ecommerce_CyberKnight.Pages.LoginModel
+@{
+}
+
+<form method="post">
+    <div asp-validation-summary="ModelOnly">
+    </div>
+
+    <label asp-for="Dados.Email">Email:</label>
+    <input asp-for="Dados.Email" />
+    <span asp-validation-for="Dados.Email" class="text-danger"></span>
+
+    <label asp-for="Dados.Senha" >Senha: </label>
+    <input asp-for="Dados.Senha" />
+    <span asp-validation-for="Dados.Senha" class="text-danger"></span>
+
+    <input type="hidden" name="returnUrl" value="@Model.ReturnURL" />
+
+    <label asp-for="Dados.Lembrar">
+        <input asp-for="Dados.Lembrar" />
+        Lembrar de mim
+    </label>
+    <span asp-validation-for="Dados.Lembrar" class="text-danger"></span>
+
+  <input type="submit" value="Login" class="btn btn-outline-info"/>
+</form>
+
