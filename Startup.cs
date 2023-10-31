@@ -72,10 +72,19 @@ namespace Ecommerce_CyberKnight {
 			}
 			app.UseStaticFiles();
 
-			app.UseRouting();
+            app.UseCookiePolicy();
+			
+            app.UseRouting();
 
 			app.UseAuthorization();
-			var defaultCulture = new CultureInfo("pt-BR");
+            app.UseAuthentication();
+
+            app.UseEndpoints(endpoints => {
+                endpoints.MapRazorPages();
+                endpoints.MapControllers();
+            });
+
+            var defaultCulture = new CultureInfo("pt-BR");
 			var localizationOptions = new RequestLocalizationOptions {
 				DefaultRequestCulture = new RequestCulture(defaultCulture),
 				SupportedCultures = new List<CultureInfo> { defaultCulture },
