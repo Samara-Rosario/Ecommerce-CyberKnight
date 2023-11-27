@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace Ecommerce_CyberKnight.Pages
 {
-    public class ListagemClienteModel : PageModel
+    public class AlterarClienteModel : PageModel
     {
         public void OnGet()
         {
