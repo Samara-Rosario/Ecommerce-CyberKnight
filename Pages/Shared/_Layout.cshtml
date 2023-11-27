@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+﻿v<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -9,6 +9,40 @@
     <link rel="stylesheet" href="~/Ecommerce_CyberKnight.styles.css" asp-append-version="true" />
 </head>
 <body>
+    <header class="p-3 mb-3 border-bottom">
+        <div class="container">
+            <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+                <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 link-body-emphasis text-decoration-none">
+                    <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap"><use xlink:href="#bootstrap"></use></svg>
+                </a>
+
+                <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+                    <li><a href="#" class="nav-link px-2 link-secondary">Overview</a></li>
+                    <li><a href="#" class="nav-link px-2 link-body-emphasis">Inventory</a></li>
+                    <li><a href="#" class="nav-link px-2 link-body-emphasis">Customers</a></li>
+                    <li><a href="#" class="nav-link px-2 link-body-emphasis">Products</a></li>
+                </ul>
+
+                <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
+                    <input type="search" class="form-control" placeholder="Search..." aria-label="Search">
+                </form>
+
+                <div class="dropdown text-end">
+                    <a href="#" class="d-block link-body-emphasis text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                        <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle">
+                    </a>
+                    <ul class="dropdown-menu text-small">
+                        <li><a class="dropdown-item" href="#">New project...</a></li>
+                        <li><a class="dropdown-item" href="#">Settings</a></li>
+                        <li><a class="dropdown-item" href="#">Profile</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="#">Sign out</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </header>
+    
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container">
@@ -42,13 +76,105 @@
             </div>
         </nav>
     </header>
+
+
+
+
     <div class="container">
-        <partial name="_CookieConsentPartial" />
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
+        <div class="row">
+            <div class="col">
+                <div class="flex-shrink-0 p-3" style="width: 280px;">
+                    <a href="/" class="d-flex align-items-center pb-3 mb-3 link-body-emphasis text-decoration-none border-bottom">
+                        <svg class="bi pe-none me-2" width="30" height="24"><use xlink:href="#bootstrap"></use></svg>
+                        <span class="fs-5 fw-semibold"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Dobrável</font></font></span>
+                    </a>
+                    <ul class="list-unstyled ps-0">
+                        <li class="mb-1">
+                            <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="true">
+                                <font style="vertical-align: inherit;">
+                                    <font style="vertical-align: inherit;">
+                                        Lar
+                                    </font>
+                                </font>
+                            </button>
+                            <div class="collapse show" id="home-collapse">
+                                <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                                    <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Visão geral</font></font></a></li>
+                                    <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Atualizações</font></font></a></li>
+                                    <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Relatórios</font></font></a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="mb-1">
+                            <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0" data-bs-toggle="collapse" data-bs-target="#dashboard-collapse" aria-expanded="true">
+                                <font style="vertical-align: inherit;">
+                                    <font style="vertical-align: inherit;">
+                                        Painel
+                                    </font>
+                                </font>
+                            </button>
+                            <div class="collapse show" id="dashboard-collapse" style="">
+                                <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                                    <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Visão geral</font></font></a></li>
+                                    <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Semanalmente</font></font></a></li>
+                                    <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Por mês</font></font></a></li>
+                                    <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Anualmente</font></font></a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="mb-1">
+                            <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#orders-collapse" aria-expanded="false">
+                                <font style="vertical-align: inherit;">
+                                    <font style="vertical-align: inherit;">
+                                        Pedidos
+                                    </font>
+                                </font>
+                            </button>
+                            <div class="collapse" id="orders-collapse">
+                                <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                                    <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Novo</font></font></a></li>
+                                    <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Processado</font></font></a></li>
+                                    <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Enviado</font></font></a></li>
+                                    <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Devolvida</font></font></a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="border-top my-3"></li>
+                        <li class="mb-1">
+                            <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#account-collapse" aria-expanded="false">
+                                <font style="vertical-align: inherit;">
+                                    <font style="vertical-align: inherit;">
+                                        Conta
+                                    </font>
+                                </font>
+                            </button>
+                            <div class="collapse" id="account-collapse">
+                                <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                                    <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Novo...</font></font></a></li>
+                                    <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Perfil</font></font></a></li>
+                                    <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Configurações</font></font></a></li>
+                                    <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sair</font></font></a></li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>   
+        
+            <div class="col">
+                <main role="main" class="pb-3">
+                    <partial name="_CookieConsentPartial" />
+                    @RenderBody()
+                </main>
+            </div>
+        </div>
     </div>
 
+    
+    
+    
+    
+    
     <footer class="border-top footer text-muted">
         <div class="container">
             &copy; 2023 - Ecommerce_CyberKnight - <a asp-area="" asp-page="/Privacy">Privacy</a>
