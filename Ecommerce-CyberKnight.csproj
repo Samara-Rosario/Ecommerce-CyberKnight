@@ -15,6 +15,11 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Content Remove="wwwroot\img\assets\categoria\incluir\barra-lateral.webp" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\js\ion-rangeslider-2.3.1-ion.rangeSlider.min.js" />
     <None Include="wwwroot\lib\globalize\dist\globalize-runtime.js" />
     <None Include="wwwroot\lib\globalize\dist\globalize-runtime\currency.js" />
     <None Include="wwwroot\lib\globalize\dist\globalize-runtime\date.js" />
