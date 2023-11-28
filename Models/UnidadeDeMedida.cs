@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Ecommerce_CyberKnight.Models {
-	public class UnidadeMedida {
+	public class UnidadeDeMedida {
 		[Key]
 		[DatabaseGenerated(DatabaseGeneratedOption.Identity)]
 		public int Id { get; set; }

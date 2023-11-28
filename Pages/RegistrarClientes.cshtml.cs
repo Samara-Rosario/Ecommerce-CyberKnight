@@ -1,17 +1,10 @@
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.RazorPages;
 using Ecommerce_CyberKnight.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.AspNetCore.WebUtilities;
 using Ecommerce_CyberKnight.Data;
-using Ecommerce_CyberKnight.Models;
-using System;
 using System.ComponentModel.DataAnnotations;
 using System.Diagnostics;
-using System.Text;
-using System.Text.Encodings.Web;
 
 namespace Ecommerce_CyberKnight.Pages
 {

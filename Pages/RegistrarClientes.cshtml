@@ -10,8 +10,8 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="~/css/style-tela-cadastro-de-clientes.css">
-  <link rel="stylesheet" href="./css/style-olho.css">
+  <link rel="stylesheet" href="./css/registro-cliente/style-tela-cadastro-de-clientes.css">
+  <link rel="stylesheet" href="./css/registro-cliente/style-olho.css">
   <title>Crie sua conta</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
 
@@ -20,7 +20,7 @@
 <body>
   <div class="box">
     <div class="img-box">
-      <img src="~/img/background/backgound azul.webp">
+      <img src="./img/asset/registro-cliente/backgound azul.webp">
     </div>
     <div class="form-box">
       <h2>Criar Conta</h2>
@@ -29,53 +29,58 @@
       <form method="post">
         <div class="input-group">
           <label asp-for="Cliente.Nome"> Nome Completo</label>
-          <input asp-for type="text" id="nome" placeholder="Digite o seu nome completo" />
+          <input asp-for="Cliente.Nome" type="text" id="nome" placeholder="Digite o seu nome completo" />
         </div>
 
         <div class="input-group">
           <label  asp-for="Cliente.Email">E-mail</label>
-          <input asp-for type="email" id="email" placeholder="Digite o seu email" required>
+          <input asp-for="Cliente.Email" type="email" id="email" placeholder="Digite o seu email" required>
         </div>
 
         <div class="input-group">
           <label  asp-for="Cliente.Telefone">Telefone</label>
-          <input asp-for type="tel" id="" placeholder="Digite o seu telefone" required>
+          <input asp-for="Cliente.Telefone" type=" tel" id="" placeholder="Digite o seu telefone" required>
         </div>
         <div class="input-group">
           <label  asp-for="Cliente.Cep">Cep</label>
-          <input asp-for onblur="pesquisacep(this.value)" type="tel" id="" placeholder="Digite o seu Cep" required>
+          <input asp-for="Cliente.Cep" onblur="pesquisacep(this.value)" type="tel" id="" placeholder="Digite o seu Cep" required>
+          <br>
+          <span id="endereco"> </span>
+
         </div>
         <div class="input-group">
           <label  asp-for="Cliente.Cpf">CPF</label>
-          <input asp-for type="tel" id="" placeholder="Digite o seu CPF" required>
+          <input asp-for="Cliente.Cpf" type="tel" id="" placeholder="Digite o seu CPF" required>
         </div>
         <div class="input-group">
-          <label  asp-for="Cliente.DataDeNascimento">>Data de Nascimento</label>
-          <input asp-for type="tel" id="" placeholder="Digite a sua Data de Nascimento" required>
+            <label  asp-for="Cliente.DataDeNascimento">Data de Nascimento</label>
+            <input asp-for="Cliente.DataDeNascimento" type="tel" placeholder="Digite a sua Data de Nascimento" required />
         </div>
         <div class="input-group w50">
           <label  asp-for="Cliente.Senha">Senha</label>
           <div class="estilo-input">
-            <input asp-for senha type="password" id="senha" placeholder="Digite sua senha" required>
+            <input asp-for="Cliente.Senha" senha type="password" id="senha" placeholder="Digite sua senha" required>
             <i onclick="hideSenha()" id="btnSenha" class="bi bi-eye-slash"></i>
           </div>
         </div>
         <div class="input-group w50">
           <label  asp-for="Cliente.ConfirmarSenha">Confirmar Senha</label>
           <div class="estilo-input">
-            <input asp-for senha type="password" id="ConfirmarSenha" placeholder="Confirme a senha" required>
+            <input asp-for="Cliente.ConfirmarSenha" senha type="password" id="ConfirmarSenha" placeholder="Confirme a senha" required>
             <i onclick="hideConfirmSenha()" id="btnConfirmSenha" class="bi  bi-eye-slash"></i>
           </div>
         </div>
         
         <div id="botaocadastrar" class="input-group">
               <button>Cadastrar</button>
-            </div>
+        </div>
 
       </form>
+      </div>
 
-    <script src="~/js/script.js"></script>
-    <script src="~/js/viacep.js"></script>
+    <script src="~/js/registro-cliente/script.js"></script>
+    <script src="~/js/registro-cliente/viacep.js"></script>
   </div>
+  
 </body>
 </html>

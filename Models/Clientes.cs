@@ -6,12 +6,13 @@ namespace Ecommerce_CyberKnight.Models {
 
         [Key]
         public int Id { get; set; }
+
         
         [Required(ErrorMessage = "O campo \"{0}\" é de preechimento obrigatório")]
 		[RegularExpression(@"[0-9]{11}", ErrorMessage = "O campo {0} deve ser preenchido com 11 digitos numéricos")]
         public string Cpf {  get; set; }
 
-		public int? IdEndereco { get; set; }
+		public int? IdEndereco { get;}
 
         [Required(ErrorMessage = "O campo \"{0}\" é de preechimento obrigatório")]
         public string Nome {  get; set; }

@@ -16,7 +16,7 @@ namespace Ecommerce_CyberKnight.Pages.UnidadeMedidaCRUD
 
 		// o "[BindProperty]" configura a aplicação para relacionar o atributo 'unidadeMedida' aos dados que estão vindo do front-end*/
 		[BindProperty]
-		public UnidadeMedida unidadeMedida { get; set; }
+		public UnidadeDeMedida unidadeMedida { get; set; }
 
 		public async Task<IActionResult> OnGet(int id) {
 			if (id == null) {

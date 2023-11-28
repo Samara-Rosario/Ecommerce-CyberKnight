@@ -5,8 +5,8 @@
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
 }
-body{
-    background-image: url(../img/Fundo\ Login.webp);
+body {
+    background-color: #3481C4;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
