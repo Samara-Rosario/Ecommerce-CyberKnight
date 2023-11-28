@@ -50,7 +50,7 @@
                     E-Commerce
                 </h2>
                 <img id="Logo"
-                    src="~/img/assets/home/Yellow_and_Black_Simple_Banana_Fruit_Logo__1_-removebg-preview 1.png"
+                    src="~/img/assets/home/Logo_CyberKnights.png"
                     alt="" style="width: 50px;">
             </div>
 
@@ -68,19 +68,19 @@
                     <h5 class="filtro-titulo">Ordenar</h5>
                     <div>
                         <div>
-                            <input value="1" type="radio" name="o">
+                            <input ordem value="1" type="radio" name="o">
                             <span>Nome - A - Z</span>
                         </div>
                         <div>
-                            <input value="2" type="radio" name="o">
+                            <input ordem value="2" type="radio" name="o">
                             <span>Nome - Z - A</span>
                         </div>
                         <div>
-                            <input value="3" type="radio" name="o">
+                            <input ordem value="3" type="radio" name="o">
                             <span>Preço - Crescente</span>
                         </div>
                         <div>
-                            <input value="4" type="radio" name="o">
+                            <input ordem value="4" type="radio" name="o">
                             <span>Preço - Descrecente</span>
                         </div>
 
@@ -116,10 +116,7 @@
                 </div>
             </div>
 
-            <div>
-                <br/>
-                <br/>
-                <br/>
+            <div id="container-btn-filtro">
                 <br/>
                 <br/>
                 <br />
@@ -287,13 +284,26 @@
 
         var catSelected = document.querySelectorAll(".filtro-categoria input[type='checkbox']");
 
+   
 
-        btnFiltrar.addEventListener("click", () => {
+        btnFiltrar.addEventListener("click", enviarForm);
+        pesquisaProduto.addEventListener("keypress", (evt) => {
+            if (evt.keyCode == 13) {
+                enviarForm();
+            }
+            console.log(evt);
+        });
+
+        function enviarForm() {
             formFiltro.valMin.value = dadosFiltroPreco.from || 0;
             formFiltro.valMax.value = dadosFiltroPreco.to || 30;
-            formFiltro.q = pesquisaProduto.value.trim();
+            formFiltro.q.value = pesquisaProduto.value.trim();
 
-            formFiltro.o.value = 
+            document.querySelectorAll("input[ordem]").forEach((item) => {
+                if(item.checked){
+                    formFiltro.o.value = item.value;
+                }
+            });
 
             listaCat = "";
 
@@ -305,10 +315,11 @@
 
 
             formFiltro.submit();
-        });
+        }
 
         var minVal = @Model._valorMinimo;
         var maxVal = @Model._valorMaximo;
+
 
         $(".js-range-slider").ionRangeSlider({
             type: "double",
