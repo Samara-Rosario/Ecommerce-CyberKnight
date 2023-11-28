@@ -1,16 +1,15 @@
+using Ecommerce_CyberKnight.Data;
 using Ecommerce_CyberKnight.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.ComponentModel.DataAnnotations;
-using Ecommerce_CyberKnight.Data;
 
-namespace Ecommerce_CyberKnight.Pages
+namespace Ecommerce_CyberKnight.Pages.UnidadeMedidaCRUD
 {
-    public class IncluirModel : PageModel{
+    public class IncluirModelVelho : PageModel
+    {
         private readonly ApplicationDbContext _context;
 
-        public IncluirModel(ApplicationDbContext context) {
+        public IncluirModelVelho(ApplicationDbContext context) {
             _context = context;
         }
 

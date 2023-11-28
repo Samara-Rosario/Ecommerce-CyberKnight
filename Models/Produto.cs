@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Ecommerce_CyberKnight.Data;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Ecommerce_CyberKnight.Models
@@ -29,6 +30,6 @@ namespace Ecommerce_CyberKnight.Models
         public Categoria? categoria { get; set; }
 
         [ForeignKey("IdUnidadeMedida")]
-        public UnidadeMedida? unidadeMedida { get; set; }
+        public UnidadeDeMedida? unidadeMedida { get; set; }
     }
 }
