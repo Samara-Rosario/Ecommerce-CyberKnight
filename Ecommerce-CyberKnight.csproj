@@ -53,7 +53,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="wwwroot\img\assets\incluir-cliente\" />
+    <Folder Include="wwwroot\img\assets\" />
   </ItemGroup>
 
 </Project>
