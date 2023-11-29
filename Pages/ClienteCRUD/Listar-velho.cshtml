@@ -1,0 +1,49 @@
+﻿@page
+@model Ecommerce_CyberKnight.Pages.ClienteCRUD.ListarModel
+@{
+}
+
+<h1>Listagem de Clientes</h1>
+
+<a class="btn btn-primary" asp-page="./Incluir">
+    Incluir
+</a>
+
+<table class="table">
+    <thead>
+        <tr>
+            <td>Id</td>
+            <td>CPF</td>
+            <td>Nome</td>
+            <td>Email</td>
+            <td>Telefone</td>
+            <td>Data de Nascimento</td>
+            <td>Ações</td>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var cliente in Model.Clientes) {
+            <tr>
+                <td>@cliente.Id</td>
+                <td>@cliente.Cpf</td>
+                <td>@cliente.Nome</td>
+                <td>@cliente.Email</td>
+                <td>@cliente.Telefone</td>
+                <td>@cliente.DataDeNascimento</td>
+                <td>
+                    <a asp-page="./Alterar"
+                       asp-route-id="@cliente.Id"
+                       class="btn btn-primary">
+                        Editar
+                    </a>
+
+                    <form method="post"
+                          asp-page-handler="delete"
+                          asp-route-id="@cliente.Id">
+                        <button class="btn btn-danger">Excluir</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
