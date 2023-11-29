@@ -33,7 +33,7 @@ body{
 }
 #barra-lateral{
     height: 100vh;
-    background-image: url(~/img/assets/incluir-cliente/bg-degrade.webp);
+    background-color: RGB(53, 108, 194);
     background-size: 100%;
 }
 #logo{
