@@ -45,17 +45,17 @@
 
                             <div class="mb-3">
                                 <label for="exampleFormControlInput1" class="form-label">Sigla</label>
-                                <input asp-validation-forid="sigla" type="sigla" class="form-control" id="exampleFormControlInput1" placeholder="Kg">
+                                <input asp-for="unidadeMedida.Sigla" id="sigla" type="text" class="form-control" placeholder="Kg">
                             </div>
 
                             <div class="mb-3">
                                 <label for="exampleFormControlInput1" class="form-label">Nome extenso</label>
-                                <input id="extenso" type="Nome_extenso" class="form-control"
+                                <input asp-for="unidadeMedida.NomeExtenso" id="extenso" type="text" class="form-control"
                                        placeholder="Quilo grama">
                             </div>
 
                             <div id="ctn-btn-enviar" class="d-grid gap-2 col-12 mx-auto">
-                                <button id="btn-entrar" class="btn w-100" type="button">ENVIAR</button>
+                                <button id="btn-entrar" class="btn w-100" type="submit">ENVIAR</button>
 
                             </div>
                         </form>
