@@ -21,6 +21,8 @@ namespace Ecommerce_CyberKnight.Models {
 		public string Email {  get; set; }
 
 
+
+
 		[Required(ErrorMessage = "O campo \"{0}\" é de preechimento obrigatório")]
 		[MinLength(11, ErrorMessage = "O campo {0} deve ter no mínimo {1} caracteres.")]
 		public string Telefone {  get; set; }

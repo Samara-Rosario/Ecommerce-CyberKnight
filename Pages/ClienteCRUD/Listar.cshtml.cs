@@ -50,7 +50,7 @@ namespace Ecommerce_CyberKnight.Pages.ClienteCRUD
             }
 
             //Redireciona para a página de listagem de Cliente
-            return RedirectToPage("./Listar");
+            return RedirectToPage("/ClienteCRUD/Listar");
         }
 
         public async Task<IActionResult> OnPostDelAdminAsync(int? id)
@@ -71,7 +71,7 @@ namespace Ecommerce_CyberKnight.Pages.ClienteCRUD
                 }
             }
 
-            return RedirectToPage("./Listar");
+            return RedirectToPage("/ClienteCRUD/Listar");
         }
 
         public async Task<IActionResult> OnPostSetAdminAsync(int? id)
@@ -95,7 +95,7 @@ namespace Ecommerce_CyberKnight.Pages.ClienteCRUD
                 }
             }
 
-            return RedirectToPage("./Listar");
+            return RedirectToPage("/ClienteCRUD/Listar");
         }
     }
 }

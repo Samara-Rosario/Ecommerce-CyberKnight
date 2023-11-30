@@ -97,7 +97,5 @@ namespace Ecommerce_CyberKnight {
 
 			app.Run();
 		}
-
 	}
 }
-
