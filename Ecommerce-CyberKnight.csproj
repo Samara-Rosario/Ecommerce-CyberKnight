@@ -9,13 +9,9 @@
 
   <ItemGroup>
     <Compile Remove="crud-produto\**" />
-    <Compile Remove="wwwroot\img\assets\**" />
     <Content Remove="crud-produto\**" />
-    <Content Remove="wwwroot\img\assets\**" />
     <EmbeddedResource Remove="crud-produto\**" />
-    <EmbeddedResource Remove="wwwroot\img\assets\**" />
     <None Remove="crud-produto\**" />
-    <None Remove="wwwroot\img\assets\**" />
   </ItemGroup>
 
   <ItemGroup>
