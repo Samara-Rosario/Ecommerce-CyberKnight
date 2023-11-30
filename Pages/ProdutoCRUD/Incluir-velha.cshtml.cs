@@ -4,11 +4,12 @@ using Ecommerce_CyberKnight.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.ComponentModel.DataAnnotations;
+using System.Diagnostics;
 
 namespace Ecommerce_CyberKnight.Pages.ProdutoCRUD
 {
-    public class IncluirModel : PageModel
-    {
+    public class Incluir2Model : PageModel{
+
         [BindProperty]
         public Produto produto { get; set; }
 
@@ -19,24 +20,25 @@ namespace Ecommerce_CyberKnight.Pages.ProdutoCRUD
         [BindProperty]
         [Display(Name = "Iamagem do produto")]
         [Required(ErrorMessage = "0 Campo \"{0}\"é de preenchimento obrigatório,")]
+        
+        public IFormFile ImagemProduto {  get; set; }
+        
 
-        public IFormFile ImagemProduto { get; set; }
-
-
-        public IncluirModel(ApplicationDbContext context, IWebHostEnvironment whe) {
+        public Incluir2Model(ApplicationDbContext context, IWebHostEnvironment whe){
 
             _context = context;
             _whe = whe;
             CaminhoImagem = "~/img/produto/sem_imagem.jpg";
+            
+        }
+
+        public void OnGet()
+        {
 
         }
 
-        public void OnGet() {
-
-        }
-
-        public async Task<IActionResult> OnPostAsync() {
-            if (ImagemProduto == null) {
+        public async Task<IActionResult> OnPostAsync(){
+            if(ImagemProduto == null){ 
                 return Page();
             }
 
@@ -44,17 +46,19 @@ namespace Ecommerce_CyberKnight.Pages.ProdutoCRUD
 
             bool validado = await TryUpdateModelAsync<Produto>(produto, "produto", p => p.Nome, p => p.preco, p => p.estoque, p => p.descricao);
 
-            if (validado) {
+            if (validado)
+            {
                 _context.Produtos.Add(produto);
                 await _context.SaveChangesAsync();
                 await AppUtils.ProcessarArquivoDeImagem(produto.Id, ImagemProduto, _whe);
 
                 return RedirectToPage("./Listar");
-            } else {
+            }
+            else { 
                 return Page();
             }
-
-
+                
+            
 
         }
     }

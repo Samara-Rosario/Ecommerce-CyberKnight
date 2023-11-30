@@ -1,5 +1,5 @@
 ﻿@page
-@model ListarModel
+@model Ecommerce_CyberKnight.Pages.ProdutoCRUD.ListarModel
 @{
     Layout = "";
 }
@@ -58,45 +58,29 @@
                     </tr>
                 </thead>
                 <tbody>
+                    @foreach (var Produto in Model.Produtos) {
                     <tr>
-                        <td scope="row">1</td>
-                        <td>Fulano</td>
-                        <td>012.542.724.36</td>
-                        <td>fulano@edu.pa.senac.br</td>
-                        <td>4002-8922</td>
-                        <td>68746-040</td>
-                        <td>16/10/2005</td>
-                        <td class="cel-btns">
-                            <button id="btn-editar" type="button" class="btn btn-primary">Editar</button>
-                            <button id="btn-excluir" type="button" class="btn btn-danger">Excluir</button>
+                        <td scope="row">@Produto.Id</td>
+                        <td>@Produto.Nome</td>
+                        <td>@Produto.descricao</td>
+                        <td>@Produto.preco</td>
+                        <td>@Produto.estoque</td>
+                        <td>@Produto.categoria</td>
+                        <td>@Produto.unidadeMedida</td>
+                        <td>
+                            <div class="container-btns">
+                               <a asp-page="./Alterar" asp-route-id="@Produto.Id">
+                                    <button id="btn-editar" type="button" class="btn btn-primary">Editar</button> 
+                               </a>
+                               <form method="post"
+                                     asp-page-handler="delete"
+                                     asp-route-id="@Produto.Id">
+                                    <button id="btn-excluir" type="button" class="btn btn-danger">Excluir</button>
+                               </form>
+                            </div>
                         </td>
                     </tr>
-                    <tr>
-                        <td scope="row">2</td>
-                        <td>Cicrano</td>
-                        <td>210.641.457.67</td>
-                        <td>cicrano@edu.pa.senac.br</td>
-                        <td>98354-2532</td>
-                        <td>64528-030</td>
-                        <td>20/08/1999</td>
-                        <td class="cel-btns">
-                            <button id="btn-editar" type="button" class="btn btn-primary">Editar</button>
-                            <button id="btn-excluir" type="button" class="btn btn-danger">Excluir</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td scope="row">3</td>
-                        <td>Delcrano</td>
-                        <td>471.364.230.64</td>
-                        <td>delcrano@edu.pa.senac.br </td>
-                        <td>99103-8458</td>
-                        <td>68746-010</td>
-                        <td>23/02/1977</td>
-                        <td class="cel-btns">
-                            <button id="btn-editar" type="button" class="btn btn-primary">Editar</button>
-                            <button id="btn-excluir" type="button" class="btn btn-danger">Excluir</button>
-                        </td>
-                    </tr>
+                    }
                 </tbody>
             </table>
         </div>

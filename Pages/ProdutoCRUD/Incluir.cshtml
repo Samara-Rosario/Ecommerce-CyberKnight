@@ -1,65 +1,91 @@
 ﻿@page
 @model Ecommerce_CyberKnight.Pages.ProdutoCRUD.IncluirModel
 @{
+    Layout = "";
 }
 
-<h1>Incluir Novos Produtos</h1>
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Incluir Produtos</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="~/css/incluir/style-tela-incluir-produto.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+</head>
 
-<form method="post" class=" mt-3" enctype="multipart/form-data">
-
-
-  <div class="row">
-    <div class="col-4">
-        <label asp-for="produto.Nome">nome:</label>
-        <input class="form-control" asp-for="produto.Nome" />
-        <span asp-validation-for="produto.Nome" class="text-danger"></span>
-    </div>
-    <br />
-    <div class="col-5">
-        <label asp-for="produto.descricao">descricao:</label>
-        <input class="form-control" asp-for="produto.descricao" />
-        <span asp-validation-for="produto.descricao" class="text-danger"></span>
-    </div>
-   </div>
-    <br />
-    <div class="col-4">
-        <label asp-for="produto.categoria">categoria:</label>
-        <input class="form-control" asp-for="produto.categoria" />
-        <span asp-validation-for="produto.categoria" class="text-danger"></span>
-    </div>
-    <br />
-    <div class="col-4">
-        <label asp-for="produto.preco">preço:</label>
-        <input class="form-control" asp-for="produto.preco" />
-        <span asp-validation-for="produto.preco" class="text-danger"></span>
-    </div>
-    <br />
-    <div class="col-4">
-        <label asp-for="produto.unidadeMedida">unidade de medida:</label>
-        <input class="form-control" asp-for="produto.unidadeMedida" />
-        <span asp-validation-for="produto.unidadeMedida" class="text-danger"></span>
-    </div>
-    <br />
-    <div class="col-4">
-        <label asp-for="produto.estoque">estoque:</label>
-        <input class="form-control" asp-for="produto.estoque" />
-        <span asp-validation-for="produto.estoque" class="text-danger"></span>
-    </div>
-
-    <div class=" form-group">
-        <label asp-for="ImagemProduto" class=" control-label"></label>
-        <div class="custom-file col-4 d-block">
-            <input asp-for="ImagemProduto" class="custom-file-input" accept="image/*" />
-            <label class="custom-file-label">clique aqui para incluir</label>
+<body>
+    <div class="row">
+        <img id="logo" src="~/img/incluir/logo.webp" alt="" style="width: 130px;">
+        <div id="barra-lateral" class="col-3">
+            <label id="letreiro">Cyber Knights<br>E-commerce</label>
         </div>
-        <span asp-validation-for="ImagemProduto" class="text-danger"></span>
-    </div>
+        <div class="col-9">
+            <header>
+                <div>
+                    <button>Início</button>
+                    <span id="traco">|</span>
+                    <span id="produto">Produtos</span>
+                    <span id="clientes">Clientes</span>
+                    <span id="categoria">Categorias</span>
+                    <span id="unid">Unidade de Medida</span>
+                </div>
+                <div>
+                    <i id="carrinho" class="bi bi-cart"></i>
+                    <span id="traco-dois">|</span>
+                    <i id="sair" class="bi bi-box-arrow-right"></i>
+                </div>
+            </header>
 
-    <div class="form-group">
-        <img src="@Model.CaminhoImagem" class="imagem-thumbnail" asp-append-version="true"/>
+            <form method="post" class=" mt-3" enctype="multipart/form-data">
+            <div class="flex-container">
+                <div id="card-login">
+                    <br>
+                    <br>
+                    <h1>Incluir Novo Produto</h1>
+                    <label id="nome-um">Nome:</label>
+                    <label id="categoria-label">Categoria:</label>
+                    <div>
+                        <input id="nome" asp-for="produto.Nome" type="text">
+                        <input id="categoria-input" asp-for="produto.categoria" type="text">
+                        <i class="bi bi-caret-down-fill"></i>
+                    </div>
+                    <br>
+                        <span asp-validation-for="produto.categoria" class="text-danger msg-erro"></span>
+                    <div>
+                        <label id="descricao-um">Descrição:</label>
+                    </div>
+                        <input id="descricao" asp-for="produto.descricao" type="text">
+                    <br>
+                    <br>
+                        <span asp-validation-for="produto.descricao" class="text-danger"></span>
+                    <label id="preco-label">Preço:</label>
+                    <label id="unid-label"> Unidade de Medida:</label>
+                    <div>
+                        <input id="preco-input" type="text">
+                        <input id="unid-input" type="text">
+                        <i class="bi bi-caret-down-fill"></i>
+                    </div>
+                    <br>
+                    <div>
+                        <label id="estoque-label">Estoque:</label>
+                        <label id="img-label">Inserir Imagem:</label>
+                    </div>
+                    <div>
+                        <input id="estoque-input" type="text">
+                    </div>
+                    <button id="btn-enviar" type="button" class="btn btn-primary">Enviar</button>
+                </div>
+            </div>
+            </form>
+        </div>
+
+
+
     </div>
-    <br />
-    <br />
-    <input type="submit" class="btn btn-outline-success" value="Enviar" />
-</form>
+</body>
+
+</html>
