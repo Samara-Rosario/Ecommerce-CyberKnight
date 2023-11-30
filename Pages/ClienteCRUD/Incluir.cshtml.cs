@@ -27,7 +27,7 @@ namespace Ecommerce_CyberKnight.Pages.ClienteCRUD
             var cliente = new Clientes();
 
             bool validado = await TryUpdateModelAsync<Clientes>(
-                cliente, "cliente", c => c.Nome, c => c.Cpf, c => c.Email, c => c.Cep  c => c.Telefone,
+                cliente, "cliente", c => c.Nome, c => c.Cpf, c => c.Email, c => c.Cep, c => c.Telefone,
                 c => c.DataDeNascimento
 
                 );
