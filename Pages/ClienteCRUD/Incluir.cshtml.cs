@@ -55,6 +55,7 @@ namespace Ecommerce_CyberKnight.Pages.ClienteCRUD
             {
                 Debug.WriteLine("=====================");
                 Debug.WriteLine(ex);
+
                 Debug.WriteLine("=====================");
             }
 
