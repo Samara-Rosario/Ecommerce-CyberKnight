@@ -56,4 +56,9 @@
     <PackageReference Include="SixLabors.ImageSharp" Version="3.0.2" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\css\incluir-cliente\" />
+    <Folder Include="wwwroot\css\alterar-cliente\" />
+  </ItemGroup>
+
 </Project>
