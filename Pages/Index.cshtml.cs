@@ -3,6 +3,7 @@ using Ecommerce_CyberKnight.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
+using System.Collections;
 using System.Diagnostics;
 
 namespace Ecommerce_CyberKnight.Pages
@@ -20,6 +21,7 @@ namespace Ecommerce_CyberKnight.Pages
         private int paginaAtual = 1;
         public int? _valorMinimo = 0;
         public int? _valorMaximo = 30;
+        public string termoBusca = "";
 
         public int QuantidadePagina { get; private set; }
         private int qtdProdPorPagina = 12;
@@ -31,7 +33,7 @@ namespace Ecommerce_CyberKnight.Pages
         }
 
         public async Task<IActionResult> OnGetAsync(
-             [FromQuery(Name = "q")] string TermoBusca,
+            [FromQuery(Name = "q")] string TermoBusca,
             [FromQuery(Name = "p")] int? pagina,
             [FromQuery(Name = "o")] int? ordem,
             [FromQuery(Name = "cats")] string? listaCategorias,
@@ -40,17 +42,41 @@ namespace Ecommerce_CyberKnight.Pages
         )
         {
 
+            this.termoBusca = TermoBusca;
+
             paginaAtual = pagina ?? 1;
 
             var query = _contextDb.Produtos.AsQueryable();
             categorias = await _contextDb.Categorias.ToListAsync();
 
-            if (!string.IsNullOrEmpty(TermoBusca))
-            {
+            if (!string.IsNullOrEmpty(TermoBusca)){
                 query = query.Where(
                         p => p.Nome.ToLower().Contains(TermoBusca.ToLower())
                 );
             }
+
+            List<string> catsFront = new List<string>();
+
+
+            //filtro categoria
+            if (!string.IsNullOrEmpty(listaCategorias)){
+                //Debug.WriteLine(listaCategorias);
+
+                foreach(var item in listaCategorias.Split('|')){
+                    Debug.WriteLine(item);
+
+                    if (!string.IsNullOrEmpty(item)){
+                        catsFront.Add(item);
+                    }
+                }
+
+                /*
+                query = query.Where(
+                      
+                );
+                */
+            }
+
 
             // Filtro preço
             try
@@ -68,6 +94,8 @@ namespace Ecommerce_CyberKnight.Pages
                 Debug.WriteLine(erro);
             }
 
+
+            //fiiltro de ordenação
             if (ordem.HasValue)
             {
                 switch (ordem.Value)

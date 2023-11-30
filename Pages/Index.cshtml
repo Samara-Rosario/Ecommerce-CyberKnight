@@ -95,7 +95,7 @@
                 @foreach (var categoria in Model.categorias)
                 {
                     <div title="@categoria.Descricao">
-                        <input type="checkbox">
+                        <input class="input-categoria" type="checkbox" value="@categoria.Id">
                         <span>@categoria.Nome</span>
                     </div>
                 }
@@ -137,8 +137,8 @@
                         Novos produtos
                     </span>
                     <span id="caixa-pesquisa">
-                        <i class="bi bi-search"></i>
-                        <input id="pesquisa-produto" placeholder="Procurar por produtos..." type="text">
+                        <i id="btn-lupa" class="bi bi-search"></i>
+                        <input value="@Model.termoBusca" id="pesquisa-produto" placeholder="Procurar por produtos..." type="text">
                     </span>
                 </div>
                 <div>
@@ -167,12 +167,10 @@
                             aria-label="Slide 2"></button>
                     </div>
 
-
-
                     <div class="carousel-inner">
                         <div class="carousel-item  active">
                             <div class="container-banner">
-                                <img src="~/img/assets/home/oferta_2.webp" class="img-banner" alt=""/>
+                                <img id="img-banner-2" src="~/img/assets/home/oferta_2.webp" class="img-banner" alt=""/>
                                 <img src="~/img/assets/home/oferta_4.webp" class="img-banner" alt="...">
                             </div>
                         </div>
@@ -228,18 +226,20 @@
             <div id="listagem-produtos">
 
                 @foreach (var produto in Model.Produtos){
-                <div class="card-produto" title="@produto.descricao">
-                        <img src="~/img/produto/@String.Concat(produto.Id.ToString("D6"),".jpg")" alt="">
-                    <h3>
-                        @produto.Nome
-                    </h3>
-                    <div>
-                        <span class="ctn-valor">R$ @produto.preco.ToString("C2")</span>
-                        <button>
-                            <i class="bi bi-bag-check-fill"></i>
-                        </button>
+                    <a href="http://10.0.30.222/Detalhes-Produto?id=@(produto.Id)">
+                    <div class="card-produto" title="@produto.descricao">
+                            <img src="~/img/produto/@String.Concat(produto.Id.ToString("D6"),".jpg")" alt="">
+                        <h3>
+                            @produto.Nome
+                        </h3>
+                        <div>
+                            <span class="ctn-valor">R$ @produto.preco.ToString("C2")</span>
+                            <button>
+                                <i class="bi bi-bag-check-fill"></i>
+                            </button>
+                        </div>
                     </div>
-                </div>
+                </a>
                 }
             </div>
 
@@ -281,6 +281,7 @@
         var formFiltro = document.getElementById("form-filtro");
         var btnFiltrar = document.getElementById("btn-filtrar");
         var pesquisaProduto = document.getElementById("pesquisa-produto");
+        var btnLupa = document.getElementById("btn-lupa");
 
         var catSelected = document.querySelectorAll(".filtro-categoria input[type='checkbox']");
 
@@ -302,6 +303,14 @@
             document.querySelectorAll("input[ordem]").forEach((item) => {
                 if(item.checked){
                     formFiltro.o.value = item.value;
+                }
+            });
+
+            formFiltro.cats.value = "";
+
+            document.querySelectorAll(".input-categoria").forEach((item) => {
+                if (item.checked) {
+                    formFiltro.cats.value += item.value + "|";
                 }
             });
 
