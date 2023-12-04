@@ -34,17 +34,17 @@
                 </div>
                 <div>
                     <i id="carrinho" class="bi bi-cart"></i>
-                    <span id="traco-dois">|</span>
+                    <   span id="traco-dois">|</span>
                     <i id="sair" class="bi bi-box-arrow-right"></i>
                 </div>
             </header>
 
-            <div class="flex-container">
                 <form method="post">
+				<div class="flex-container">
 
-                    <div class="col-4">
+					<div class="col-4">
                         <label asp-for="cliente.Nome">Nome:</label>
-                        <input class="form-control" asp-for="cliente.Nome" />
+						<input class="form-control" asp-for="cliente.Nome" />
                         <span asp-validation-for="cliente.Nome" class="text-danger"> </span>
 
                     </div>
@@ -65,7 +65,7 @@
                     <div class="col-4">
 
                         <label asp-for="cliente.Telefone">Telefone: </label>
-                        <input class="form-control" asp-for="cliente.Telefone" />
+						<input class="form-control" asp-for="cliente.Telefone" />
                         <span asp-validation-for="cliente.Telefone" class="text-danger"> </span>
 
                     </div>
@@ -80,13 +80,28 @@
                         <div class="col-5">
                     </div>
                     <br />
-                            <label asp-for="cliente.DataDeNascimento" class=" control-label">Data de Nascimento:</label>
-                            <input asp-for="cliente.DataDeNascimento" class="form-control" />
-                            <span asp-validation-for="cliente.DataDeNascimento" class="text-danger"></span>
-                        </div>
+                        <label asp-for="cliente.DataDeNascimento" class=" control-label">Data de Nascimento:</label>
+                        <input asp-for="cliente.DataDeNascimento" class="form-control" />
+                        <span asp-validation-for="cliente.DataDeNascimento" class="text-danger"></span>
+                    </div>
+                    <br />
+                         <label asp-for="cliente.Login" class=" control-label">Login:</label>
+                         <input asp-for="cliente.Login" class="form-control" />
+                         <span asp-validation-for="cliente.Login" class="text-danger"></span>
+                    </div>
+                    <br />
+                         <label asp-for="cliente.Senha" class=" control-label">Senha:</label>
+                         <input asp-for="cliente.Senha" class="form-control" />
+                         <span asp-validation-for="cliente.Senha" class="text-danger"></span>
+                   </div>
+                   <br />
+                        <label asp-for="cliente.ConfirmarSenha" class=" control-label">Confirmar Senha:</label>
+                        <input asp-for="cliente.ConfirmarSenha" class="form-control" />
+                        <span asp-validation-for="cliente.ConfirmarSenha" class="text-danger"></span>
+                </form>
+                   </div>
 
                     <button id="btn-enviar" type="button" class="btn btn-primary">Enviar</button>
-                    </form>
                 </div>
             </div>
 

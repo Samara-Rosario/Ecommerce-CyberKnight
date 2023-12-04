@@ -24,11 +24,12 @@
             <label id="letreiro">Cyber Knights<br>E-commerce</label>
         </div>
 
-		<h1>Alterar Cliente "@Model.clientes.Nome"</h1>
+	
 
-	<form method="post">
+
 
         <div class="col-9">
+
             <header>
                 <div>
                     <button>Início</button>
@@ -45,7 +46,7 @@
                 </div>
             </header>
 
-
+			<h1>Alterar Cliente "@Model.clientes.Nome"</h1>
 
 			<input type="hidden" asp-for="clientes.Id" />
 			<br />
@@ -77,29 +78,44 @@
 				<span asp-validation-for="clientes.Telefone" class="text-danger"></span>
 			</div>
 			<br />
-				<div class="col-5">
+				<div class="col-1">
 					<label asp-for="clientes.Telefone" class="control-label">Email:</label>
 					<input asp-for="clientes.Telefone" class="form-control" />
 					<span asp-validation-for="clientes.Telefone" class="text-danger"></span>
 				</div>
 				<br />
-				<div class="col-5">
-				<label asp-for="clientes.Endereco" class=" control-label">Endereço:</label>
-				<input asp-for="clientes.Endereco" class="form-control" />
-				<span asp-validation-for="clientes.Endereco" class="text-danger"></span>
+				<div class="col-1">
+				<label asp-for="clientes.Cep" class=" control-label">Cep:</label>
+				<input asp-for="clientes.Cep" class="form-control" />
+				<span asp-validation-for="clientes.Cep" class="text-danger"></span>
 			</div>
 			<br />
-
 			<div class="col-5">
 				<label asp-for="clientes.DataDeNascimento" class=" control-label">Data de Nascimento:</label>
 				<input asp-for="clientes.DataDeNascimento" class="form-control" />
 				<span asp-validation-for="clientes.DataDeNascimento" class="text-danger"></span>
 			</div>
 			<br />
-                    <button id="btn-enviar" type="button" class="btn btn-primary">Enviar</button>
-                </div>
-	</form>
-            </div>
+				<label asp-for="clientes.Login" class=" control-label">Login:</label>
+				<input asp-for="clientes.Login" class="form-control" />
+				<span asp-validation-for="clientes.Login" class="text-danger"></span>
+			</div>
+			<br />
+			<label asp-for="clientes.Senha" class=" control-label">Senha:</label>
+			<input asp-for="clientes.Senha" class="form-control" />
+			<span asp-validation-for="clientes.Senha" class="text-danger"></span>
+		</div>
+		<br />
+		<label asp-for="clientes.ConfirmarSenha" class=" control-label">Confirmar Senha:</label>
+		<input asp-for="clientes.ConfirmarSenha" class="form-control" />
+		<span asp-validation-for="clientes.ConfirmarSenha" class="text-danger"></span>
+	</div>
+	<br />
+			</div>
+			<br />
+	        <button id="btn-enviar" type="button" class="btn btn-primary">Enviar</button>
+        </div> 
+	</div>
 </body>
 
 </html>

@@ -31,8 +31,19 @@ namespace Ecommerce_CyberKnight.Models {
         [Required(ErrorMessage = "O campo \"{0}\" é de preechimento obrigatório")]
         [DataType(DataType.Date, ErrorMessage = "O campo {0} não estar no formato correto")]
 		public DateTime DataDeNascimento { get; set; }
+		[Required(ErrorMessage = "O campo \"{0}\" é de preechimento obrigatório")]
+		[DataType(DataType.Date, ErrorMessage = "O campo {0} não estar no formato correto")]
+        public string Login {  get; set; }
 
-        [ForeignKey("IdEndereco")]
+		[Required(ErrorMessage = "O campo \"{0}\" é de preechimento obrigatório")]
+		[DataType(DataType.Date, ErrorMessage = "O campo {0} não estar no formato correto")]
+        public string Senha {  get; set; }
+
+		[Required(ErrorMessage = "O campo \"{0}\" é de preechimento obrigatório")]
+		[DataType(DataType.Date, ErrorMessage = "O campo {0} não estar no formato correto")]
+        public string ConfirmarSenha { get; set; }
+
+		[ForeignKey("IdEndereco")]
         public Endereco? Endereco {  get; set; }
     
     }   
