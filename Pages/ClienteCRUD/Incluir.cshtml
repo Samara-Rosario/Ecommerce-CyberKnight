@@ -39,30 +39,30 @@
                 </div>
             </header>
 
-                <form method="post">
-				<div class="flex-container">
 
-					<div class="col-4">
+			<div class="flex-container">
+				<form class="row" style="width: 60vw" method="post">
+					<div class="col-12">
                         <label asp-for="cliente.Nome">Nome:</label>
 						<input class="form-control" asp-for="cliente.Nome" />
                         <span asp-validation-for="cliente.Nome" class="text-danger"> </span>
 
                     </div>
                     <br />
-                    <div class="col-4">
+                    <div class="col-12">
                         <label asp-for="cliente.Cpf">CPF: </label>
                         <input class="form-control" asp-for="cliente.Cpf" />
                         <span asp-validation-for="cliente.Cpf" class="text-danger"> </span>
 
                     </div>
                     <br />
-                    <div class="col-4">
+                    <div class="col-12">
                         <label asp-for="cliente.Email">Email: </label>
                         <input class="form-control" asp-for="cliente.Email" />
                         <span asp-validation-for="cliente.Email" class="text-danger"> </span>
                     </div>
                     <br />
-                    <div class="col-4">
+                    <div class="col-12">
 
                         <label asp-for="cliente.Telefone">Telefone: </label>
 						<input class="form-control" asp-for="cliente.Telefone" />
@@ -70,108 +70,111 @@
 
                     </div>
                     <br />
-                    <div class="col-5">
+                    <div class="col-12">
                         <label asp-for="cliente.Cep" class=" control-label">Cep:</label>
-                        <input asp-for="cliente.Cep" class="form-control" />
+						<input onblur="pesquisacep(this.value);" asp-for="cliente.Cep" class="form-control" />
                         <span asp-validation-for="cliente.Cep" class="text-danger"></span>
-                        <input name="cep" type="text" id="cep" value="" size="10" maxlength="9"
-                               onblur="pesquisacep(this.value);" type="number">
                         <span id="texto-endereco"></span>
-                        <div class="col-5">
                     </div>
                     <br />
+                    <div class="col-12">
                         <label asp-for="cliente.DataDeNascimento" class=" control-label">Data de Nascimento:</label>
                         <input asp-for="cliente.DataDeNascimento" class="form-control" />
                         <span asp-validation-for="cliente.DataDeNascimento" class="text-danger"></span>
                     </div>
                     <br />
+                    <div class="col-12">
                          <label asp-for="cliente.Login" class=" control-label">Login:</label>
                          <input asp-for="cliente.Login" class="form-control" />
                          <span asp-validation-for="cliente.Login" class="text-danger"></span>
                     </div>
                     <br />
+                    <div class="col-12">
                          <label asp-for="cliente.Senha" class=" control-label">Senha:</label>
                          <input asp-for="cliente.Senha" class="form-control" />
                          <span asp-validation-for="cliente.Senha" class="text-danger"></span>
                    </div>
                    <br />
+                    <div class="col-12">
                         <label asp-for="cliente.ConfirmarSenha" class=" control-label">Confirmar Senha:</label>
                         <input asp-for="cliente.ConfirmarSenha" class="form-control" />
                         <span asp-validation-for="cliente.ConfirmarSenha" class="text-danger"></span>
-                </form>
+            
                    </div>
 
                     <button id="btn-enviar" type="button" class="btn btn-primary">Enviar</button>
+				</form>
                 </div>
+                   
             </div>
-
-        <script>
-            var textoEndereco = document.querySelector("#texto-endereco");
-
-
-            function limpa_formulario_cep() {
-                //Limpa valores do formulário de cep.
-                textoEndereco.innerHTML = "";
-            }
-
-
-            function meu_callback(conteudo) {
-                console.log(conteudo);
-
-                if (!("erro" in conteudo)) {
-                    //Atualiza os campos com os valores.
-                    textoEndereco.innerHTML = `${conteudo.logradouro}, ${conteudo.bairro}, ${conteudo.localidade}/${conteudo.uf}`;
-
-                } //end if.
-                else {
-                    console.error("Com error");
-                    //CEP não Encontrado.
-                    limpa_formulario_cep();
-                    textoEndereco.innerHTML = "CEP não encontrado.";
-                }
-            }
-
-            function pesquisacep(valor) {
-
-                //Nova variável "cep" somente com dígitos.
-                var cep = valor.replace(/\D/g, '');
-
-                //Verifica se campo cep possui valor informado.
-                if (cep != "") {
-
-                    //Expressão regular para validar o CEP.
-                    var validacep = /^[0-9]{8}$/;
-
-                    //Valida o formato do CEP.
-                    if (validacep.test(cep)) {
-
-                        //Preenche os campos com "..." enquanto consulta webservice.
-                        textoEndereco.innerHTML = "...";
-                  
-
-                        //Cria um elemento javascript.
-                        var script = document.createElement('script');
-
-                        //Sincroniza com o callback.
-                        script.src = 'https://viacep.com.br/ws/' + cep + '/json/?callback=meu_callback';
-
-                        //Insere script no documento e carrega o conteúdo.
-                        document.body.appendChild(script);
-
-                    } //end if.
-                    else {
-                        //cep é inválido.
-                        limpa_formulario_cep();
-                        textoEndereco.innerHTML = "Formato de CEP inválido.";
-                    }
-                } //end if.
-                else {
-                    //cep sem valor, limpa formulário.
-                    limpa_formulario_cep();
-                }
-            };
-        </script>
     </div>
+    <script>
+        var textoEndereco = document.querySelector("#texto-endereco");
+
+
+        function limpa_formulario_cep() {
+            //Limpa valores do formulário de cep.
+            textoEndereco.innerHTML = "";
+        }
+
+
+        function meu_callback(conteudo) {
+            console.log(conteudo);
+
+            if (!("erro" in conteudo)) {
+                //Atualiza os campos com os valores.
+                textoEndereco.innerHTML = `${conteudo.logradouro}, ${conteudo.bairro}, ${conteudo.localidade}/${conteudo.uf}`;
+
+            } //end if.
+            else {
+                console.error("Com error");
+                //CEP não Encontrado.
+                limpa_formulario_cep();
+                textoEndereco.innerHTML = "CEP não encontrado.";
+            }
+        }
+
+        function pesquisacep(valor) {
+
+            //Nova variável "cep" somente com dígitos.
+            var cep = valor.replace(/\D/g, '');
+
+            //Verifica se campo cep possui valor informado.
+            if (cep != "") {
+
+                //Expressão regular para validar o CEP.
+                var validacep = /^[0-9]{8}$/;
+
+                //Valida o formato do CEP.
+                if (validacep.test(cep)) {
+
+                    //Preenche os campos com "..." enquanto consulta webservice.
+                    textoEndereco.innerHTML = "...";
+
+
+                    //Cria um elemento javascript.
+                    var script = document.createElement('script');
+
+                    //Sincroniza com o callback.
+                    script.src = 'https://viacep.com.br/ws/' + cep + '/json/?callback=meu_callback';
+
+                    //Insere script no documento e carrega o conteúdo.
+                    document.body.appendChild(script);
+
+                } //end if.
+                else {
+                    //cep é inválido.
+                    limpa_formulario_cep();
+                    textoEndereco.innerHTML = "Formato de CEP inválido.";
+                }
+            } //end if.
+            else {
+                //cep sem valor, limpa formulário.
+                limpa_formulario_cep();
+            }
+        };
+    </script>
+
 </body>
 
 </html>
