@@ -19,9 +19,12 @@ namespace Ecommerce_CyberKnight.Pages
 
 
         private int paginaAtual = 1;
-        public int? _valorMinimo = 0;
+        public int? _valorMinimo = 0 ;
         public int? _valorMaximo = 30;
+        public int _valorProdMaximo = 30;
         public string termoBusca = "";
+        public int _ordem = 1;
+        public string _listaCategorias = "";
 
         public int QuantidadePagina { get; private set; }
         private int qtdProdPorPagina = 12;
@@ -43,6 +46,11 @@ namespace Ecommerce_CyberKnight.Pages
         {
 
             this.termoBusca = TermoBusca;
+            this._valorMinimo = valorMinimo ?? 0;
+            this._valorMaximo = valorMaximo ?? 30;
+            this._ordem = ordem ?? 1;
+
+            this._listaCategorias = listaCategorias ?? "";
 
             paginaAtual = pagina ?? 1;
 
@@ -55,26 +63,33 @@ namespace Ecommerce_CyberKnight.Pages
                 );
             }
 
-            List<string> catsFront = new List<string>();
+            this._valorProdMaximo = Convert.ToInt32(query.Max( q => q.preco));
+            this._valorProdMaximo = (int)Math.Ceiling(this._valorProdMaximo / 10.0) * 10;
+
+
+            List<int> catsFront = new List<int>();
 
 
             //filtro categoria
             if (!string.IsNullOrEmpty(listaCategorias)){
                 //Debug.WriteLine(listaCategorias);
 
-                foreach(var item in listaCategorias.Split('|')){
+                foreach(var item in listaCategorias.Split(',')){
                     Debug.WriteLine(item);
 
                     if (!string.IsNullOrEmpty(item)){
-                        catsFront.Add(item);
+                        catsFront.Add(Convert.ToInt16(item));
                     }
                 }
 
-                /*
+
                 query = query.Where(
-                      
-                );
-                */
+                    p => catsFront.Contains(p.IdCategoria)
+
+
+
+
+                ); ;
             }
 
 

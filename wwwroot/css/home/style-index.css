@@ -338,3 +338,6 @@ button {
     margin-left: 20px;
 }
 
+.irs--round .irs-from::before, .irs--round .irs-to::before, .irs--round .irs-single::before{
+    border: none !important;
+}

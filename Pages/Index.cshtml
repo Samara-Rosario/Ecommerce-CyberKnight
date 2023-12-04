@@ -68,9 +68,9 @@
                     <h5 class="filtro-titulo">Ordenar</h5>
                     <div>
                         <div>
-                            <input ordem value="1" type="radio" name="o">
+                            <input checked ordem value="1" type="radio" name="o">
                             <span>Nome - A - Z</span>
-                        </div>
+                        </div> 
                         <div>
                             <input ordem value="2" type="radio" name="o">
                             <span>Nome - Z - A</span>
@@ -281,10 +281,20 @@
         var formFiltro = document.getElementById("form-filtro");
         var btnFiltrar = document.getElementById("btn-filtrar");
         var pesquisaProduto = document.getElementById("pesquisa-produto");
-        var btnLupa = document.getElementById("btn-lupa");
 
         var catSelected = document.querySelectorAll(".filtro-categoria input[type='checkbox']");
+        var inputsOrdem = document.querySelectorAll("input[ordem]");
 
+        var query = location.search.slice(1);
+        var partes = query.split('&');
+        var parametros = {};
+        
+        partes.forEach(function (parte) {
+            var chaveValor = parte.split('=');
+            var chave = chaveValor[0];
+            var valor = chaveValor[1];
+            parametros[chave] = valor;
+        });
    
 
         btnFiltrar.addEventListener("click", enviarForm);
@@ -296,11 +306,13 @@
         });
 
         function enviarForm() {
-            formFiltro.valMin.value = dadosFiltroPreco.from || 0;
-            formFiltro.valMax.value = dadosFiltroPreco.to || 30;
+            formFiltro.valMin.value = dadosFiltroPreco.from || parametros.valMin || 0;
+            formFiltro.valMax.value = dadosFiltroPreco.to || parametros.valMax || 30;
             formFiltro.q.value = pesquisaProduto.value.trim();
 
-            document.querySelectorAll("input[ordem]").forEach((item) => {
+
+
+            inputsOrdem.forEach((item) => {
                 if(item.checked){
                     formFiltro.o.value = item.value;
                 }
@@ -310,7 +322,7 @@
 
             document.querySelectorAll(".input-categoria").forEach((item) => {
                 if (item.checked) {
-                    formFiltro.cats.value += item.value + "|";
+                    formFiltro.cats.value += item.value + ",";
                 }
             });
 
@@ -326,21 +338,50 @@
             formFiltro.submit();
         }
 
-        var minVal = @Model._valorMinimo;
-        var maxVal = @Model._valorMaximo;
+        var minVal = parametros.valMin || 0;
+        var maxVal = parametros.valMax || 30;
+        var listaCategoria = "@(Model._listaCategorias)";
+        var ordem = @Model._ordem;
+        var valorProdMaximo = @Model._valorProdMaximo;
 
+
+
+        listaCategoria = listaCategoria.split(",");
+
+        catSelected.forEach((cat) => {
+            listaCategoria.forEach((ele) => {
+                if (cat.value == ele) {
+                    cat.checked = true;
+                }
+            })
+        });
+
+
+
+        inputsOrdem.forEach((input) => { 
+            if (ordem == input.value) {
+                input.checked = true;
+            } else {
+                input.checked = false;
+            }
+        });
 
         $(".js-range-slider").ionRangeSlider({
             type: "double",
             min: 0,
-            max: 30,
+            max: valorProdMaximo,
             from: minVal,
             to: maxVal,
             grid: false,
             skin: "round",
             prefix: "R$ ",
-                onFinish: function(data) {
-                    dadosFiltroPreco = data;
+            onFinish: function(data) {
+                dadosFiltroPreco = data;
+            },
+                onStart: function(data) {
+                    console.log(data);
+                    data.from = minVal;
+                    data.to = maxVal;
                 }
         });
 
