@@ -8,12 +8,12 @@ h1{
    font-weight: bold;
    color: #252EFF;
 }
-label{
-    margin-left: 40px;
+
+#card-login{
+    padding: 40px;
 }
-input{
-    margin-left: 40px;
-    margin-right: 40px;
+
+input {
     width: 40vw;
 }
 body{
@@ -40,6 +40,9 @@ body{
     position: absolute;
     margin-top: 30px;
     margin-left: 50px;    
+}
+#texto-endereco {
+
 }
 #btn-enviar{
     width: 100px;
@@ -92,7 +95,6 @@ padding-top: 2px;
     padding-right: 20px;
 }
 #traco{
-    margin-left: 15px;
     color: #a89d9d;
     font-weight: bold;  
 }
