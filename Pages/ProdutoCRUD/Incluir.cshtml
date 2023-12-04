@@ -50,6 +50,7 @@
                     <label id="categoria-label">Categoria:</label>
                     <div>
                         <input id="nome" asp-for="produto.Nome" type="text">
+                        <span asp-validation-for="produto.Nome" class="text-danger"></span>
                         <input id="categoria-input" asp-for="produto.categoria" type="text">
                         <i class="bi bi-caret-down-fill"></i>
                     </div>
@@ -63,10 +64,13 @@
                     <br>
                         <span asp-validation-for="produto.descricao" class="text-danger"></span>
                     <label id="preco-label">Preço:</label>
+                        <span asp-validation-for="produto.preco" class="text-danger"></span>
                     <label id="unid-label"> Unidade de Medida:</label>
+                    <br>
+                        <span asp-validation-for="produto.unidadeMedida" class="text-danger"></span>
                     <div>
-                        <input id="preco-input" type="text">
-                        <input id="unid-input" type="text">
+                        <input id="preco-input" asp-for="produto.preco" type="text">
+                        <input id="unid-input" asp-for="produto.unidadeMedida" type="text">
                         <i class="bi bi-caret-down-fill"></i>
                     </div>
                     <br>
@@ -75,9 +79,10 @@
                         <label id="img-label">Inserir Imagem:</label>
                     </div>
                     <div>
-                        <input id="estoque-input" type="text">
+                        <input id="estoque-input" asp-for="produto.estoque" type="text">
                     </div>
-                    <button id="btn-enviar" type="button" class="btn btn-primary">Enviar</button>
+                        <span asp-validation-for="produto.estoque" class="text-danger"></span>
+                    <button id="btn-enviar" type="submit" class="btn btn-primary">Enviar</button>
                 </div>
             </div>
             </form>
