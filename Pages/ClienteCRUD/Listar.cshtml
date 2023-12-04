@@ -59,46 +59,21 @@
                     </tr>
                 </thead>
                 <tbody>
+                    @foreach (var cliente in Model.Clientes)
+                    {
+                        
                     <tr>
-                        <td scope="row">1</td>
-                        <td>Fulano</td>
-                        <td>012.542.724.36</td>
-                        <td>fulano@edu.pa.senac.br</td>
-                        <td>4002-8922</td>
-                        <td>68746-040</td>
-                        <td>16/10/2005</td>
-                        <td class="cel-btns">
-                            <button id="btn-editar" type="button" class="btn btn-primary">Editar</button>
-                            <button id="btn-excluir" type="button" class="btn btn-danger">Excluir</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td scope="row">2</td>
-                        <td>Cicrano</td>
-                        <td>210.641.457.67</td>
-                        <td>cicrano@edu.pa.senac.br</td>
-                        <td>98354-2532</td>
-                        <td>64528-030</td>
-                        <td>20/08/1999</td>
-                        <td class="cel-btns">
+                        <td>@cliente.Id</td>
+                        <td>@cliente.Nome</td>
+                        <td>@cliente.Cpf</td>
+                        <td>@cliente.Email</td>
+                        <td>@cliente.Telefone</td>
+                        <td>@cliente.DataDeNascimento</td>
 
                             <button id="btn-editar" type="button" class="btn btn-primary">Editar</button>
                             <button id="btn-excluir" type="button" class="btn btn-danger">Excluir</button>
-                        </td>
                     </tr>
-                    <tr>
-                        <td scope="row">3</td>
-                        <td>Delcrano</td>
-                        <td>471.364.230.64</td>
-                        <td>delcrano@edu.pa.senac.br </td>
-                        <td>99103-8458</td>
-                        <td>68746-010</td>
-                        <td>23/02/1977</td>
-                        <td class="cel-btns">
-                            <button id="btn-editar" type="button" class="btn btn-primary">Editar</button>
-                            <button id="btn-excluir" type="button" class="btn btn-danger">Excluir</button>
-                        </td>
-                    </tr>
+                    }
                 </tbody>
             </table>
         </div>

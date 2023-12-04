@@ -40,51 +40,55 @@
             </header>
 
             <div class="flex-container">
-                <div id="card-login">
-                    <br>
-                    <br>
-                    <h1>Incluir Novos Clientes</h1>
-                    <label>Nome:</label>
-                    <div>
-                        <input type="text">
+                <form method="post">
+
+                    <div class="col-4">
+                        <label asp-for="cliente.Nome">Nome:</label>
+                        <input class="form-control" asp-for="cliente.Nome" />
+                        <span asp-validation-for="cliente.Nome" class="text-danger"> </span>
+
                     </div>
-                    <label>CPF:</label>
-                    <div>
-                        <input type="text">
+                    <br />
+                    <div class="col-4">
+                        <label asp-for="cliente.Cpf">CPF: </label>
+                        <input class="form-control" asp-for="cliente.Cpf" />
+                        <span asp-validation-for="cliente.Cpf" class="text-danger"> </span>
+
                     </div>
-                    <label>E-mail:</label>
-                    <div>
-                        <input type="text">
+                    <br />
+                    <div class="col-4">
+                        <label asp-for="cliente.Email">Email: </label>
+                        <input class="form-control" asp-for="cliente.Email" />
+                        <span asp-validation-for="cliente.Email" class="text-danger"> </span>
                     </div>
-                    <label>Celular:</label>
-                    <div>
-                        <input type="tel">
+                    <br />
+                    <div class="col-4">
+
+                        <label asp-for="cliente.Telefone">Telefone: </label>
+                        <input class="form-control" asp-for="cliente.Telefone" />
+                        <span asp-validation-for="cliente.Telefone" class="text-danger"> </span>
+
                     </div>
-                    <label>Cep:</label>
-                    <div>
+                    <br />
+                    <div class="col-5">
+                        <label asp-for="cliente.Cep" class=" control-label">Cep:</label>
+                        <input asp-for="cliente.Cep" class="form-control" />
+                        <span asp-validation-for="cliente.Cep" class="text-danger"></span>
                         <input name="cep" type="text" id="cep" value="" size="10" maxlength="9"
                                onblur="pesquisacep(this.value);" type="number">
-                        <br>
                         <span id="texto-endereco"></span>
+                        <div class="col-5">
                     </div>
-                    <label>Login:</label>
-                    <div>
-                        <input type="text">
-                    </div>
-                    <label>Senha:</label>
-                    <div>
-                        <input type="password">
-                    </div>
-                    <label>Confirmar senha:</label>
-                    <div>
-                        <input type="password">
-                    </div>
+                    <br />
+                            <label asp-for="cliente.DataDeNascimento" class=" control-label">Data de Nascimento:</label>
+                            <input asp-for="cliente.DataDeNascimento" class="form-control" />
+                            <span asp-validation-for="cliente.DataDeNascimento" class="text-danger"></span>
+                        </div>
+
                     <button id="btn-enviar" type="button" class="btn btn-primary">Enviar</button>
+                    </form>
                 </div>
             </div>
-
-        </div>
-
 
         <script>
             var textoEndereco = document.querySelector("#texto-endereco");

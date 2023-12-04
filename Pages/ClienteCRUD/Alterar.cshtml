@@ -23,6 +23,11 @@
         <div id="barra-lateral" class="col-3">
             <label id="letreiro">Cyber Knights<br>E-commerce</label>
         </div>
+
+		<h1>Alterar Cliente "@Model.clientes.Nome"</h1>
+
+	<form method="post">
+
         <div class="col-9">
             <header>
                 <div>
@@ -40,52 +45,61 @@
                 </div>
             </header>
 
-            <div class="flex-container">
-                <div id="card-login">
-                    <br>
-                    <br>
-                    <h1>Alterar Clientes</h1>
-                    <label>Nome:</label>
-                    <div>
-                        <input type="text">
-                    </div>
-                    <label>CPF:</label>
-                    <div>
-                        <input type="text">
-                    </div>
-                    <label>E-mail:</label>
-                    <div>
-                        <input type="text">
-                    </div>
-                    <label>Celular:</label>
-                    <div>
-                        <input type="tel">
-                    </div>
-                    <label>Cep:</label>
-                    <div>
-                        <input type="number">
-                    </div>
-                    <label>Login:</label>
-                    <div>
-                        <input type="text">
-                    </div>
-                    <label>Senha:</label>
-                    <div>
-                        <input type="password">
-                    </div>
-                    <label>Confirmar senha:</label>
-                    <div>
-                        <input type="password">
-                    </div>
+
+
+			<input type="hidden" asp-for="clientes.Id" />
+			<br />
+
+			<div class="col-5">
+				<label asp-for="clientes.Nome" class=" control-label">Nome:</label>
+				<input asp-for="clientes.Nome" class="form-control" />
+				<span asp-validation-for="clientes.Nome" class="text-danger"></span>
+			</div>
+			<br />
+
+			<div class="col-5">
+				<label asp-for="clientes.Cpf" class=" control-label">CPF:</label>
+				<input asp-for="clientes.Cpf" class="form-control" />
+				<span asp-validation-for="clientes.Cpf" class="text-danger"></span>
+			</div>
+			<br />
+
+			<div class="col-5">
+				<label asp-for="clientes.Email" class="control-label">Email:</label>
+				<input asp-for="clientes.Email" class="form-control" />
+				<span asp-validation-for="clientes.Email" class="text-danger"></span>
+			</div>
+			<br />
+
+			<div class="col-5">
+				<label asp-for="clientes.Telefone" class=" control-label">Telefone:</label>
+				<input asp-for="clientes.Telefone" class="form-control" />
+				<span asp-validation-for="clientes.Telefone" class="text-danger"></span>
+			</div>
+			<br />
+				<div class="col-5">
+					<label asp-for="clientes.Telefone" class="control-label">Email:</label>
+					<input asp-for="clientes.Telefone" class="form-control" />
+					<span asp-validation-for="clientes.Telefone" class="text-danger"></span>
+				</div>
+				<br />
+				<div class="col-5">
+				<label asp-for="clientes.Endereco" class=" control-label">Endereço:</label>
+				<input asp-for="clientes.Endereco" class="form-control" />
+				<span asp-validation-for="clientes.Endereco" class="text-danger"></span>
+			</div>
+			<br />
+
+			<div class="col-5">
+				<label asp-for="clientes.DataDeNascimento" class=" control-label">Data de Nascimento:</label>
+				<input asp-for="clientes.DataDeNascimento" class="form-control" />
+				<span asp-validation-for="clientes.DataDeNascimento" class="text-danger"></span>
+			</div>
+			<br />
                     <button id="btn-enviar" type="button" class="btn btn-primary">Enviar</button>
                 </div>
+	</form>
             </div>
-
-        </div>
-
-
-
-    </div>
 </body>
 
 </html>
