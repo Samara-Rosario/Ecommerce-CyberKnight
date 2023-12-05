@@ -25,7 +25,11 @@
     <br />
     <div class="col-4">
         <label asp-for="produto.categoria">categoria:</label>
-        <input class="form-control" asp-for="produto.categoria" />
+        <select class="form-control" asp-for="produto.categoria">
+            @foreach (var cat in Model.categorias) {
+                <option title="@cat.Descricao" value="@cat.Id">@cat.Nome</option>
+            }
+        </select>
         <span asp-validation-for="produto.categoria" class="text-danger"></span>
     </div>
     <br />

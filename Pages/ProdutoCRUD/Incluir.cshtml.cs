@@ -3,6 +3,7 @@ using Ecommerce_CyberKnight.Data;
 using Ecommerce_CyberKnight.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations;
 using System.Diagnostics;
 
@@ -12,6 +13,8 @@ namespace Ecommerce_CyberKnight.Pages.ProdutoCRUD
 
         [BindProperty]
         public Produto produto { get; set; }
+
+        public List<Categoria> categorias { get; set; }
 
         private readonly ApplicationDbContext _context;
         private readonly IWebHostEnvironment _whe;
@@ -25,15 +28,14 @@ namespace Ecommerce_CyberKnight.Pages.ProdutoCRUD
         
 
         public IncluirModel(ApplicationDbContext context, IWebHostEnvironment whe){
-
             _context = context;
             _whe = whe;
+            categorias = _context.Categorias.ToList();
             CaminhoImagem = "~/img/produto/sem_imagem.jpg";
             
         }
 
-        public void OnGet()
-        {
+        public void OnGet(){
 
         }
 
@@ -44,7 +46,7 @@ namespace Ecommerce_CyberKnight.Pages.ProdutoCRUD
 
             var produto = new Produto();
 
-            bool validado = await TryUpdateModelAsync<Produto>(produto, "produto", p => p.Nome, p => p.preco, p => p.estoque, p => p.descricao);
+            bool validado = await TryUpdateModelAsync<Produto>(produto, "produto", p => p.Nome, p => p.preco, p => p.IdCategoria, p => p.estoque, p => p.descricao);
 
             if (validado)
             {

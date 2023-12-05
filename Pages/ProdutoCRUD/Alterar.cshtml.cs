@@ -28,6 +28,10 @@ namespace Ecommerce_CyberKnight.Pages.ProdutoCRUD
             _webHostEnvironment = webHostEnvironment;
         }
 
+
+
+
+
         public async Task<IActionResult> OnGetAsync(int? id){
             if(id == null) {
                 return NotFound();
@@ -42,6 +46,11 @@ namespace Ecommerce_CyberKnight.Pages.ProdutoCRUD
 
             return Page();
         }
+
+
+
+
+
 
         public async Task<IActionResult> OnPostAsync() {
             if (!ModelState.IsValid) {

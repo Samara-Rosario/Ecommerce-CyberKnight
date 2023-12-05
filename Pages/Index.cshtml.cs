@@ -31,7 +31,7 @@ namespace Ecommerce_CyberKnight.Pages
         }
 
         public async Task<IActionResult> OnGetAsync(
-             [FromQuery(Name = "q")] string TermoBusca,
+            [FromQuery(Name = "q")] string TermoBusca,
             [FromQuery(Name = "p")] int? pagina,
             [FromQuery(Name = "o")] int? ordem,
             [FromQuery(Name = "cats")] string? listaCategorias,
@@ -51,6 +51,25 @@ namespace Ecommerce_CyberKnight.Pages
                         p => p.Nome.ToLower().Contains(TermoBusca.ToLower())
                 );
             }
+
+            List<string> catsBack = new List<string>();
+            //Filtro por categoria
+            if (!string.IsNullOrEmpty(listaCategorias)) {
+                var cats = listaCategorias.Split(',');
+
+                foreach (string cat in cats) {
+                    catsBack.Add(cat);
+                    Debug.WriteLine(cat);
+                }
+
+                query = query.Where(
+                        p => catsBack.Contains(p.IdCategoria.ToString())
+                    );
+            } else {
+                Debug.WriteLine("\n\nSem categorias\n\n");
+            }
+
+
 
             // Filtro preço
             try
