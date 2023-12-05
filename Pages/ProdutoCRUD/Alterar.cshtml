@@ -40,51 +40,84 @@
                 </div>
             </header>
 
+            <form method="post" class=" mt-3" enctype="multipart/form-data">
                 <div class="flex-container">
                     <div id="card-login">
-                      <form method="post" class=" mt-3" enctype="multipart/form-data">
-                        <input class="form-control" type="hidden" asp-for="produtos.Id" />
                         <br>
                         <br>
-                        <h1>Alterar Produto</h1>
-                        <label id="nome-um">Nome:</label>
-                        <label id="categoria-label">Categoria:</label>
-                        <div>
-                            <input id="nome" asp-for="produtos.Nome" type="text">
-                            <span asp-validation-for="produtos.Nome" class="text-danger"></span>
-                            <input id="categoria-input" asp-for="produtos.categoria" type="text">
-                            <span asp-validation-for="produtos.categoria" class="text-danger msg-erro"></span>
-                            <i class="bi bi-caret-down-fill"></i>
+                        <h1>Incluir Novo Produto</h1>
+                        <div class="row">
+                            <div class="col">
+                                <label id="nome-um">Nome:</label>
+                                <br />
+                                <input class="form-control" id="nome" asp-for="produtos.Nome" type="text">
+                                <span asp-validation-for="produtos.Nome" class="text-danger"></span>
+                            </div>
+                            <div class="col-4">
+                                <label>Categoria:</label>
+                                <br />
+                                <select class="form-control" asp-for="IdCategoria">
+                                    <option selected>Selecione a categoria</option>
+                                    @foreach (var categoria in Model.listaCategoria) {
+                                        <option value="@categoria.Id">@categoria.Nome</option>
+                                    }
+                                </select>
+                                <span asp-validation-for="produtos.categoria" class="text-danger msg-erro"></span>
+                            </div>
+                        </div>
+                        <br />
+                        <br>
+                        <div class="row">
+                            <div class="col">
+                                <label id="descricao-um">Descrição:</label>
+                                <br />
+                                <input class="form-control" id="descricao" asp-for="produtos.descricao" type="text">
+                                <span asp-validation-for="produtos.descricao" class="text-danger"></span>
+                            </div>
                         </div>
                         <br>
-                        <div>
-                            <label id="descricao-um">Descrição:</label>
+                        <br>
+                        <div class="row">
+                            <div class="col">
+                                <label id="preco-label">Preço:</label>
+                                <br />
+                                <input class="form-control" id="preco-input" asp-for="produtos.preco" type="text">
+                                <span asp-validation-for="produtos.preco" class="text-danger"></span>
+                            </div>
+                            <div class="col-5">
+                                <label id="unid-label"> Unidade de Medida:</label>
+                                <br>
+                                <select class="form-control" asp-for="IdUnidadeMedida">
+                                    <option selected>Selecione a unidade de medida</option>
+                                    @foreach (var unidadeDeMedida in Model.listaUnidadeMedidas) {
+                                        <option value="@unidadeDeMedida.Id">@unidadeDeMedida.NomeExtenso</option>
+                                    }
+                                </select>
+                                <span asp-validation-for="produtos.unidadeMedida" class="text-danger"></span>
+                            </div>
                         </div>
-                            <input id="descricao" asp-for="produtos.descricao" type="text">
-                            <span asp-validation-for="produtos.descricao" class="text-danger"></span>
+
                         <br>
-                        <br>
-                        <label id="preco-label">Preço:</label>
-                        <span asp-validation-for="produtos.preco" class="text-danger"></span>
-                        <label id="unid-label"> Unidade de Medida:</label>
-                        <br>
-                        <span asp-validation-for="produtos.unidadeMedida" class="text-danger"></span>
-                        <div>
-                            <input id="preco-input" asp-for="produtos.preco" type="text">
-                            <input id="unid-input" asp-for="produtos.unidadeMedida" type="text">
-                            <i class="bi bi-caret-down-fill"></i>
-                        </div>
-                        <br>
-                        <div>
-                            <label id="estoque-label">Estoque:</label>
-                            <label id="img-label">Inserir Imagem:</label>
-                        </div>
-                        <div>
-                            <input id="estoque-input" asp-for="produtos.estoque" type="text">
+                        <br />
+                        <div class="row">
+                            <div class="col">
+                                <label id="estoque-label">Estoque:</label>
+                                <br />
+                                <input class="form-control" id="estoque-input" asp-for="produtos.estoque" type="text">
+                                <span asp-validation-for="produtos.estoque" class="text-danger"></span>
+                            </div>
+                            <div class="col">
+                                <label id="img-label">Inserir Imagem:</label>
+                                <br />
+                                <input asp-for="ImagemProduto" class="custom-file-input" accept="image/*" />
+                                <span asp-validation-for="ImagemProduto" class="text-danger"></span>
+                            </div>
                         </div>
                         <button id="btn-enviar" type="submit" class="btn btn-primary">Enviar</button>
-                      </form>
                     </div>
+                </div>
+            </form>
+        </div>
                 </div>
         </div>
     </div>

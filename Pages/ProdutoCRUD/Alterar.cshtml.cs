@@ -24,6 +24,20 @@ namespace Ecommerce_CyberKnight.Pages.ProdutoCRUD
         [Display(Name = "Imagem do Produto")]
         public IFormFile ImagemProduto { get; set; }
 
+        public List<UnidadeMedida> listaUnidadeMedidas { get; set; }
+        public List<Categoria> listaCategoria { get; set; }
+
+        [BindProperty]
+        [Display(Name = "Categoria")]
+        [Required(ErrorMessage = "0 Campo \"{0}\"é de preenchimento obrigatório,")]
+        public int IdCategoria { get; set; }
+
+        [BindProperty]
+        [Display(Name = "Unidade de Medida")]
+        [Required(ErrorMessage = "0 Campo \"{0}\"é de preenchimento obrigatório,")]
+        public int IdUnidadeMedida { get; set; }
+
+
         public AlterarModel(ApplicationDbContext context, IWebHostEnvironment webHostEnvironment) {
             _context = context;
             _webHostEnvironment = webHostEnvironment;

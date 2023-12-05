@@ -8,52 +8,6 @@ h1{
    font-weight: bold;
    color: #252EFF;
 }
-#nome-um{
-    margin-left: 40px;
-}
-#nome{
-    margin-left: 40px;
-    width: 15vw;
-}
-#descricao-um{
-    margin-left: 40px;
-}
-#descricao{
-    margin-left: 40px;
-    margin-right: 40px;
-    width: 36vw;
-}
-#categoria-label{
-    margin-left: 268px;
-}
-#categoria-input{
-    width: 15vw;
-    margin-left: 80px;
-}
-#preco-label{
-    margin-left: 40px;
-}
-#preco-input{
-    margin-left: 40px;
-    width: 15vw;
-}
-#unid-label{
-    margin-left: 268px;
-}
-#unid-input{
-    width: 15vw;
-    margin-left: 80px;
-}
-#estoque-label{
-    margin-left: 40px;
-}
-#estoque-input{
-    margin-left: 40px;
-    width: 15vw;
-}
-#img-label{
-    margin-left: 268px;
-}
 body{
     overflow: hidden;
 }
