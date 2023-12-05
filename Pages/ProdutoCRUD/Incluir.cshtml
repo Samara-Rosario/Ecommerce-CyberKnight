@@ -46,11 +46,32 @@
                     <br>
                     <br>
                     <h1>Incluir Novo Produto</h1>
-                    <label id="nome-um">Nome:</label>
-                    <label id="categoria-label">Categoria:</label>
+                        <div class="row">
+                            <div class="col">
+                                <label id="nome-um">Nome:</label>
+                                <br />
+                                <input class="form-control" id="nome" asp-for="produto.Nome" type="text">
+                                <span asp-validation-for="produto.Nome" class="text-danger"></span>
+                            </div>
+                            <div class="col">
+                                <label>Categoria:</label>
+                                <br />
+                                <select class="form-control" asp-for="IdCategoria">
+                                    <option selected>Selecione a categoria</option>
+                                    @foreach (var categoria in Model.listaCategoria) {
+                                        <option value="@categoria.Id">@categoria.Nome</option>
+                                    }
+                                </select>
+                            </div>
+                        </div>
+
+
+                 
+                    <br />
+
                     <div>
-                        <input id="nome" asp-for="produto.Nome" type="text">
-                        <span asp-validation-for="produto.Nome" class="text-danger"></span>
+                        
+                       
                         <input id="categoria-input" asp-for="produto.categoria" type="text">
                         <i class="bi bi-caret-down-fill"></i>
                     </div>
@@ -67,6 +88,13 @@
                         <span asp-validation-for="produto.preco" class="text-danger"></span>
                     <label id="unid-label"> Unidade de Medida:</label>
                     <br>
+                        <select asp-for="IdUnidadeMedida">
+                            <option selected>Selecione a unidade de medida</option>
+                            @foreach(var unidadeDeMedida in Model.listaUnidadeMedidas) {
+                                <option value="@unidadeDeMedida.Id">@unidadeDeMedida.NomeExtenso</option>
+                            }
+                        </select>
+
                         <span asp-validation-for="produto.unidadeMedida" class="text-danger"></span>
                     <div>
                         <input id="preco-input" asp-for="produto.preco" type="text">
@@ -77,11 +105,14 @@
                     <div>
                         <label id="estoque-label">Estoque:</label>
                         <label id="img-label">Inserir Imagem:</label>
+                            <input asp-for="ImagemProduto" class="custom-file-input" accept="image/*" />
+                            <span asp-validation-for="ImagemProduto" class="text-danger"></span>
                     </div>
                     <div>
                         <input id="estoque-input" asp-for="produto.estoque" type="text">
-                    </div>
                         <span asp-validation-for="produto.estoque" class="text-danger"></span>
+                    </div>
+                        
                     <button id="btn-enviar" type="submit" class="btn btn-primary">Enviar</button>
                 </div>
             </div>

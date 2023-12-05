@@ -17,10 +17,23 @@ namespace Ecommerce_CyberKnight.Pages.ProdutoCRUD
         public string CaminhoImagem { get; set; }
 
         [BindProperty]
-        [Display(Name = "Iamagem do produto")]
+        [Display(Name = "Imagem do produto")]
         [Required(ErrorMessage = "0 Campo \"{0}\"é de preenchimento obrigatório,")]
-
         public IFormFile ImagemProduto { get; set; }
+
+        public List<UnidadeMedida> listaUnidadeMedidas { get; set; }
+        public List<Categoria> listaCategoria { get; set; }
+        
+        [BindProperty]
+        [Display(Name = "Categoria")]
+        [Required(ErrorMessage = "0 Campo \"{0}\"é de preenchimento obrigatório,")]
+        public int IdCategoria { get; set; }
+
+        [BindProperty]
+        [Display(Name = "Unidade de Medida")]
+        [Required(ErrorMessage = "0 Campo \"{0}\"é de preenchimento obrigatório,")]
+        public int IdUnidadeMedida { get; set; }
+
 
 
         public IncluirModel(ApplicationDbContext context, IWebHostEnvironment whe) {
@@ -28,7 +41,8 @@ namespace Ecommerce_CyberKnight.Pages.ProdutoCRUD
             _context = context;
             _whe = whe;
             CaminhoImagem = "~/img/produto/sem_imagem.jpg";
-
+            listaUnidadeMedidas = context.unidadeMedidas.ToList();
+            listaCategoria = context.Categorias.ToList();
         }
 
         public void OnGet() {
@@ -45,6 +59,9 @@ namespace Ecommerce_CyberKnight.Pages.ProdutoCRUD
             bool validado = await TryUpdateModelAsync<Produto>(produto, "produto", p => p.Nome, p => p.preco, p => p.estoque, p => p.descricao);
 
             if (validado) {
+                produto.categoria = _context.Categorias.FirstOrDefault(c => c.Id == IdCategoria);
+                produto.unidadeMedida = _context.unidadeMedidas.FirstOrDefault(u => u.Id == IdUnidadeMedida);
+
                 _context.Produtos.Add(produto);
                 await _context.SaveChangesAsync();
                 await AppUtils.ProcessarArquivoDeImagem(produto.Id, ImagemProduto, _whe);
