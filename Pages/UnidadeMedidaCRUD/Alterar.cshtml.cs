@@ -8,52 +8,53 @@ namespace Ecommerce_CyberKnight.Pages.UnidadeMedidaCRUD
 {
     public class AlterarModel : PageModel
     {
-		private readonly ApplicationDbContext _context;
+        private readonly ApplicationDbContext _context;
 
-		public AlterarModel(ApplicationDbContext context) {
-			_context = context;
-		}
+        public AlterarModel(ApplicationDbContext context) {
+            _context = context;
+        }
 
-		// o "[BindProperty]" configura a aplicação para relacionar o atributo 'unidadeMedida' aos dados que estão vindo do front-end*/
-		[BindProperty]
-		public UnidadeDeMedida unidadeMedida { get; set; }
+        [BindProperty]
+        public UnidadeDeMedida unidadeMedida { get; set; }
+        public async Task<IActionResult> OnGetAsync(int? Id) {
+            if (Id == null) {
+                return NotFound();
+            }
+            unidadeMedida = await _context.unidadeMedidas.FirstOrDefaultAsync(c => c.Id == Id);
 
-		public async Task<IActionResult> OnGet(int id) {
-			if (id == null) {
-				return NotFound();
-			}
-			unidadeMedida = await _context.unidadeMedidas.FirstOrDefaultAsync(u => u.Id == id);
+            if (unidadeMedida == null) {
+                return NotFound();
+            }
 
-			if (unidadeMedida == null) {
-				return NotFound();
-			}
+            return Page();
 
-			return Page();
-		}
+        }
 
-		public async Task<IActionResult> OnPostAsync() {
-			if (!ModelState.IsValid) {
-				return Page();
-			}
-			_context.Attach(unidadeMedida).State = EntityState.Modified;
+        public async Task<IActionResult> OnPostAsync() {
+            if (!ModelState.IsValid) {
+                return Page();
+            }
+            _context.Attach(unidadeMedida).State = EntityState.Modified;
+            try {
+                await _context.SaveChangesAsync();
+            } catch (DbUpdateConcurrencyException error) {
+                if (!unidadedeMedidaAindaExiste(unidadeMedida.Id)) {
+                    return NotFound();
 
-			try {
-				await _context.SaveChangesAsync();
-			} catch (DbUpdateConcurrencyException error) {
-				if (!unidadeMedidaAindaExiste(unidadeMedida.Id)) {
-					return NotFound();
-				} else {
-					throw;
-				}
-			} catch {
-				return Page();
-			}
+                } else {
+                    throw;
+                }
+            } catch {
+                return Page();
+            }
 
-			return RedirectToPage("./Listar");
-		}
+            return RedirectToPage("./Listar");
 
-		private bool unidadeMedidaAindaExiste(int? id) {
-			return _context.unidadeMedidas.Any(c => c.Id == id);
-		}
-	}
+        }
+
+        private bool unidadedeMedidaAindaExiste(int? id) {
+            return _context.unidadeMedidas.Any(c => c.Id == id);
+        }
+
+    }
 }
