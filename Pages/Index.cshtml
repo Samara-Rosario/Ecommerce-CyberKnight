@@ -226,20 +226,25 @@
             <div id="listagem-produtos">
 
                 @foreach (var produto in Model.Produtos){
-                    <a href="http://10.0.30.222/Detalhes-Produto?id=@(produto.Id)">
+                   
                     <div class="card-produto" title="@produto.descricao">
-                            <img src="~/img/produto/@String.Concat(produto.Id.ToString("D6"),".jpg")" alt="">
+                        <a asp-page="/Detalhes-produto" asp-route-id="@produto.Id"> 
+                            <img class="img-produto" src="~/img/produto/@String.Concat(produto.Id.ToString("D6"),".jpg")" alt="">
+                        </a >   
                         <h3>
+                          <a asp-page="/Detalhes-produto" asp-route-id="@produto.Id">
                             @produto.Nome
+                            </a>
                         </h3>
+                      
                         <div>
+                
                             <span class="ctn-valor">R$ @produto.preco.ToString("C2")</span>
                             <button>
                                 <i class="bi bi-bag-check-fill"></i>
                             </button>
                         </div>
                     </div>
-                </a>
                 }
             </div>
 

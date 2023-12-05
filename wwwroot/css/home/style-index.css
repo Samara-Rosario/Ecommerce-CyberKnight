@@ -259,12 +259,11 @@ container-principal-banner {
     border: 1px solid black;
 }
 
-.card-produto>* {
+.card-produto > * {
     width: 100%;
-
 }
 
-.card-produto>img {
+.img-produto {
     width: 180px;
     height: 154px;
 }
