@@ -67,8 +67,8 @@
                         <td>@Produto.descricao</td>
                         <td>@Produto.preco</td>
                         <td>@Produto.estoque</td>
-                        <td>@Produto.categoria</td>
-                        <td>@Produto.unidadeMedida</td>
+                        <td>@Produto.categoria.Nome</td>
+                        <td>@Produto.unidadeMedida.NomeExtenso</td>
                         <td>
                             <div class="container-btns">
                                <a asp-page="./Alterar" asp-route-id="@Produto.Id">

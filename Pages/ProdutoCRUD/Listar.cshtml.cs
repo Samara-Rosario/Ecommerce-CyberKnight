@@ -16,7 +16,7 @@ namespace Ecommerce_CyberKnight.Pages.ProdutoCRUD
 
         public IList<Produto> Produtos { get; set; }
         public async Task<IActionResult> OnGet() {
-            Produtos = await _context.Produtos.ToListAsync();
+            Produtos = await _context.Produtos.Include(p => p.categoria).Include(p => p.unidadeMedida).ToListAsync();
 
             return Page();
         }
