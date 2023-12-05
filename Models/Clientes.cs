@@ -31,16 +31,17 @@ namespace Ecommerce_CyberKnight.Models {
         [Required(ErrorMessage = "O campo \"{0}\" é de preechimento obrigatório")]
         [DataType(DataType.Date, ErrorMessage = "O campo {0} não estar no formato correto")]
 		public DateTime DataDeNascimento { get; set; }
-		[Required(ErrorMessage = "O campo \"{0}\" é de preechimento obrigatório")]
-		[DataType(DataType.Date, ErrorMessage = "O campo {0} não estar no formato correto")]
+
+        [Required(ErrorMessage = "O campo \"{0}\" é de preechimento obrigatório")]
+        [MinLength(5, ErrorMessage = "O campo {0} deve ter no mínimo {1} caracteres.")]
         public string Login {  get; set; }
 
-		[Required(ErrorMessage = "O campo \"{0}\" é de preechimento obrigatório")]
-		[DataType(DataType.Date, ErrorMessage = "O campo {0} não estar no formato correto")]
+        [Required(ErrorMessage = "O campo \"{0}\" é de preechimento obrigatório")]
+        [MinLength(8, ErrorMessage = "O campo {0} deve ter no mínimo {1} caracteres.")]
         public string Senha {  get; set; }
 
-		[Required(ErrorMessage = "O campo \"{0}\" é de preechimento obrigatório")]
-		[DataType(DataType.Date, ErrorMessage = "O campo {0} não estar no formato correto")]
+        [Required(ErrorMessage = "O campo \"{0}\" é de preechimento obrigatório")]
+        [MinLength(8, ErrorMessage = "O campo {0} deve ter no mínimo {1} caracteres.")]
         public string ConfirmarSenha { get; set; }
 
 		[ForeignKey("IdEndereco")]

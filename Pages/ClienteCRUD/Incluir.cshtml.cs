@@ -28,7 +28,7 @@ namespace Ecommerce_CyberKnight.Pages.ClienteCRUD
 
             bool validado = await TryUpdateModelAsync<Clientes>(
                 cliente, "cliente", c => c.Nome, c => c.Cpf, c => c.Email, c => c.Cep, c => c.Telefone,
-                c => c.DataDeNascimento
+                c => c.DataDeNascimento, c => c.Login, c => c.Senha, c => c.ConfirmarSenha
 
                 );
 
@@ -43,23 +43,6 @@ namespace Ecommerce_CyberKnight.Pages.ClienteCRUD
             {
                 return Page();
             }
-
-
-            try
-            {
-                _context.Clientes.Add(cliente);
-
-                await _context.SaveChangesAsync();
-            }
-            catch (Exception ex)
-            {
-                Debug.WriteLine("=====================");
-                Debug.WriteLine(ex);
-
-                Debug.WriteLine("=====================");
-            }
-
-            return RedirectToPage("/ClienteCRUD/Listar");
 
         }
     }
