@@ -6,7 +6,6 @@ namespace Ecommerce_CyberKnight.Models {
 		[Key]
 		[DatabaseGenerated(DatabaseGeneratedOption.Identity)]
 		public int Id { get; set; }
-        public int? IdProduto { get; set; }
 
 
         [Required(ErrorMessage = "O campo \"{0}\" é obrigatório")]
@@ -16,6 +15,6 @@ namespace Ecommerce_CyberKnight.Models {
 		[Required(ErrorMessage = "O campo \"{0}\" é obrigatório")]
 		[Display(Name = "Nome Extenso")]
 		public string NomeExtenso { get; set; }
-        public ICollection<Produto>? Produtos { get; set; }
+
     }
 }
