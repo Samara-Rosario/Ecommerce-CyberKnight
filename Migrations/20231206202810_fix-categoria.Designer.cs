@@ -3,6 +3,7 @@ using System;
 using Ecommerce_CyberKnight.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Ecommerce_CyberKnight.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20231206202810_fix-categoria")]
+    partial class fixcategoria
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -211,12 +214,15 @@ namespace Ecommerce_CyberKnight.Migrations
                     b.Property<int?>("IdCliente")
                         .HasColumnType("int");
 
+                    b.Property<int?>("IdClientes")
+                        .HasColumnType("int");
+
                     b.Property<int?>("IdEndereco")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("IdCliente");
+                    b.HasIndex("IdClientes");
 
                     b.HasIndex("IdEndereco");
 
@@ -441,7 +447,7 @@ namespace Ecommerce_CyberKnight.Migrations
                 {
                     b.HasOne("Ecommerce_CyberKnight.Models.Clientes", "Clientes")
                         .WithMany()
-                        .HasForeignKey("IdCliente");
+                        .HasForeignKey("IdClientes");
 
                     b.HasOne("Ecommerce_CyberKnight.Models.Endereco", "Endereco")
                         .WithMany()
