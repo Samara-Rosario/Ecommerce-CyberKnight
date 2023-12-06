@@ -39,8 +39,15 @@
                 Incluir
             </a>
 
-        </header>
+		</header>
+        <div>
+			<span id="msg-error" class="text-danger">
+				@Model.MsgError
+			</span>
+		</div>
         <div class="flex-container">
+       
+
             <table class="table">
                 <thead>
                     <tr>
@@ -54,7 +61,7 @@
                 <tbody>
                     @foreach (var unidadeMedida in Model.unidadeMedidas) {
                         <tr>
-                            <td scope="row">1</td>
+                            <td scope="row"> @unidadeMedida.Id </td>
                             <td>@unidadeMedida.Sigla</td>
                             <td>@unidadeMedida.NomeExtenso</td>
 
@@ -80,6 +87,12 @@
             </table>
         </div>
 </body>
-
-    </html>
+<script>
+    setTimeout(
+        () => {
+            document.getElementById("msg-error").innerText = "";
+        }
+        , 5000);
+</script>
+</html>
 

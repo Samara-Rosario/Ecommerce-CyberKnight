@@ -9,7 +9,6 @@ namespace Ecommerce_CyberKnight.Models
         public int? Id {  get; set; }
         public int? IdCliente { get; set; }
         public int? IdEndereco { get; set; }
-        public string itensDoPedido { get; set; }
         public double FormaPagamento { get; set; }
         public DateTime DataeHora { get; set; }
 

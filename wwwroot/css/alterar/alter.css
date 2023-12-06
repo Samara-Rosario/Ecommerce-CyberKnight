@@ -127,6 +127,12 @@ body {
     margin-left: -9vw;
 }
 
+#logo{
+    background-image: url(../alterar/img/logo.webp)
+    width: 12vw;
+    height: 50vh;
+}
+
 #img-untmedi {
     background: linear-gradient(180deg, rgba(87,84,255,100) 0%, rgba(255,255,255,1) 100%);
     box-shadow: 0px 5px 10px rgb(120, 120, 120);
