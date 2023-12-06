@@ -28,7 +28,7 @@ namespace Ecommerce_CyberKnight.Pages.ClienteCRUD
 
             bool validado = await TryUpdateModelAsync<Clientes>(
                 cliente, "cliente", c => c.Nome, c => c.Cpf, c => c.Email, c => c.Cep, c => c.Telefone,
-                c => c.DataDeNascimento, c => c.Login, c => c.Senha, c => c.ConfirmarSenha
+                c => c.DataDeNascimento
 
                 );
 

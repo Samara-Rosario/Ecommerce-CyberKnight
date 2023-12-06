@@ -47,6 +47,7 @@
             </header>
 
 			<h1>Alterar Cliente "@Model.clientes.Nome"</h1>
+			<form method="post">
 
 			<input type="hidden" asp-for="clientes.Id" />
 			<br />
@@ -96,26 +97,9 @@
 				<span asp-validation-for="clientes.DataDeNascimento" class="text-danger"></span>
 			</div>
 			<br />
-				<label asp-for="clientes.Login" class=" control-label">Login:</label>
-				<input asp-for="clientes.Login" class="form-control" />
-				<span asp-validation-for="clientes.Login" class="text-danger"></span>
-			</div>
-			<br />
-			<label asp-for="clientes.Senha" class=" control-label">Senha:</label>
-			<input asp-for="clientes.Senha" class="form-control" />
-			<span asp-validation-for="clientes.Senha" class="text-danger"></span>
-		</div>
-		<br />
-		<label asp-for="clientes.ConfirmarSenha" class=" control-label">Confirmar Senha:</label>
-		<input asp-for="clientes.ConfirmarSenha" class="form-control" />
-		<span asp-validation-for="clientes.ConfirmarSenha" class="text-danger"></span>
-	</div>
-	<br />
-			</div>
-			<br />
 	        <button id="btn-enviar" type="submit" class="btn btn-primary">Enviar</button>
-        </div> 
-	</div>
+	</form>
+		</div>
+			</div>
 </body>
-
 </html>

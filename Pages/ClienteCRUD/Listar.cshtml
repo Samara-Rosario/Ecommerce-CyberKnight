@@ -36,13 +36,15 @@
             </div>
             <div>
                 <i id="carrinho" class="bi bi-cart"></i>
-                <span id="traco-dois">|</span>
+                <span. id="traco-dois">|</span.>
                 <i id="sair" class="bi bi-box-arrow-right"></i>
             </div>
         </header>
         <header id="linha1">
             <h1>Listagem de Clientes</h1>
-            <button id="btn-incluir" class="btn btn-primary">Incluir</button>
+            <a id="btn-incluir" class="btn btn-primary" asp-page="../ClienteCRUD/incluir">
+                Incluir
+             </a>
         </header>
         <div class="flex-container">
             <table class="table">
@@ -68,10 +70,19 @@
                         <td>@cliente.Cpf</td>
                         <td>@cliente.Email</td>
                         <td>@cliente.Telefone</td>
+                        <td>@cliente.Cep</td>
                         <td>@cliente.DataDeNascimento</td>
                         <td>
-                            <button id="btn-editar" type="button" class="btn btn-primary">Editar</button>
-                            <button id="btn-excluir" type="button" class="btn btn-danger">Excluir</button>
+                                <a asp-page="../ClienteCRUD/Alterar"
+                                        asp-route-id="@cliente.Id" id="btn-editar" class="btn btn-primary">
+                                    Editar
+                                </a>
+                                <span class="espaco"></span>
+                                <form method="post"
+                                        asp-page-handler="delete"
+                                        asp-route-id="@cliente.Id">
+                                    <button id="btn-excluir" class="btn btn-danger">Excluir</button>
+                                </form>
                         </td>
                     </tr>
                     }
