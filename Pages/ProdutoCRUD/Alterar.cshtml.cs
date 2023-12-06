@@ -41,6 +41,8 @@ namespace Ecommerce_CyberKnight.Pages.ProdutoCRUD
         public AlterarModel(ApplicationDbContext context, IWebHostEnvironment webHostEnvironment) {
             _context = context;
             _webHostEnvironment = webHostEnvironment;
+            listaUnidadeMedidas = context.unidadeMedidas.ToList();
+            listaCategoria = context.Categorias.ToList();
         }
 
         public async Task<IActionResult> OnGetAsync(int? id) {

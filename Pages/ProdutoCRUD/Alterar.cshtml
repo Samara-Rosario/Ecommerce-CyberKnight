@@ -45,7 +45,7 @@
                     <div id="card-login">
                         <br>
                         <br>
-                        <h1>Incluir Novo Produto</h1>
+                        <h1>Alterar Produto</h1>
                         <div class="row">
                             <div class="col">
                                 <label id="nome-um">Nome:</label>
@@ -58,11 +58,11 @@
                                 <br />
                                 <select class="form-control" asp-for="IdCategoria">
                                     <option selected>Selecione a categoria</option>
+                                    <span asp-validation-for="produtos.categoria" class="text-danger msg-erro"></span>
                                     @foreach (var categoria in Model.listaCategoria) {
                                         <option value="@categoria.Id">@categoria.Nome</option>
                                     }
                                 </select>
-                                <span asp-validation-for="produtos.categoria" class="text-danger msg-erro"></span>
                             </div>
                         </div>
                         <br />
@@ -89,11 +89,11 @@
                                 <br>
                                 <select class="form-control" asp-for="IdUnidadeMedida">
                                     <option selected>Selecione a unidade de medida</option>
+                                    <span asp-validation-for="produtos.unidadeMedida" class="text-danger"></span>
                                     @foreach (var unidadeDeMedida in Model.listaUnidadeMedidas) {
-                                        <option value="@unidadeDeMedida.Id">@unidadeDeMedida.NomeExtenso</option>
+                                        <option value="@unidadeDeMedida.Id">@unidadeDeMedida.Sigla</option>
                                     }
                                 </select>
-                                <span asp-validation-for="produtos.unidadeMedida" class="text-danger"></span>
                             </div>
                         </div>
 
@@ -110,7 +110,7 @@
                                 <label id="img-label">Inserir Imagem:</label>
                                 <br />
                                 <input asp-for="ImagemProduto" class="custom-file-input" accept="image/*" />
-                                <span asp-validation-for="ImagemProduto" class="text-danger"></span>
+                               <span asp-validation-for="ImagemProduto" class="text-danger"></span>
                             </div>
                         </div>
                         <button id="btn-enviar" type="submit" class="btn btn-primary">Enviar</button>
@@ -118,9 +118,7 @@
                 </div>
             </form>
         </div>
-                </div>
-        </div>
-    </div>
+   </div>
 </body>
 
 </html>
