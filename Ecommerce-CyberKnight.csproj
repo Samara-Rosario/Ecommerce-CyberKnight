@@ -15,6 +15,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Include="wwwroot\css\CadastroRealizado\style-tela_logado_sucesso.css" />
+    <None Include="wwwroot\img\asset\CadastroRealizado\background.webp" />
+    <None Include="wwwroot\img\asset\CadastroRealizado\guirlandas 1.png" />
+    <None Include="wwwroot\img\asset\CadastroRealizado\Yellow_and_Black_Simple_Banana_Fruit_Logo__1_-removebg-preview 1.png" />
     <None Include="wwwroot\lib\globalize\dist\globalize-runtime.js" />
     <None Include="wwwroot\lib\globalize\dist\globalize-runtime\currency.js" />
     <None Include="wwwroot\lib\globalize\dist\globalize-runtime\date.js" />

@@ -1,4 +1,5 @@
 ﻿@page
+@using Microsoft.EntityFrameworkCore.Metadata.Internal;
 @model Ecommerce_CyberKnight.Pages.RegistrarClientesModel
 @{
     Layout = "";
@@ -54,7 +55,7 @@
         </div>
         <div class="input-group">
             <label  asp-for="Cliente.DataDeNascimento">Data de Nascimento</label>
-            <input asp-for="Cliente.DataDeNascimento" type="tel" placeholder="Digite a sua Data de Nascimento" required />
+            <input asp-for="Cliente.DataDeNascimento" type="datetime" placeholder="Digite a sua Data de Nascimento" required />
         </div>
         <div class="input-group w50">
           <label  asp-for="Cliente.Senha">Senha</label>
@@ -64,23 +65,22 @@
           </div>
         </div>
         <div class="input-group w50">
+          </div>
           <label  asp-for="Cliente.ConfirmarSenha">Confirmar Senha</label>
           <div class="estilo-input">
             <input asp-for="Cliente.ConfirmarSenha" senha type="password" id="ConfirmarSenha" placeholder="Confirme a senha" required>
             <i onclick="hideConfirmSenha()" id="btnConfirmSenha" class="bi  bi-eye-slash"></i>
-          </div>
         </div>
         
         <div id="botaocadastrar" class="input-group">
-              <button>Cadastrar</button>
+             <button type="submit">Cadastrar</button>
         </div>
-
       </form>
-      </div>
 
     <script src="~/js/registro-cliente/script.js"></script>
     <script src="~/js/registro-cliente/viacep.js"></script>
-  </div>
-  
-</body>
+      </div>
+        </div>
+    </body>
 </html>
+  
