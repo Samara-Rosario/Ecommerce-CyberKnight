@@ -9,8 +9,7 @@ using System.Diagnostics;
 
 namespace Ecommerce_CyberKnight.Pages.ProdutoCRUD
 {
-    public class AlterarModel : PageModel
-    {
+    public class Alterar2Model : PageModel{
         private readonly ApplicationDbContext _context;
 
         private readonly IWebHostEnvironment _webHostEnvironment;
@@ -24,34 +23,18 @@ namespace Ecommerce_CyberKnight.Pages.ProdutoCRUD
         [Display(Name = "Imagem do Produto")]
         public IFormFile ImagemProduto { get; set; }
 
-        public List<UnidadeMedida> listaUnidadeMedidas { get; set; }
-        public List<Categoria> listaCategoria { get; set; }
-
-        [BindProperty]
-        [Display(Name = "Categoria")]
-        [Required(ErrorMessage = "0 Campo \"{0}\"é de preenchimento obrigatório,")]
-        public int IdCategoria { get; set; }
-
-        [BindProperty]
-        [Display(Name = "Unidade de Medida")]
-        [Required(ErrorMessage = "0 Campo \"{0}\"é de preenchimento obrigatório,")]
-        public int IdUnidadeMedida { get; set; }
-
-
-        public AlterarModel(ApplicationDbContext context, IWebHostEnvironment webHostEnvironment) {
+        public Alterar2Model(ApplicationDbContext context, IWebHostEnvironment webHostEnvironment) {
             _context = context;
             _webHostEnvironment = webHostEnvironment;
-            listaUnidadeMedidas = context.unidadeMedidas.ToList();
-            listaCategoria = context.Categorias.ToList();
         }
 
-        public async Task<IActionResult> OnGetAsync(int? id) {
-            if (id == null) {
+        public async Task<IActionResult> OnGetAsync(int? id){
+            if(id == null) {
                 return NotFound();
             }
             produtos = await _context.Produtos.FirstOrDefaultAsync(p => p.Id == id);
 
-            if (produtos == null) {
+            if(produtos == null) {
                 return NotFound();
             }
 
@@ -72,14 +55,14 @@ namespace Ecommerce_CyberKnight.Pages.ProdutoCRUD
                 if (ImagemProduto != null) {
                     await AppUtils.ProcessarArquivoDeImagem(produtos.Id, ImagemProduto, _webHostEnvironment);
 
-                }
-            } catch (DbUpdateConcurrencyException error) {
+                } 
+            }catch (DbUpdateConcurrencyException error) {
                 if (!ProdutoAindaExiste(produtos.Id)) {
                     return NotFound();
                 } else {
                     throw;
                 }
-            } catch (Exception err) {
+            } catch(Exception err) {
                 Debug.WriteLine(err);
                 return Page();
             }

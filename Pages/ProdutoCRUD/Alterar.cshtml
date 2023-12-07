@@ -1,64 +1,125 @@
 ﻿@page
 @model Ecommerce_CyberKnight.Pages.ProdutoCRUD.AlterarModel
 @{
+    Layout = "";
 }
-<h1>Editar Produto "@Model.produtos.Nome"</h1>
 
-<form method="post" class="mt-3" enctype="multipart/form-data">
-  <input class="form-control" type="hidden" asp-for="produtos.Id" />
+<!DOCTYPE html>
+<html lang="en">
 
-  <div class="row">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alterar Produtos</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="~/css/alterar/style-tela-alterar-produto.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+</head>
 
-    <div class="col-4">
-        <label asp-for="produtos.Nome">Nome:</label>
-        <input class="form-control" asp-for="produtos.Nome" />
-        <span asp-validation-for="produtos.Nome" class="text-danger"></span>
-    </div>
-    <br />
-    <div class="col-5">
-        <label asp-for="produtos.descricao">Descrição:</label>
-        <input class="form-control" asp-for="produtos.descricao" />
-        <span asp-validation-for="produtos.descricao" class="text-danger"></span>
-    </div>
-  </div>
-    <br />
-    <div class="col-4">
-        <label asp-for="produtos.categoria">Categoria:</label>
-        <input class="form-control" asp-for="produtos.categoria" />
-        <span asp-validation-for="produtos.categoria" class="text-danger"></span>
-    </div>
-    <br />
-    <div class="col-4">
-        <label asp-for="produtos.preco">Preço:</label>
-        <input class="form-control" asp-for="produtos.preco" />
-        <span asp-validation-for="produtos.preco" class="text-danger"></span>
-    </div>
-    <br />
-    <div class="col-4">
-        <label asp-for="produtos.unidadeMedida">Unidade de Medida:</label>
-        <input class="form-control" asp-for="produtos.unidadeMedida" />
-        <span asp-validation-for="produtos.unidadeMedida" class="text-danger"></span>
-    </div>
-    <br />
-    <div class="col-4">
-        <label asp-for="produtos.estoque">Estoque:</label>
-        <input class="form-control" asp-for="produtos.estoque" />
-        <span asp-validation-for="produtos.estoque" class="text-danger"></span>
-    </div>
-
-    <div class="form-group">
-        <label asp-for="ImagemProduto" class="control-label"></label>
-        <div class="custom-file col-4 d-block">
-            <input asp-for="ImagemProduto" class="custom-file-input" accept="image/*" />
-            <label class="custom-file-label">Clique aqui para alterar</label>
+<body>
+    <div class="row">
+        <img id="logo" src="~/img/alterar/logo.webp" alt="" style="width: 130px;">
+        <div id="barra-lateral" class="col-3">
+            <label id="letreiro">Cyber Knights<br>E-commerce</label>
         </div>
-        <span asp-validation-for="ImagemProduto" class="text-danger"></span>
-    </div>
+        <div class="col-9">
+            <header>
+                <div>
+                    <button>Início</button>
+                    <span id="traco">|</span>
+                    <span id="produto">Produtos</span>
+                    <span id="clientes">Clientes</span>
+                    <span id="categoria">Categorias</span>
+                    <span id="unid">Unidade de Medida</span>
+                </div>
+                <div>
+                    <i id="carrinho" class="bi bi-cart"></i>
+                    <span id="traco-dois">|</span>
+                    <i id="sair" class="bi bi-box-arrow-right"></i>
+                </div>
+            </header>
 
-    <div class="form-group">
-        <img src="@Model.CaminhoImagem" class="image-thumbnail" asp-append-version="true" />
-    </div>
-    <br />
-    <br />
-    <input type="submit" class="btn btn-outline-success" value="Enviar" />
-</form>
+            <form method="post" class=" mt-3" enctype="multipart/form-data">
+                <div class="flex-container">
+                    <div id="card-login">
+                        <br>
+                        <br>
+                        <h1>Alterar Produto</h1>
+                        <div class="row">
+                            <div class="col">
+                                <label id="nome-um">Nome:</label>
+                                <br />
+                                <input class="form-control" id="nome" asp-for="produtos.Nome" type="text">
+                                <span asp-validation-for="produtos.Nome" class="text-danger"></span>
+                            </div>
+                            <div class="col-4">
+                                <label>Categoria:</label>
+                                <br />
+                                <select class="form-control" asp-for="IdCategoria">
+                                    <option selected>Selecione a categoria</option>
+                                    <span asp-validation-for="produtos.categoria" class="text-danger msg-erro"></span>
+                                    @foreach (var categoria in Model.listaCategoria) {
+                                        <option value="@categoria.Id">@categoria.Nome</option>
+                                    }
+                                </select>
+                            </div>
+                        </div>
+                        <br />
+                        <br>
+                        <div class="row">
+                            <div class="col">
+                                <label id="descricao-um">Descrição:</label>
+                                <br />
+                                <input class="form-control" id="descricao" asp-for="produtos.descricao" type="text">
+                                <span asp-validation-for="produtos.descricao" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <br>
+                        <br>
+                        <div class="row">
+                            <div class="col">
+                                <label id="preco-label">Preço:</label>
+                                <br />
+                                <input class="form-control" id="preco-input" asp-for="produtos.preco" type="text">
+                                <span asp-validation-for="produtos.preco" class="text-danger"></span>
+                            </div>
+                            <div class="col-5">
+                                <label id="unid-label"> Unidade de Medida:</label>
+                                <br>
+                                <select class="form-control" asp-for="IdUnidadeMedida">
+                                    <option selected>Selecione a unidade de medida</option>
+                                    <span asp-validation-for="produtos.unidadeMedida" class="text-danger"></span>
+                                    @foreach (var unidadeDeMedida in Model.listaUnidadeMedidas) {
+                                        <option value="@unidadeDeMedida.Id">@unidadeDeMedida.Sigla</option>
+                                    }
+                                </select>
+                            </div>
+                        </div>
+
+                        <br>
+                        <br />
+                        <div class="row">
+                            <div class="col">
+                                <label id="estoque-label">Estoque:</label>
+                                <br />
+                                <input class="form-control" id="estoque-input" asp-for="produtos.estoque" type="text">
+                                <span asp-validation-for="produtos.estoque" class="text-danger"></span>
+                            </div>
+                            <div class="col">
+                                <label id="img-label">Inserir Imagem:</label>
+                                <br />
+                                <input asp-for="ImagemProduto" class="custom-file-input" accept="image/*" />
+                               <span asp-validation-for="ImagemProduto" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <button id="btn-enviar" type="submit" class="btn btn-primary">Enviar</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+   </div>
+</body>
+
+</html>
+
