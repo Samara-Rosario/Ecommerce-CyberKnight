@@ -1,0 +1,66 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+
+<div class="text-center">
+    <h1 class="display-4">Bem vindo</h1>
+    <p>Apenas produtos de qualidade!</p>
+
+</div>
+
+ <div class="row row-cols-1 row-cols-md-3 g-4">
+        @if (Model.Produtos.Count > 0)
+        {
+        <form class="form-inline my-2 my-lg-0" action="/Index" method="get">
+             <input type="hidden" name="o" value="0" id="o" />       
+             <input type="hidden" name="p" value="1" id="p" />       
+             <input type="text"
+                    name="q"
+                    placeholder="Nome do produto a buscar..."
+                    class="form-control mr-sm-2" />
+            <button class="btn btn-secondary my-2 my-sm-0" type="submit">
+                Buscar
+            </button>
+        </form>
+            @foreach (var produto in Model.Produtos)
+            {
+                <div class="col-3">
+                    <div class="card h-100">
+                        <img src="~/img/produto/@String.Concat(produto.Id.ToString("D6"),".jpg")" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">@produto.Nome </h5>
+                            <p class="card-text">@produto.descricao</p>
+                        </div>
+                    </div>
+                </div>
+                 
+            }
+
+        }
+     </div>
+
+                <div class="container text-center">
+                     <nav aria-label="page navigation example">
+                          <ul class=" pagination"> @for (int i = 1; i <= Model.QuantidadePagina; i++) {
+                          @if (i == Model.QuantidadePagina){
+                                 <li class="page-item"><a class="page-link" href="~/                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       ">@i</a></li>
+                          } else {
+                                <li class="page-item"><a class="page-link" href="#">@i</a></li>
+                          }                
+                          }</ul>
+                     </nav>
+                </div>
+
+
+
+
+
+
+
+
+@section Scripts{
+    <script type="text/javascript" src="/js/site.js"></script>
+}
