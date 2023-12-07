@@ -253,6 +253,11 @@ container-principal-banner {
     padding-left: 10px;
 }
 
+.card-produto a:link, .card-produto a:hover, .card-produto a{
+    color: black;
+    text-decoration: none;
+}
+
 .ctn-valor {
     padding: 2px;
     border-radius: 5px;
