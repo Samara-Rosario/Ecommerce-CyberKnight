@@ -225,26 +225,30 @@
 
             <div id="listagem-produtos">
 
-                @foreach (var produto in Model.Produtos){
+                @if(Model.Produtos.Count > 0){
+                    @foreach (var produto in Model.Produtos){
                    
-                    <div class="card-produto" title="@produto.descricao">
-                        <a asp-page="/Detalhes-produto" asp-route-id="@produto.Id"> 
-                            <img class="img-produto" src="~/img/produto/@String.Concat(produto.Id.ToString("D6"),".jpg")" alt="">
-                        </a >   
-                        <h3>
-                          <a asp-page="/Detalhes-produto" asp-route-id="@produto.Id">
-                            @produto.Nome
-                            </a>
-                        </h3>
+                        <div class="card-produto" title="@produto.descricao">
+                            <a asp-page="/Detalhes-produto" asp-route-id="@produto.Id"> 
+                                <img class="img-produto" src="~/img/produto/@String.Concat(produto.Id.ToString("D6"),".jpg")" alt="">
+                            </a >   
+                            <h3>
+                              <a asp-page="/Detalhes-produto" asp-route-id="@produto.Id">
+                                @produto.Nome
+                                </a>
+                            </h3>
                       
-                        <div>
+                            <div>
                 
-                            <span class="ctn-valor">R$ @produto.preco.ToString("C2")</span>
-                            <button>
-                                <i class="bi bi-bag-check-fill"></i>
-                            </button>
+                                <span class="ctn-valor">R$ @produto.preco.ToString("C2")</span>
+                                <button>
+                                    <i class="bi bi-bag-check-fill"></i>
+                                </button>
+                            </div>
                         </div>
-                    </div>
+                    }
+                }else{
+                    <h1 style="text-align: center;">Nenhum Produto Encontrado</h1>
                 }
             </div>
 
@@ -255,11 +259,11 @@
                         {
                             @if (i == Model.QuantidadePagina)
                             {
-                                <li class="page-item"><a class="page-link" href="~/                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       ">@i</a></li>
+                                <li onclick="enviarForm(@i)" class="page-item"><a class="page-link">@i</a></li>
                             }
                             else
                             {
-                                <li class="page-item"><a class="page-link" href="#">@i</a></li>
+                                <li onclick="enviarForm(@i)" class="page-item"><a class="page-link">@i</a></li>
                             }
                         }
                     </ul>
@@ -310,11 +314,11 @@
             console.log(evt);
         });
 
-        function enviarForm() {
+        function enviarForm(numPagina = 1) {
             formFiltro.valMin.value = dadosFiltroPreco.from || parametros.valMin || 0;
             formFiltro.valMax.value = dadosFiltroPreco.to || parametros.valMax || 30;
             formFiltro.q.value = pesquisaProduto.value.trim();
-
+            formFiltro.p.value = numPagina;
 
 
             inputsOrdem.forEach((item) => {
