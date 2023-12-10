@@ -63,10 +63,6 @@ namespace Ecommerce_CyberKnight.Pages
                 );
             }
 
-            this._valorProdMaximo = Convert.ToInt32(query.Max( q => q.preco));
-            this._valorProdMaximo = (int)Math.Ceiling(this._valorProdMaximo / 10.0) * 10;
-
-
             List<int> catsFront = new List<int>();
 
 
@@ -85,10 +81,6 @@ namespace Ecommerce_CyberKnight.Pages
 
                 query = query.Where(
                     p => catsFront.Contains(p.IdCategoria)
-
-
-
-
                 ); ;
             }
 
@@ -130,6 +122,14 @@ namespace Ecommerce_CyberKnight.Pages
                 }
             
             }
+
+            //Obtem o valor do produto mais caro para ser usado no range de filtrgem de produto
+            int qtdProd = query.Count();
+            if (qtdProd > 0){
+                this._valorProdMaximo = Convert.ToInt32(query.Max(q => q.preco));
+                this._valorProdMaximo = (int)Math.Ceiling(this._valorProdMaximo / 10.0) * 10;
+            }
+
 
             var stage = query;
             var qtdProdutos = stage.Count();

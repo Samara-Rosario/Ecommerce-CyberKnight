@@ -13,6 +13,17 @@ namespace Ecommerce_CyberKnight.Models
         public double FormaPagamento { get; set; }
         public DateTime DataeHora { get; set; }
 
+        public double ValorPedido()
+        {
+            double valor = 0;
+
+            foreach (var pedido in ItensDoPedido)
+            {
+                valor += pedido.ValorItem * pedido.Quantidade;
+            }
+
+            return valor;
+        }
         public ICollection<itemDoPedido> ItensDoPedido { get; set; }
         [ForeignKey("IdEndereco")]
         public Endereco? Endereco { get; set; }

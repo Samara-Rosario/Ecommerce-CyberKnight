@@ -9,9 +9,18 @@
 
   <ItemGroup>
     <Compile Remove="crud-produto\**" />
+    <Compile Remove="wwwroot\img\dtlhs-produto\**" />
     <Content Remove="crud-produto\**" />
+    <Content Remove="wwwroot\img\dtlhs-produto\**" />
     <EmbeddedResource Remove="crud-produto\**" />
+    <EmbeddedResource Remove="wwwroot\img\dtlhs-produto\**" />
     <None Remove="crud-produto\**" />
+    <None Remove="wwwroot\img\dtlhs-produto\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="wwwroot\bgd-preto-lateral.png" />
+    <Content Remove="wwwroot\img\produto\kiwi.webp" />
   </ItemGroup>
 
   <ItemGroup>
