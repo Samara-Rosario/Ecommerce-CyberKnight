@@ -42,10 +42,10 @@
             <p>Detalhes do pedido</p>
             <h5>Todos os Pedidos (@Model.pedidos.Count())</h5>
             <div>
-                <h6>Classificar por <i class="bi bi-arrow-left-right"></i> <br>ID do pedido, preço</h6>
+                <h6>Filtrar por <i class="bi bi-arrow-left-right"></i> <br> preço</h6>
             </div>
             <div>
-                <h6 id="filtro-status">Filtrar por <i class="bi bi-arrow-left-right"></i> <br>status do pagamento, status do pedido, data</h6>
+                <h6 id="filtro-status">Filtrar por <i class="bi bi-arrow-left-right"></i> <br>data e hora do pedido</h6>
             </div>
             <div class="flex-container">
                 <table class="table">
@@ -74,6 +74,9 @@
                     </tbody>
                 </table>
             </div>
+            <form id="form-filtro" hidden action="get">
+                <input type="hidden" name="o" value="0" id="o"/>
+            </form>
 </body>
 
 </html>
