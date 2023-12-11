@@ -85,7 +85,8 @@ namespace Ecommerce_CyberKnight.Pages
             }
 
 
-            // Filtro preço
+
+            // Filtro preÃ§o
             try
             {
                 //Filtro Rager de Valores
@@ -102,7 +103,7 @@ namespace Ecommerce_CyberKnight.Pages
             }
 
 
-            //fiiltro de ordenação
+            //fiiltro de ordenaÃ§Ã£o
             if (ordem.HasValue)
             {
                 switch (ordem.Value)
@@ -141,11 +142,11 @@ namespace Ecommerce_CyberKnight.Pages
 
 
             QuantidadePagina = Convert.ToInt32(result);
-            //Aqui você deve escrever o calculo para obter a quantidade de páginas, você já ter definido quantos produtos deve ter em cada página,
+            //Aqui vocÃª deve escrever o calculo para obter a quantidade de pÃ¡ginas, vocÃª jÃ¡ ter definido quantos produtos deve ter em cada pÃ¡gina,
 
 
 
-            //e também possui la quantidade de produto em toda o sistema. O número a obter deve ser no tipo inteiro
+            //e tambÃ©m possui la quantidade de produto em toda o sistema. O nÃºmero a obter deve ser no tipo inteiro
 
             query = query.Skip(qtdProdPorPagina * (this.paginaAtual - 1)).Take(qtdProdPorPagina);
 

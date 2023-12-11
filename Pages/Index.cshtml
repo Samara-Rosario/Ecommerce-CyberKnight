@@ -1,4 +1,4 @@
-﻿@page
+@page
 @model Ecommerce_CyberKnight.Pages.IndexModel
 @{
     Layout = "";
@@ -18,7 +18,6 @@
 
     <!-- icones do bootstrap -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
-
 
     <!-- codigo js do bootstrap -->
     <script src="https://cdn.jsdelivr.net/npm/@@popperjs/core@2.11.8/dist/umd/popper.min.js"
@@ -95,11 +94,10 @@
                 @foreach (var categoria in Model.categorias)
                 {
                     <div title="@categoria.Descricao">
-                        <input class="input-categoria" type="checkbox" value="@categoria.Id">
+                        <input value="@categoria.Id" type="checkbox">
                         <span>@categoria.Nome</span>
                     </div>
                 }
-
 
             </div>
 
@@ -352,7 +350,7 @@
 
             catSelected.forEach((input) => {
                 if (input.checked) {
-                    listaCat.value += input.value + ",";
+                    formFiltro.cats.value += input.value + ",";
                 }
             });
 

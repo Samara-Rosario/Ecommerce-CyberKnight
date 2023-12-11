@@ -9,6 +9,7 @@
   },
   "profiles": {
     "Ecommerce_CyberKnight": {
+
         "commandName": "Project",
         "dotnetRunMessages": true,
         "launchBrowser": true,
@@ -16,6 +17,7 @@
         "environmentVariables": {
             "ASPNETCORE_ENVIRONMENT": "Development"
         }
+
     },
     "IIS Express": {
       "commandName": "IISExpress",

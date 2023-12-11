@@ -22,6 +22,49 @@
     <link rel="stylesheet" href="~/css/listagem/style-tela-listagem-produtos.css">
 </head>
 
+<table class="table">
+	<thead>
+		<tr>
+			<td>id</td>
+			<td>Nome</td>
+			<td>Descrição</td>
+			<td>Categoria</td>
+			<td>Preço</td>
+			<td>Unid_Medida</td>
+			<td>Estoque</td>
+			<td>Ações</td>
+		</tr>
+	</thead>
+	<tbody>
+		@foreach (var Produto in Model.Produtos) {
+			<tr>
+				<td>@Produto.Id</td>
+				<td>@Produto.Nome</td>
+				<td>@Produto.descricao</td>
+				<td>@Produto.categoria</td>
+				<td>@Produto.preco</td>
+				<td>@Produto.unidadeMedida</td>
+				<td>@Produto.estoque</td>
+				<td>
+					<a asp-page="./Alterar"
+					   asp-route-id="@Produto.Id"
+					   class="btn btn-outline-primary">
+					   <button>
+							Editar
+					   </button>
+					</a>
+					<form method="post"
+						  asp-page-handler="delete"
+						  asp-route-id="@Produto.Id"
+					>
+						<button class="btn btn-outline-primary">Excluir</button>
+					</form>
+				</td>
+			</tr>
+		}
+	</tbody>
+</table>
+=======
 <body>
     <div class="col-12">
         <header>

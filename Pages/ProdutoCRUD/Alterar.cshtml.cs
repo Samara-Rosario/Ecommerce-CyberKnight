@@ -15,7 +15,7 @@ namespace Ecommerce_CyberKnight.Pages.ProdutoCRUD
 
         private readonly IWebHostEnvironment _webHostEnvironment;
 
-        // o "[BindProperty]" configura a aplicaÁ„o para relacionar o atributo 'produto' aos dados que est„o vindo do front-end*/
+        // o "[BindProperty]" configura a aplica√ß√£o para relacionar o atributo 'produto' aos dados que est√£o vindo do front-end*/
         [BindProperty]
         public Produto produtos { get; set; }
         public string CaminhoImagem { get; set; }
@@ -29,12 +29,12 @@ namespace Ecommerce_CyberKnight.Pages.ProdutoCRUD
 
         [BindProperty]
         [Display(Name = "Categoria")]
-        [Required(ErrorMessage = "0 Campo \"{0}\"È de preenchimento obrigatÛrio,")]
+        [Required(ErrorMessage = "0 Campo \"{0}\"√© de preenchimento obrigat√≥rio,")]
         public int IdCategoria { get; set; }
 
         [BindProperty]
         [Display(Name = "Unidade de Medida")]
-        [Required(ErrorMessage = "0 Campo \"{0}\"È de preenchimento obrigatÛrio,")]
+        [Required(ErrorMessage = "0 Campo \"{0}\"√© de preenchimento obrigat√≥rio,")]
         public int IdUnidadeMedida { get; set; }
 
 
@@ -44,7 +44,7 @@ namespace Ecommerce_CyberKnight.Pages.ProdutoCRUD
             listaUnidadeMedidas = context.unidadeMedidas.ToList();
             listaCategoria = context.Categorias.ToList();
         }
-
+        
         public async Task<IActionResult> OnGetAsync(int? id) {
             if (id == null) {
                 return NotFound();
@@ -60,6 +60,11 @@ namespace Ecommerce_CyberKnight.Pages.ProdutoCRUD
             return Page();
         }
 
+
+
+
+
+
         public async Task<IActionResult> OnPostAsync() {
             if (!ModelState.IsValid) {
                 return Page();
@@ -68,7 +73,7 @@ namespace Ecommerce_CyberKnight.Pages.ProdutoCRUD
 
             try {
                 await _context.SaveChangesAsync();
-                //Se h· uma imagem de produto submetia
+                //Se h√° uma imagem de produto submetia
                 if (ImagemProduto != null) {
                     await AppUtils.ProcessarArquivoDeImagem(produtos.Id, ImagemProduto, _webHostEnvironment);
 
