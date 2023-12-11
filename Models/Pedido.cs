@@ -5,13 +5,25 @@ namespace Ecommerce_CyberKnight.Models
 {
     public class Pedido{
 
+        public enum SituacaoPedido {
+            Carrinho,
+            Realizado,
+            Verificado,
+            Atendido,
+            Entregue,
+            Cancelado
+        }
+
         [Key]
         public int? Id {  get; set; }
         public int? IdCliente { get; set; }
         public int? IdEndereco { get; set; }
         public string itensDoPedido { get; set; }
         public double FormaPagamento { get; set; }
+        public SituacaoPedido Situacao { get; set; }
         public DateTime DataeHora { get; set; }
+
+        public string IdCarrinho { get; set; }
 
         public double ValorPedido()
         {
