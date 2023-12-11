@@ -14,30 +14,27 @@ namespace Ecommerce_CyberKnight.Models
             Cancelado
         }
 
-        public enum SituacaoPedido {
-            Carrinho,
-            Realizado,
-            Verificado,
-            Atendido,
-            Entregue,
-            Cancelado
+        public enum TipoFormaPagamento {
+            PIX,
+            C_CREDITO,
+            C_DEBITO,
+            BOLETO,
+            A_VISTA
         }
+
 
         [Key]
         public int? Id {  get; set; }
         public int? IdCliente { get; set; }
         public int? IdEndereco { get; set; }
         public string IdCarrinho { get; set; }
-        public double FormaPagamento { get; set; }
-        public SituacaoPedido Situacao { get; set; }
+        public TipoFormaPagamento FormaPagamento { get; set; }
         public DateTime DataeHora { get; set; }
 
 
         [Required(ErrorMessage = "O campo \"{0}\" é de preenchimento obrigatório.")]
         [DisplayName("Situação")]
         public SituacaoPedido Situacao { get; set; }
-
-        public string IdCarrinho { get; set; }
 
         public double ValorPedido()
         {
