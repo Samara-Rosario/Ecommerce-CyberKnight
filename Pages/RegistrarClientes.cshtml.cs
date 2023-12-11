@@ -14,7 +14,7 @@ namespace Ecommerce_CyberKnight.Pages
         public class Senhas
         {
             [Required(ErrorMessage = "O campo {0} é de preenchimento obrigatório.")]
-            [StringLength(16, ErrorMessage = "O campo \"{0}\" deve ter pelo menos {2} e no máximo {1} caracteres", MinimumLength = 6)]
+            //[StringLength(16, ErrorMessage = "O campo \"{0}\" deve ter pelo menos {2} e no máximo {1} caracteres", MinimumLength = 5)]
             [DataType(DataType.Password)]
             [Display(Name = "Senha")]
             public string Senha { get; set; }
@@ -60,81 +60,82 @@ namespace Ecommerce_CyberKnight.Pages
         }
 
 
-            public async Task<IActionResult> OnPostAsync(){
+        public async Task<IActionResult> OnPostAsync()
+        {
 
-                //cria um novo objeto Cliente
-                var cliente = new Clientes();
-                cliente.Endereco = new Endereco();
+            //cria um novo objeto Cliente
+            var cliente = new Clientes();
+            cliente.Endereco = new Endereco();
 
-                Debug.WriteLine(ModelState.IsValid);
+            Debug.WriteLine(ModelState.IsValid);
 
-                //var senhasUsuario = new Senhas();
-                if (!await TryUpdateModelAsync(SenhasUsuarios, SenhasUsuarios.GetType(), nameof(SenhasUsuarios)))
-                    return Page();
+            var senhasUsuarios = new Senhas();
+            if (!await TryUpdateModelAsync(senhasUsuarios, senhasUsuarios.GetType(), nameof(senhasUsuarios)))
+                return Page();
 
-                //tenta atualizar o novo objeto com os dados oriundos do formulário
-                if (await TryUpdateModelAsync(cliente, Cliente.GetType(), nameof(Cliente)))
+            //tenta atualizar o novo objeto com os dados oriundos do formulário
+            if (await TryUpdateModelAsync(cliente, Cliente.GetType(), nameof(Cliente)))
+            {
+                //verifica se o perfil de usuário "cliente" existe
+                if (!await _roleManager.RoleExistsAsync("cliente"))
                 {
-                    //verifica se o perfil de usuário "cliente" existe
-                    if (!await _roleManager.RoleExistsAsync("cliente"))
+                    await _roleManager.CreateAsync(new IdentityRole("cliente"));
+                }
+
+                //verifica se já existe um usuário com o e-mail informado
+                var usuarioExistente = await _userManager.FindByEmailAsync(cliente.Email);
+                if (usuarioExistente != null)
+                {
+                    //adiciona um erro na propriedade Email do cliente para que o campo apresente o erro no formulário
+                    ModelState.AddModelError("Cliente.Email", "Já existe um cliente cadastrado com este e-mail.");
+
+                    return Page();
+                }
+
+                //cria o objeto usuário Identity e adiciona ao perfil "cliente"
+                var usuario = new AppUser()
+                {
+                    UserName = cliente.Email,
+                    Email = cliente.Email,
+                    PhoneNumber = cliente.Telefone,
+                    Nome = cliente.Nome
+                };
+
+                //cria usuário no banco de dados
+                var result = await _userManager.CreateAsync(usuario, SenhasUsuarios.Senha);
+
+                //se a criação do usuário Identity foi bem sucedida
+                if (result.Succeeded)
+                {
+
+                    //associa o usuário ao perfil "cliente"
+                    await _userManager.AddToRoleAsync(usuario, "cliente");
+
+                    //adiciona o novo objeto cliente ao contexto de banco de dados atual e salva no banco de dados
+                    _context.Clientes.Add(cliente);
+                    int afetados = await _context.SaveChangesAsync();
+                    //se salvou o cliente no banco de dados
+                    if (afetados > 0)
                     {
-                        await _roleManager.CreateAsync(new IdentityRole("cliente"));
-                    }
-
-                    //verifica se já existe um usuário com o e-mail informado
-                    var usuarioExistente = await _userManager.FindByEmailAsync(cliente.Email);
-                    if (usuarioExistente != null)
-                    {
-                        //adiciona um erro na propriedade Email do cliente para que o campo apresente o erro no formulário
-                        ModelState.AddModelError("Cliente.Email", "Já existe um cliente cadastrado com este e-mail.");
-
-                        return Page();
-                    }
-
-                    //cria o objeto usuário Identity e adiciona ao perfil "cliente"
-                    var usuario = new AppUser()
-                    {
-                        UserName = cliente.Email,
-                        Email = cliente.Email,
-                        PhoneNumber = cliente.Telefone,
-                        Nome = cliente.Nome
-                    };
-
-                    //cria usuário no banco de dados
-                    var result = await _userManager.CreateAsync(usuario, SenhasUsuarios.Senha);
-
-                    //se a criação do usuário Identity foi bem sucedida
-                    if (result.Succeeded)
-                    {
-
-                        //associa o usuário ao perfil "cliente"
-                        await _userManager.AddToRoleAsync(usuario, "cliente");
-
-                        //adiciona o novo objeto cliente ao contexto de banco de dados atual e salva no banco de dados
-                        _context.Clientes.Add(cliente);
-                        int afetados = await _context.SaveChangesAsync();
-                        //se salvou o cliente no banco de dados
-                        if (afetados > 0)
-                        {
-                            return RedirectToPage("CadastroRealizado");
-                        }
-                        else
-                        {
-                            //exclui o usuário Identity criado
-                            await _userManager.DeleteAsync(usuario);
-                            ModelState.AddModelError("Cliente", "Não foi possível efetuar o cadastro. Verifique os dados " +
-                                "e tente novamente. Se o problema persistir, entre em contato conosco.");
-                            return Page();
-                        }
+                        return RedirectToPage("CadastroRealizado");
                     }
                     else
                     {
-                        ModelState.AddModelError("Cliente.Email", "Não foi possível criar um usuário com este endereço de e-mail. " +
-                            "Use outro endereço de e-mail ou tente recuperar a senha deste.");
+                        //exclui o usuário Identity criado
+                        await _userManager.DeleteAsync(usuario);
+                        ModelState.AddModelError("Cliente", "Não foi possível efetuar o cadastro. Verifique os dados " +
+                            "e tente novamente. Se o problema persistir, entre em contato conosco.");
+                        return Page();
                     }
                 }
-
-                return Page();
+                else
+                {
+                    ModelState.AddModelError("Cliente.Email", "Não foi possível criar um usuário com este endereço de e-mail. " +
+                        "Use outro endereço de e-mail ou tente recuperar a senha deste.");
+                }
             }
+
+            return Page();
         }
     }
+}

@@ -21,7 +21,7 @@ div{
 /* RESET INPUT STYLE */
 .estilo-input > input[senha]{
     width: 100%;
-    height: 47px;
+    border: none;
     outline: none;
     padding: 15px;
     padding-right: 3em;
