@@ -1,4 +1,4 @@
-﻿@page
+@page
 @model Ecommerce_CyberKnight.Pages.IndexModel
 @{
     Layout = "";
@@ -67,9 +67,9 @@
                     <h5 class="filtro-titulo">Ordenar</h5>
                     <div>
                         <div>
-                            <input ordem value="1" type="radio" name="o">
+                            <input checked ordem value="1" type="radio" name="o">
                             <span>Nome - A - Z</span>
-                        </div>
+                        </div> 
                         <div>
                             <input ordem value="2" type="radio" name="o">
                             <span>Nome - Z - A</span>
@@ -135,8 +135,8 @@
                         Novos produtos
                     </span>
                     <span id="caixa-pesquisa">
-                        <i class="bi bi-search"></i>
-                        <input id="pesquisa-produto" placeholder="Procurar por produtos..." type="text">
+                        <i id="btn-lupa" class="bi bi-search"></i>
+                        <input value="@Model.termoBusca" id="pesquisa-produto" placeholder="Procurar por produtos..." type="text">
                     </span>
                 </div>
                 <div>
@@ -165,12 +165,10 @@
                             aria-label="Slide 2"></button>
                     </div>
 
-
-
                     <div class="carousel-inner">
                         <div class="carousel-item  active">
                             <div class="container-banner">
-                                <img src="~/img/assets/home/oferta_2.webp" class="img-banner" alt=""/>
+                                <img id="img-banner-2" src="~/img/assets/home/oferta_2.webp" class="img-banner" alt=""/>
                                 <img src="~/img/assets/home/oferta_4.webp" class="img-banner" alt="...">
                             </div>
                         </div>
@@ -198,25 +196,26 @@
             
             <div id="area-interemdiaria">
                 <div id="linha-1">
-                    <h2>Mais vendidos</h2>
-                    <span>
-                        <a id="link-ver-tudo" href="">
+                    <h2 id="produtos">Produtos</h2>
+                    <span style="margin-bottom: 20px">
+                        <a id="link-ver-tudo" href="/#produtos">
                             Ver tudo
                         </a>
                     </span>
                 </div>
                 <div id="linha-2">
                     <div>
-                        <span class="btn-filtro-ordenacao">Todos os produtos</span>
-                        <span class="btn-filtro-ordenacao">Todas as categorias</span>
+                        <span class="btn-filtro-ordenacao"><a href="/#produtos">Todos os produtos</a></span>
+                        <span class="btn-filtro-ordenacao"><a href="/#produtos">Todas as categorias</a></span>
                     </div>
                     <div>
                         <span id="ordenar-produto">Ordenar por:</span>
                         <span id="select-ordenacao">
-                            <select id ="btn-ordenar"class="form-select">
-                                <option selected value="1">Baixo-Alto</option>
-                                <option value="2">Barato-Caro</option>
-                                <option value="3">Three</option>
+                            <select id="select-ordenar" class="form-select">
+                                <option value="1">Por Nome - Crescente</option>
+                                <option value="2">Por Nome - Descrescente</option>
+                                <option value="3">Por Preço - Crescente</option>
+                                <option value="4">Por Preço - Descrescente</option>
                             </select>
                         </span>
                     </div>
@@ -225,19 +224,30 @@
 
             <div id="listagem-produtos">
 
-                @foreach (var produto in Model.Produtos){
-                <div class="card-produto" title="@produto.descricao">
-                        <img src="~/img/produto/@String.Concat(produto.Id.ToString("D6"),".jpg")" alt="">
-                    <h3>
-                        @produto.Nome
-                    </h3>
-                    <div>
-                        <span class="ctn-valor">R$ @produto.preco.ToString("C2")</span>
-                        <button>
-                            <i class="bi bi-bag-check-fill"></i>
-                        </button>
-                    </div>
-                </div>
+                @if(Model.Produtos.Count > 0){
+                    @foreach (var produto in Model.Produtos){
+                   
+                        <div class="card-produto" title="@produto.descricao">
+                            <a asp-page="/Detalhes-produto" asp-route-id="@produto.Id"> 
+                                <img class="img-produto" src="~/img/produto/@String.Concat(produto.Id.ToString("D6"),".jpg")" alt="">
+                            </a >   
+                            <h3>
+                              <a asp-page="/Detalhes-produto" asp-route-id="@produto.Id">
+                                @produto.Nome
+                                </a>
+                            </h3>
+                      
+                            <div>
+                
+                                <span class="ctn-valor">R$ @produto.preco.ToString("C2")</span>
+                                <button>
+                                    <i class="bi bi-bag-check-fill"></i>
+                                </button>
+                            </div>
+                        </div>
+                    }
+                }else{
+                    <h1 style="text-align: center;">Nenhum Produto Encontrado</h1>
                 }
             </div>
 
@@ -248,11 +258,11 @@
                         {
                             @if (i == Model.QuantidadePagina)
                             {
-                                <li class="page-item"><a class="page-link" href="~/                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       ">@i</a></li>
+                                <li onclick="enviarForm(@i)" class="page-item"><a class="page-link">@i</a></li>
                             }
                             else
                             {
-                                <li class="page-item"><a class="page-link" href="#">@i</a></li>
+                                <li onclick="enviarForm(@i)" class="page-item"><a class="page-link">@i</a></li>
                             }
                         }
                     </ul>
@@ -279,10 +289,34 @@
         var formFiltro = document.getElementById("form-filtro");
         var btnFiltrar = document.getElementById("btn-filtrar");
         var pesquisaProduto = document.getElementById("pesquisa-produto");
-
+        var selectOrdenar = document.getElementById("select-ordenar");
+        
         var catSelected = document.querySelectorAll(".filtro-categoria input[type='checkbox']");
+        var inputsOrdem = document.querySelectorAll("input[ordem]");
 
+        var query = location.search.slice(1);
+        var partes = query.split('&');
+        var parametros = {};
+        
+        partes.forEach(function (parte) {
+            var chaveValor = parte.split('=');
+            var chave = chaveValor[0];
+            var valor = chaveValor[1];
+            parametros[chave] = valor;
+        });
    
+        selectOrdenar.addEventListener("change", (obj) => {
+            formFiltro.o.value = obj.target.value;
+            console.log(formFiltro.o)
+
+            inputsOrdem.forEach((item) => {
+                if (item.value == obj.target.value){
+                    item.checked = true;
+                }
+            });
+
+            enviarForm(); 
+        });
 
         btnFiltrar.addEventListener("click", enviarForm);
         pesquisaProduto.addEventListener("keypress", (evt) => {
@@ -292,20 +326,27 @@
             console.log(evt);
         });
 
-
-
-        function enviarForm() {
-            formFiltro.valMin.value = dadosFiltroPreco.from || 0;
-            formFiltro.valMax.value = dadosFiltroPreco.to || 30;
+        function enviarForm(numPagina = 1) {
+            formFiltro.valMin.value = dadosFiltroPreco.from || parametros.valMin || 0;
+            formFiltro.valMax.value = dadosFiltroPreco.to || parametros.valMax || 30;
             formFiltro.q.value = pesquisaProduto.value.trim();
+            formFiltro.p.value = numPagina;
 
-            document.querySelectorAll("input[ordem]").forEach((item) => {
+            inputsOrdem.forEach((item) => {
                 if(item.checked){
                     formFiltro.o.value = item.value;
                 }
             });
 
             formFiltro.cats.value = "";
+
+            document.querySelectorAll(".input-categoria").forEach((item) => {
+                if (item.checked) {
+                    formFiltro.cats.value += item.value + ",";
+                }
+            });
+
+            listaCat = "";
 
             catSelected.forEach((input) => {
                 if (input.checked) {
@@ -317,23 +358,75 @@
             formFiltro.submit();
         }
 
-        var minVal = @Model._valorMinimo;
-        var maxVal = @Model._valorMaximo;
+        var minVal = parametros.valMin || 0;
+        var maxVal = parametros.valMax || 30;
+        var listaCategoria = "@(Model._listaCategorias)";
+        var ordem = @Model._ordem;
+        var valorProdMaximo = @Model._valorProdMaximo;
 
 
+
+        listaCategoria = listaCategoria.split(",");
+
+
+
+        //Seleciona cada checkbox de categoria filtrada no backend
+        catSelected.forEach((cat) => {
+            listaCategoria.forEach((ele) => {
+                if (cat.value == ele) {
+                    cat.checked = true;
+                }
+            })
+        });
+
+        //Mantem a ordenalção selecionada para os controles de barra lateral e select direito
+        switch (ordem) {
+            case 1:
+                inputsOrdem[0].checked = true;
+                selectOrdenar.options[0].selected = true;
+                
+                break;
+            case 2:
+                inputsOrdem[1].checked = true;
+                selectOrdenar.options[1].selected = true;
+
+                break;
+            case 3:
+                inputsOrdem[2].checked = true;
+                selectOrdenar.options[2].selected = true;
+
+                break;
+            case 4:
+                inputsOrdem[3].checked = true;
+                selectOrdenar.options[3].selected = true;
+
+                break;
+            defaut:
+                console.error("Tipo de ordenação inválida oriunda do servidor.");
+        }
+
+
+        //Construção do input range com dois valores
         $(".js-range-slider").ionRangeSlider({
             type: "double",
             min: 0,
-            max: 30,
+            max: valorProdMaximo,
             from: minVal,
             to: maxVal,
             grid: false,
             skin: "round",
             prefix: "R$ ",
-                onFinish: function(data) {
-                    dadosFiltroPreco = data;
+            onFinish: function(data) {
+                dadosFiltroPreco = data;
+            },
+                onStart: function(data) {
+                    console.log(data);
+                    data.from = minVal;
+                    data.to = maxVal;
                 }
         });
+
+
 
 
     </script>

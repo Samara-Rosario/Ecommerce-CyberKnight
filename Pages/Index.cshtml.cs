@@ -3,6 +3,7 @@ using Ecommerce_CyberKnight.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
+using System.Collections;
 using System.Diagnostics;
 
 namespace Ecommerce_CyberKnight.Pages
@@ -18,8 +19,12 @@ namespace Ecommerce_CyberKnight.Pages
 
 
         private int paginaAtual = 1;
-        public int? _valorMinimo = 0;
+        public int? _valorMinimo = 0 ;
         public int? _valorMaximo = 30;
+        public int _valorProdMaximo = 30;
+        public string termoBusca = "";
+        public int _ordem = 1;
+        public string _listaCategorias = "";
 
         public int QuantidadePagina { get; private set; }
         private int qtdProdPorPagina = 12;
@@ -40,38 +45,48 @@ namespace Ecommerce_CyberKnight.Pages
         )
         {
 
+            this.termoBusca = TermoBusca;
+            this._valorMinimo = valorMinimo ?? 0;
+            this._valorMaximo = valorMaximo ?? 30;
+            this._ordem = ordem ?? 1;
+
+            this._listaCategorias = listaCategorias ?? "";
+
             paginaAtual = pagina ?? 1;
 
             var query = _contextDb.Produtos.AsQueryable();
             categorias = await _contextDb.Categorias.ToListAsync();
 
-            if (!string.IsNullOrEmpty(TermoBusca))
-            {
+            if (!string.IsNullOrEmpty(TermoBusca)){
                 query = query.Where(
                         p => p.Nome.ToLower().Contains(TermoBusca.ToLower())
                 );
             }
 
-            List<string> catsBack = new List<string>();
-            //Filtro por categoria
-            if (!string.IsNullOrEmpty(listaCategorias)) {
-                var cats = listaCategorias.Split(',');
+            List<int> catsFront = new List<int>();
 
-                foreach (string cat in cats) {
-                    catsBack.Add(cat);
-                    Debug.WriteLine(cat);
+
+            //filtro categoria
+            if (!string.IsNullOrEmpty(listaCategorias)){
+                //Debug.WriteLine(listaCategorias);
+
+                foreach(var item in listaCategorias.Split(',')){
+                    Debug.WriteLine(item);
+
+                    if (!string.IsNullOrEmpty(item)){
+                        catsFront.Add(Convert.ToInt16(item));
+                    }
                 }
 
+
                 query = query.Where(
-                        p => catsBack.Contains(p.IdCategoria.ToString())
-                    );
-            } else {
-                Debug.WriteLine("\n\nSem categorias\n\n");
+                    p => catsFront.Contains(p.IdCategoria)
+                ); ;
             }
 
 
 
-            // Filtro preço
+            // Filtro preÃ§o
             try
             {
                 //Filtro Rager de Valores
@@ -87,6 +102,8 @@ namespace Ecommerce_CyberKnight.Pages
                 Debug.WriteLine(erro);
             }
 
+
+            //fiiltro de ordenaÃ§Ã£o
             if (ordem.HasValue)
             {
                 switch (ordem.Value)
@@ -107,6 +124,14 @@ namespace Ecommerce_CyberKnight.Pages
             
             }
 
+            //Obtem o valor do produto mais caro para ser usado no range de filtrgem de produto
+            int qtdProd = query.Count();
+            if (qtdProd > 0){
+                this._valorProdMaximo = Convert.ToInt32(query.Max(q => q.preco));
+                this._valorProdMaximo = (int)Math.Ceiling(this._valorProdMaximo / 10.0) * 10;
+            }
+
+
             var stage = query;
             var qtdProdutos = stage.Count();
 
@@ -117,11 +142,11 @@ namespace Ecommerce_CyberKnight.Pages
 
 
             QuantidadePagina = Convert.ToInt32(result);
-            //Aqui você deve escrever o calculo para obter a quantidade de páginas, você já ter definido quantos produtos deve ter em cada página,
+            //Aqui vocÃª deve escrever o calculo para obter a quantidade de pÃ¡ginas, vocÃª jÃ¡ ter definido quantos produtos deve ter em cada pÃ¡gina,
 
 
 
-            //e também possui la quantidade de produto em toda o sistema. O número a obter deve ser no tipo inteiro
+            //e tambÃ©m possui la quantidade de produto em toda o sistema. O nÃºmero a obter deve ser no tipo inteiro
 
             query = query.Skip(qtdProdPorPagina * (this.paginaAtual - 1)).Take(qtdProdPorPagina);
 

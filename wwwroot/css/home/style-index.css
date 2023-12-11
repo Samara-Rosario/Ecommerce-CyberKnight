@@ -167,6 +167,7 @@ container-principal-banner {
     left: 0;
     margin-top: -10px;
     margin-right: 20px;
+    margin-left: 20px;
 
 }
 
@@ -252,18 +253,22 @@ container-principal-banner {
     padding-left: 10px;
 }
 
+.card-produto a:link, .card-produto a:hover, .card-produto a{
+    color: black;
+    text-decoration: none;
+}
+
 .ctn-valor {
     padding: 2px;
     border-radius: 5px;
     border: 1px solid black;
 }
 
-.card-produto>* {
+.card-produto > * {
     width: 100%;
-
 }
 
-.card-produto>img {
+.img-produto {
     width: 180px;
     height: 154px;
 }
@@ -332,3 +337,11 @@ button {
         border-radius: 10px;
         padding: 5px;
     }
+
+#img-banner-2{
+    margin-left: 20px;
+}
+
+.irs--round .irs-from::before, .irs--round .irs-to::before, .irs--round .irs-single::before{
+    border: none !important;
+}
