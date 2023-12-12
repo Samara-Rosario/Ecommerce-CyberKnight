@@ -14,15 +14,15 @@ namespace Ecommerce_CyberKnight.Pages.UnidadeMedidaCRUD
         }
 
         [BindProperty]
-        public UnidadeMedida unidadeMedida { get; set; }
+        public UnidadeDeMedida unidadeMedida { get; set; }
         public void OnGet() {
 
         }
 
         public async Task<IActionResult> OnPostAsync() {
-            var unidadeMedida = new UnidadeMedida();
+            var unidadeMedida = new UnidadeDeMedida();
 
-            bool validado = await TryUpdateModelAsync<UnidadeMedida>(unidadeMedida, "unidadeMedida", u => u.NomeExtenso, u => u.Sigla);
+            bool validado = await TryUpdateModelAsync<UnidadeDeMedida>(unidadeMedida, "unidadeMedida", u => u.NomeExtenso, u => u.Sigla);
 
             if (validado) {
                 _context.unidadeMedidas.Add(unidadeMedida);
