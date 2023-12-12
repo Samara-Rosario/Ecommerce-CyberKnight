@@ -8,14 +8,6 @@ h1{
    font-weight: bold;
    color: #252EFF;
 }
-label{
-    margin-left: 40px;
-}
-input{
-    margin-left: 40px;
-    margin-right: 40px;
-    width: 40vw;
-}
 body{
     overflow: hidden;
 }
@@ -26,10 +18,12 @@ body{
     
 }
 
-#card-login{
+#card-login {
     box-shadow: 10px 0 20px black;
-    margin-top: 100px;
-    padding-bottom: 110px;
+    margin-top: 50px;
+    width: 60vw;
+    padding-bottom: 100px;
+    padding: 30px;
 }
 #barra-lateral{
     height: 100vh;

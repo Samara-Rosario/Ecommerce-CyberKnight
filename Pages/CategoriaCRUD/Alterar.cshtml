@@ -49,9 +49,8 @@
                     <h1>Alterar Categoria</h1>
                     <label>Nome:</label>
                     <div>
-               
-                            <input type="text" asp-for="categorias.Nome" />
-                            <span asp-validation-for="categorias.Nome" class="text-danger"></span>
+                       <input class="form-control" asp-for="categorias.Nome" type="text"/>
+                       <span asp-validation-for="categorias.Nome" class="text-danger"></span>
                     </div>
                     <br>
                     <br>
@@ -59,7 +58,8 @@
                     <div>
                         <label>Descrição:</label>
                     </div>
-                        <input type="text" asp-for="categorias.Descricao" />
+                        <input class="form-control" asp-for="categorias.Descricao" type="text"/>
+                        <br>
                         <span asp-validation-for="categorias.Descricao" class="text-danger"></span>
                     <br>
                     <button id="btn-enviar" type="submit" class="btn btn-primary">Enviar</button>
