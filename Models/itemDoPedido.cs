@@ -6,8 +6,8 @@ namespace Ecommerce_CyberKnight.Models
     public class itemDoPedido{
 
         [Key]
-        public int? IdPedido { get; set; }
-        public int? IdProduto { get; set; }
+        public int IdPedido { get; set; }
+        public int IdProduto { get; set; }
 
         public double ValorItem {  get; set; }
         public int Quantidade { get; set;}
