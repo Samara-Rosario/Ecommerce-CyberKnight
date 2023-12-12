@@ -315,10 +315,32 @@
         });
 
         function enviarForm(numPagina = 1) {
-            formFiltro.valMin.value = dadosFiltroPreco.from || parametros.valMin || 0;
-            formFiltro.valMax.value = dadosFiltroPreco.to || parametros.valMax || 30;
+
+            if (dadosFiltroPreco.from || dadosFiltroPreco.from == 0) {
+                formFiltro.valMin.value = dadosFiltroPreco.from;
+            } else if (parametros.valMin) {
+                formFiltro.valMin.value = parametros.valMin;
+            }else{
+                formFiltro.valMin.value = 0;
+            }
+
+            if (dadosFiltroPreco.to) {
+                formFiltro.valMax.value = dadosFiltroPreco.to;
+            } else if (parametros.valMax) {
+                formFiltro.valMin.value = parametros.valMax;
+            } else {
+                formFiltro.valMin.value = 30;
+            }
+
+            console.log(typeof(numPagina));
+
             formFiltro.q.value = pesquisaProduto.value.trim();
-            formFiltro.p.value = numPagina;
+
+            if (typeof(numPagina) == "number") {
+                formFiltro.p.value = numPagina;
+            }else{
+                formFiltro.p.value = 1;
+            }
 
 
             inputsOrdem.forEach((item) => {
@@ -342,7 +364,6 @@
                     listaCat.value += input.value + ",";
                 }
             });
-
 
             formFiltro.submit();
         }
@@ -387,11 +408,15 @@
             onFinish: function(data) {
                 dadosFiltroPreco = data;
             },
-                onStart: function(data) {
-                    console.log(data);
-                    data.from = minVal;
-                    data.to = maxVal;
-                }
+            onStart: function(data) {
+            dadosFiltroPreco = data;
+                console.log(data);
+                data.from = minVal;
+                data.to = maxVal;
+            },
+            onChange: function(data){
+                dadosFiltroPreco = data;
+            }
         });
 
 

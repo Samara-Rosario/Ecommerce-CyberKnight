@@ -45,6 +45,8 @@ namespace Ecommerce_CyberKnight.Pages
         )
         {
 
+
+
             this.termoBusca = TermoBusca;
             this._valorMinimo = valorMinimo ?? 0;
             this._valorMaximo = valorMaximo ?? 30;
@@ -56,6 +58,16 @@ namespace Ecommerce_CyberKnight.Pages
 
             var query = _contextDb.Produtos.AsQueryable();
             categorias = await _contextDb.Categorias.ToListAsync();
+
+
+
+            //Obtem o valor do produto mais caro para ser usado no range de filtrgem de produto
+            int qtdProd = query.Count();
+            if (qtdProd > 0)
+            {
+                this._valorProdMaximo = Convert.ToInt32(query.Max(q => q.preco));
+                this._valorProdMaximo = (int)Math.Ceiling(this._valorProdMaximo / 10.0) * 10;
+            }
 
             if (!string.IsNullOrEmpty(TermoBusca)){
                 query = query.Where(
@@ -121,13 +133,6 @@ namespace Ecommerce_CyberKnight.Pages
                         break;
                 }
             
-            }
-
-            //Obtem o valor do produto mais caro para ser usado no range de filtrgem de produto
-            int qtdProd = query.Count();
-            if (qtdProd > 0){
-                this._valorProdMaximo = Convert.ToInt32(query.Max(q => q.preco));
-                this._valorProdMaximo = (int)Math.Ceiling(this._valorProdMaximo / 10.0) * 10;
             }
 
 
