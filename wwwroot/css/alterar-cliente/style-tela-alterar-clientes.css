@@ -33,7 +33,10 @@ body{
 }
 #barra-lateral{
     height: 100vh;
+    /*
     background-image: url(../../img/assets/crud-cliente/bg-degrade.webp);
+    background-image: url(../../img/assets/alterar-cliente/bg-degrade.webp);
+    */  
     background-size: 100%;
 }
 #logo{

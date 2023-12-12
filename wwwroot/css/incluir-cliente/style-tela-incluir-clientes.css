@@ -26,6 +26,7 @@ body{
     align-items: center;
     height: 90vh;
 }
+
 #card-login{
     box-shadow: 10px 0 20px black;
     margin-top: 100px;
@@ -41,9 +42,11 @@ body{
     margin-top: 30px;
     margin-left: 50px;    
 }
+
 #texto-endereco {
 
 }
+
 #btn-enviar{
     width: 100px;
     margin-left: 45px;
@@ -68,19 +71,22 @@ header{
     background-color: #f6f6f6;
     margin-left: -11px;
 }
+
 header button{
-background-color: #00A2FC;
-box-shadow: none;
-border: 1px solid black;
-border-radius: 7px;
-padding-left: 8px;
-padding-right: 8px;
-padding-bottom: 2px;
-padding-top: 2px;
+  background-color: #00A2FC;
+  box-shadow: none;
+  border: 1px solid black;
+  border-radius: 7px;
+  padding-left: 8px;
+  padding-right: 8px;
+  padding-bottom: 2px;
+  padding-top: 2px;
 }
+
 #produto{
     margin-left: 10px;
 }
+
 #clientes{
     margin-left: 100px;
 }
@@ -106,4 +112,5 @@ padding-top: 2px;
 
 .col-12{
     margin-bottom: 15px;
+
 }
