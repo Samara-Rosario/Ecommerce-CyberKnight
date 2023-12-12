@@ -63,6 +63,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="wwwroot\css\incluir-cliente\" />
+    <Folder Include="wwwroot\css\alterar-cliente\" />
     <Folder Include="wwwroot\img\assets\home\" />
   </ItemGroup>
 

@@ -8,13 +8,14 @@ h1{
    font-weight: bold;
    color: #252EFF;
 }
-label{
-    margin-left: 40px;
+
+#card-login{
+    padding: 40px;
 }
-input{
-    margin-left: 40px;
-    margin-right: 40px;
-    width: 40vw;
+
+input {
+    width: 100%;
+    display: block;
 }
 body{
     overflow: hidden;
@@ -23,7 +24,7 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
-    
+    height: 90vh;
 }
 
 #card-login{
@@ -33,7 +34,7 @@ body{
 }
 #barra-lateral{
     height: 100vh;
-    background-color: RGB(53, 108, 194);
+    background-image: url(../../img/assets/crud-cliente/bg-degrade.webp);
     background-size: 100%;
 }
 #logo{
@@ -41,6 +42,11 @@ body{
     margin-top: 30px;
     margin-left: 50px;    
 }
+
+#texto-endereco {
+
+}
+
 #btn-enviar{
     width: 100px;
     margin-left: 45px;
@@ -64,21 +70,23 @@ header{
     align-items: center;
     background-color: #f6f6f6;
     margin-left: -11px;
+}
 
-}
 header button{
-background-color: #00A2FC;
-box-shadow: none;
-border: 1px solid black;
-border-radius: 7px;
-padding-left: 8px;
-padding-right: 8px;
-padding-bottom: 2px;
-padding-top: 2px;
+  background-color: #00A2FC;
+  box-shadow: none;
+  border: 1px solid black;
+  border-radius: 7px;
+  padding-left: 8px;
+  padding-right: 8px;
+  padding-bottom: 2px;
+  padding-top: 2px;
 }
+
 #produto{
     margin-left: 10px;
 }
+
 #clientes{
     margin-left: 100px;
 }
@@ -92,7 +100,6 @@ padding-top: 2px;
     padding-right: 20px;
 }
 #traco{
-    margin-left: 15px;
     color: #a89d9d;
     font-weight: bold;  
 }
@@ -101,4 +108,9 @@ padding-top: 2px;
     margin-right: 15px ;
     color: #a89d9d;
     font-weight: bold;
+}
+
+.col-12{
+    margin-bottom: 15px;
+
 }
