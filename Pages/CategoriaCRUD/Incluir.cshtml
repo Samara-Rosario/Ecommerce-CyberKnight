@@ -48,7 +48,7 @@
                     <h1>Incluir Nova Categoria</h1>
                     <label>Nome:</label>
                     <div>
-                    <input asp-for="categoria.Nome" type="text">
+                    <input class="form-control" asp-for="categoria.Nome" type="text">
                     <br />
                             <span asp-validation-for="categoria.Nome" class="text-danger msg-erro"></span>
                     </div>
@@ -58,7 +58,7 @@
                     <div>
                         <label>Descrição:</label>
                     </div>
-                    <input asp-for="categoria.Descricao" type="text">
+                    <input class="form-control" asp-for="categoria.Descricao" type="text">
                     <br />
                     <span asp-validation-for="categoria.Descricao" class="text-danger msg-erro"></span>
                     <br>
