@@ -14,7 +14,7 @@ namespace Ecommerce_CyberKnight.Pages
         public class Senhas
         {
             [Required(ErrorMessage = "O campo {0} é de preenchimento obrigatório.")]
-            //[StringLength(16, ErrorMessage = "O campo \"{0}\" deve ter pelo menos {2} e no máximo {1} caracteres", MinimumLength = 5)]
+            [StringLength(16, ErrorMessage = "O campo \"{0}\" deve ter pelo menos {2} e no máximo {1} caracteres", MinimumLength = 6)]
             [DataType(DataType.Password)]
             [Display(Name = "Senha")]
             public string Senha { get; set; }
@@ -69,8 +69,8 @@ namespace Ecommerce_CyberKnight.Pages
 
             Debug.WriteLine(ModelState.IsValid);
 
-            var senhasUsuarios = new Senhas();
-            if (!await TryUpdateModelAsync(senhasUsuarios, senhasUsuarios.GetType(), nameof(senhasUsuarios)))
+            //var senhasUsuarios = new Senhas();
+            if (!await TryUpdateModelAsync(SenhasUsuarios, SenhasUsuarios.GetType(), nameof(SenhasUsuarios)))
                 return Page();
 
             //tenta atualizar o novo objeto com os dados oriundos do formulário
