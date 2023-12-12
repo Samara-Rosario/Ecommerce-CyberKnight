@@ -6,9 +6,8 @@ namespace Ecommerce_CyberKnight.Pages.ClienteCRUD {
 
         public string Nome { get; set; }
         public  int? Num { get; set; }
-        public void OnGet(string nome, int? num) {
-            Nome = nome;
-            Num = num;
+        public IActionResult OnGet(string nome, int? num) {
+            return RedirectToPage("/ClienteCRUD/Listar");
         }
     }
 }

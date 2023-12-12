@@ -95,7 +95,6 @@
         <span asp-validation-for="Cliente.Endereco.Referencia" class="text-danger"></span>
     </div>
     <br	/>
-
     <div class="col-5">
         <label asp-for="SenhasUsuarios.Senha">Senha: </label>
         <input asp-for="SenhasUsuarios.Senha" />
@@ -109,6 +108,12 @@
         <span asp-validation-for="SenhasUsuarios.ConfirmarSenha" class="text-danger"></span>
     </div>
     <br	/>
+    <div class="col-5">
+        <label asp-for="Cliente.Cep">Cep: </label>
+        <input asp-for="Cliente.Cep" />
+        <span asp-validation-for="Cliente.Cep" class="text-danger"></span>
+    </div>
+    <br />
 
     <div asp-validation-summary="ModelOnly"></div>
 
