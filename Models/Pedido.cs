@@ -13,7 +13,18 @@ namespace Ecommerce_CyberKnight.Models
         public DateTime DataeHora { get; set; }
 
         public ICollection<itemDoPedido> ItensDoPedido { get; set; }
-        
+
+        public double Preco {
+            get {
+                double valor = 0;
+
+                foreach (var pedido in ItensDoPedido) {
+                    valor += pedido.ValorItem * pedido.Quantidade;
+                }
+                return valor;
+            }
+        }
+
         public double ValorPedido() {
             double valor = 0;
 

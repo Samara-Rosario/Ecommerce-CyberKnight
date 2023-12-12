@@ -20,42 +20,36 @@ namespace Ecommerce_CyberKnight.Pages
 
         private int _ordem = 1;
 
-        public IList<Pedido> pedidos { get; set; }
-        public IList<Produto> produtos { get; set; }
+        public IList<Pedido> Pedidos { get; set; }
 
-        public async Task<IActionResult> OnGet(
+        public async Task<IActionResult> OnGetAsync(
             [FromQuery(Name = "o")] int? ordem
-            ) {
+        ) {
             this._ordem = ordem ?? 1;
 
-            var query = _contextDb.Produtos.AsQueryable();
-            pedidos = await _context.Pedidos
-                                        .Include(p => p.Endereco)
-                                        .Include(p => p.Clientes)
-                                        .Include(p => p.ItensDoPedido)
-                                        .ThenInclude(p => p.Produto)
-                                        .ToListAsync();
+            //var query = _contextDb.Produtos.AsQueryable();
+            var query = _context.Pedidos
+                                    .Include(p => p.Endereco)
+                                    .Include(p => p.Clientes)
+                                    .Include(p => p.ItensDoPedido)
+                                    .ThenInclude(p => p.Produto)
+                                    .AsQueryable();
 
-            return Page();
-
-
-        //filtro ordenação
+           //filtro ordenação
            if (ordem.HasValue) {
-                switch (ordem.Value) {
-                    case 1:
-                        query = query.OrderBy(p=> p.preco);
+                switch (ordem.Value) { 
+                    case 1: //data e hora do pedido
+                        query = query.OrderBy(dh => dh.DataeHora);
                         break;
-                    case 2:
-                        query = query.OrderByDescending(p => p.preco);
-                        break;
-                    case 3:
-                        query = query.OrderBy(dh => dh.Nome);
-                        break;
-                    case 4: 
-                        query = query.OrderByDescending(dh => dh.Nome);
+                    case 2: //data e hora do pedido
+                        query = query.OrderByDescending(dh => dh.DataeHora);
                         break;
                 }
             }
+
+            Pedidos = await query.ToListAsync();
+           
+            return Page();
         }
 
 
