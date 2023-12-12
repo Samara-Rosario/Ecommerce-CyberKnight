@@ -198,25 +198,26 @@
             
             <div id="area-interemdiaria">
                 <div id="linha-1">
-                    <h2>Mais vendidos</h2>
-                    <span>
-                        <a id="link-ver-tudo" href="">
+                    <h2 id="produtos">Produtos</h2>
+                    <span style="margin-bottom: 20px">
+                        <a id="link-ver-tudo" href="/#produtos">
                             Ver tudo
                         </a>
                     </span>
                 </div>
                 <div id="linha-2">
                     <div>
-                        <span class="btn-filtro-ordenacao">Todos os produtos</span>
-                        <span class="btn-filtro-ordenacao">Todas as categorias</span>
+                        <span class="btn-filtro-ordenacao"><a href="/#produtos">Todos os produtos</a></span>
+                        <span class="btn-filtro-ordenacao"><a href="/#produtos">Todas as categorias</a></span>
                     </div>
                     <div>
                         <span id="ordenar-produto">Ordenar por:</span>
                         <span id="select-ordenacao">
-                            <select id ="btn-ordenar"class="form-select">
-                                <option selected value="1">Baixo-Alto</option>
-                                <option value="2">Barato-Caro</option>
-                                <option value="3">Three</option>
+                            <select id="select-ordenar" class="form-select">
+                                <option value="1">Por Nome - Crescente</option>
+                                <option value="2">Por Nome - Descrescente</option>
+                                <option value="3">Por Preço - Crescente</option>
+                                <option value="4">Por Preço - Descrescente</option>
                             </select>
                         </span>
                     </div>
@@ -290,7 +291,8 @@
         var formFiltro = document.getElementById("form-filtro");
         var btnFiltrar = document.getElementById("btn-filtrar");
         var pesquisaProduto = document.getElementById("pesquisa-produto");
-
+        var selectOrdenar = document.getElementById("select-ordenar");
+        
         var catSelected = document.querySelectorAll(".filtro-categoria input[type='checkbox']");
         var inputsOrdem = document.querySelectorAll("input[ordem]");
 
@@ -305,6 +307,18 @@
             parametros[chave] = valor;
         });
    
+        selectOrdenar.addEventListener("change", (obj) => {
+            formFiltro.o.value = obj.target.value;
+            console.log(formFiltro.o)
+
+            inputsOrdem.forEach((item) => {
+                if (item.value == obj.target.value){
+                    item.checked = true;
+                }
+            });
+
+            enviarForm(); 
+        });
 
         btnFiltrar.addEventListener("click", enviarForm);
         pesquisaProduto.addEventListener("keypress", (evt) => {
@@ -342,7 +356,6 @@
                 formFiltro.p.value = 1;
             }
 
-
             inputsOrdem.forEach((item) => {
                 if(item.checked){
                     formFiltro.o.value = item.value;
@@ -378,6 +391,9 @@
 
         listaCategoria = listaCategoria.split(",");
 
+
+
+        //Seleciona cada checkbox de categoria filtrada no backend
         catSelected.forEach((cat) => {
             listaCategoria.forEach((ele) => {
                 if (cat.value == ele) {
@@ -386,16 +402,34 @@
             })
         });
 
+        //Mantem a ordenalção selecionada para os controles de barra lateral e select direito
+        switch (ordem) {
+            case 1:
+                inputsOrdem[0].checked = true;
+                selectOrdenar.options[0].selected = true;
+                
+                break;
+            case 2:
+                inputsOrdem[1].checked = true;
+                selectOrdenar.options[1].selected = true;
+
+                break;
+            case 3:
+                inputsOrdem[2].checked = true;
+                selectOrdenar.options[2].selected = true;
+
+                break;
+            case 4:
+                inputsOrdem[3].checked = true;
+                selectOrdenar.options[3].selected = true;
+
+                break;
+            defaut:
+                console.error("Tipo de ordenação inválida oriunda do servidor.");
+        }
 
 
-        inputsOrdem.forEach((input) => { 
-            if (ordem == input.value) {
-                input.checked = true;
-            } else {
-                input.checked = false;
-            }
-        });
-
+        //Construção do input range com dois valores
         $(".js-range-slider").ionRangeSlider({
             type: "double",
             min: 0,
@@ -418,6 +452,8 @@
                 dadosFiltroPreco = data;
             }
         });
+
+
 
 
     </script>
