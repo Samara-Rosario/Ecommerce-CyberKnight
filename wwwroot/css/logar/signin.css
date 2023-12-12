@@ -1,3 +1,7 @@
+* {
+    
+}
+
 body{
   background-color: #41bdff;
 }
@@ -126,6 +130,7 @@ button:hover {
   justify-content: center;
 }
 
+
   #card-principal{
     background-color: rgba(180, 246, 254, 0.66);
     border-radius: 40px;
@@ -140,8 +145,8 @@ button:hover {
 
   #link-senha{
     position: absolute;  
-    left: 188px;
-    top: 20px;
+    left: 200px;
+    top: 50px;
   }
 
   
