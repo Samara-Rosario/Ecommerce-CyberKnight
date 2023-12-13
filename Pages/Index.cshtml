@@ -14,8 +14,8 @@
 
     bool isInRoleAdmin = false;
 
-    if (User.Identity.IsAuthenticated) {
-        isInRoleAdmin = await UserManager.IsInRoleAsync(appUser, "Admin");
+    if (User.Identity.IsAuthenticated && appUser != null) {
+        isInRoleAdmin = await UserManager.IsInRoleAsync(appUser, "admin");
     }
 
 

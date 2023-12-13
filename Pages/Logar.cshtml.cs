@@ -73,7 +73,7 @@ namespace Ecommerce_CyberKnight.Pages
                 var cliente = new Clientes();
                 cliente.Telefone = "99999999999";
                 cliente.Cep = "00000000";
-                cliente.Cep = "00000000000";
+                cliente.Cpf = "00000000000";
                 cliente.Email = emailDefault;
                 cliente.Situacao = Clientes.SituacaoCliente.Aprovado;
                 cliente.Nome = "Root";
@@ -112,10 +112,14 @@ namespace Ecommerce_CyberKnight.Pages
                     await _userManager.AddToRoleAsync(usuario, "cliente");
                     await _userManager.AddToRoleAsync(usuario, "admin");
 
+                    var reult = await TryUpdateModelAsync(cliente, cliente.GetType(), nameof(cliente));
+
                     //adiciona o novo objeto cliente ao contexto de banco de dados atual e salva no banco de dados
                     _context.Clientes.Add(cliente);
                     int afetados = await _context.SaveChangesAsync();
                     //se salvou o cliente no banco de dados
+                    Debug.WriteLine($"Efeito no DB: {afetados}");
+                    Debug.WriteLine($"Result no DB: {reult}");
 
                 }
 

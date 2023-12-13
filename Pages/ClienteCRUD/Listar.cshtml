@@ -73,6 +73,8 @@
                         <td>@cliente.Cep</td>
                         <td>@cliente.DataDeNascimento</td>
                         <td>
+                            <div style="display: flex">
+
                                 <a asp-page="../ClienteCRUD/Alterar"
                                         asp-route-id="@cliente.Id" id="btn-editar" class="btn btn-primary">
                                     Editar
@@ -117,6 +119,7 @@
                                     </form>
 
                                 }
+                            </div>
                         </td>
                     </tr>
                     }
