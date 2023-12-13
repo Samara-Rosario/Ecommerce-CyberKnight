@@ -3,6 +3,7 @@ using System;
 using Ecommerce_CyberKnight.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Ecommerce_CyberKnight.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20231206203303_fix-clienteDoPedido")]
+    partial class fixclienteDoPedido
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -260,7 +263,7 @@ namespace Ecommerce_CyberKnight.Migrations
                     b.ToTable("Produtos");
                 });
 
-            modelBuilder.Entity("Ecommerce_CyberKnight.Models.UnidadeDeMedida", b =>
+            modelBuilder.Entity("Ecommerce_CyberKnight.Models.UnidadeMedida", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -458,7 +461,7 @@ namespace Ecommerce_CyberKnight.Migrations
                         .WithMany()
                         .HasForeignKey("IdCategoria");
 
-                    b.HasOne("Ecommerce_CyberKnight.Models.UnidadeDeMedida", "unidadeMedida")
+                    b.HasOne("Ecommerce_CyberKnight.Models.UnidadeMedida", "unidadeMedida")
                         .WithMany()
                         .HasForeignKey("IdUnidadeMedida");
 
