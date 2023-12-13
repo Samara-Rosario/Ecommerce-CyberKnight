@@ -14,7 +14,7 @@ namespace Ecommerce_CyberKnight.Models
         [MaxLength(200, ErrorMessage = "O campo \"{0}\" deve ter tamanho igual a {1}")]
         [Required(ErrorMessage = "O campo \"{0}\" é de preenchimento obrigatório.")]
         public string descricao { get; set; }
-        public int? IdCategoria { get; set; }
+        public int IdCategoria { get; set; }
 
         [Required(ErrorMessage = "O campo \"{0}\" é de preenchimento obrigatório.")]
         public double preco {  get; set; }
@@ -29,6 +29,6 @@ namespace Ecommerce_CyberKnight.Models
         public Categoria? categoria { get; set; }
 
         [ForeignKey("IdUnidadeMedida")]
-        public UnidadeMedida? unidadeMedida { get; set; }
+        public UnidadeDeMedida? unidadeMedida { get; set; }
     }
 }
