@@ -49,8 +49,6 @@ namespace Ecommerce_CyberKnight {
 
 			//Adiciona o uso do Razor Pages
 			services.AddRazorPages(options => {
-				options.Conventions.AuthorizePage("/ProdutoCRUD", "isAdmin");
-				options.Conventions.AuthorizePage("/ClienteCRUD", "isAdmin");
 			}).AddCookieTempDataProvider(opt => opt.Cookie.IsEssential = true);
 
 
@@ -97,7 +95,5 @@ namespace Ecommerce_CyberKnight {
 
 			app.Run();
 		}
-
 	}
 }
-

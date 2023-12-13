@@ -33,9 +33,6 @@ namespace Ecommerce_CyberKnight.Pages.CategoriaCRUD
                 return Page();
 
             }
-
-
-
         }
     }
 }

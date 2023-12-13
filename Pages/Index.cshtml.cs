@@ -1,5 +1,6 @@
 using Ecommerce_CyberKnight.Data;
 using Ecommerce_CyberKnight.Models;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
@@ -17,6 +18,8 @@ namespace Ecommerce_CyberKnight.Pages
         public IList<Produto> Produtos;
         public IList<Categoria> categorias;
 
+        public bool isInRoleAdmin { get; private set; }
+
 
         private int paginaAtual = 1;
         public int? _valorMinimo = 0 ;
@@ -33,6 +36,7 @@ namespace Ecommerce_CyberKnight.Pages
             _logger = logger;
             _contextDb = context;
 
+            // isInRoleAdmin = _userManager.IsInRoleAsync(user, "Admin");
         }
 
         public async Task<IActionResult> OnGetAsync(

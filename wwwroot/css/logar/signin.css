@@ -1,0 +1,152 @@
+* {
+    
+}
+
+body{
+  background-color: #41bdff;
+}
+
+#card-geral {
+  margin: 5vh auto;
+  border-radius: 50px;
+  width: 70vw;
+  height: 90vh;
+}
+
+
+/* botão_personalizado */
+
+#btn-entrar {
+  width: 20vw !important;
+  background-color:#107DDB;
+  border: 2PX solid rgb(89, 0, 255);
+  color: #000000;
+}
+
+#btn-entrar:hover {
+  width: 20vw !important;
+  background-color: #13bbd2;
+  color: #000000;
+  border: 2PX solid rgb(98, 0, 255);
+}
+
+#link-senha{
+  margin-left: -189px;
+  margin-top: 377px;
+}
+
+#link-cad{
+  margin-left: 250px;
+  margin-top: -30px;
+}
+
+/* BARRA LATERAL DA IMAGEM */
+  #col-img {
+    padding: 20px;
+  }
+
+#img-molde {
+  background-image: url(../../img/assets/logar/molde.png);
+  width: 25vw;
+  height: 100%;
+  background-size: cover;
+  border-radius: 15px;
+  box-shadow: 1px -2px 13px 4px #0ac2da;
+}
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+.container {
+  display: flex;
+  justify-content: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card {
+  border: none !important;
+  background-size: cover;
+  background-color: transparent;
+  margin: auto;
+  width: 20vw;
+
+}
+
+#logo{
+  position: absolute; 
+	left: 188px;
+	top: 20px; 
+}
+
+
+h1 {
+  color: #2400FF;
+  font-size: 26pt;
+}
+
+h2 {
+  color: #2400FF;
+  font-size: 26pt;
+
+}
+
+
+h3 {
+  color: #7B8389;
+  font-size: 8pt;
+}
+
+
+
+.label-float input:focus {
+  border-bottom: 2px solid #0e0e14;
+}
+
+.label-float label {
+  color: #0000FF;
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin-top: 13px;
+  transition: all .3s ease-out;
+}
+
+.label-float input:focus+label,
+.label-float input:valid+label {
+  font-size: 13px;
+  margin-top: 0;
+  color: #0000FF;
+}
+
+
+button:hover {
+  background-color: #211F45;
+  color: #141ed8;
+}
+
+
+.justify-center {
+  display: flex;
+  justify-content: center;
+}
+
+
+  #card-principal{
+    background-color: rgba(180, 246, 254, 0.66);
+    border-radius: 40px;
+    width: 65vw;
+    height: 90vh;
+    margin: 40px auto;
+  }
+
+  #card-form{
+    font-size: 1.3em;
+  }
+
+  #link-senha{
+    position: absolute;  
+    left: 200px;
+    top: 50px;
+  }
+
+  

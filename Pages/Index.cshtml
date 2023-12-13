@@ -1,11 +1,37 @@
 @page
 @model Ecommerce_CyberKnight.Pages.IndexModel
+
+@using Microsoft.AspNetCore.Identity
+@using Ecommerce_CyberKnight.Models
+
+@inject SignInManager<AppUser> SignInManager
+@inject UserManager<AppUser> UserManager
+
 @{
     Layout = "";
+
+    var appUser = await UserManager.GetUserAsync(User);
+
+    bool isInRoleAdmin = false;
+
+    if (User.Identity.IsAuthenticated && appUser != null) {
+        isInRoleAdmin = await UserManager.IsInRoleAsync(appUser, "admin");
+    }
+
+
+    string nomeUser = "";
+
+    if (appUser != null) {
+        if (appUser.Nome.IndexOf(" ") < 0) {
+            nomeUser = appUser.Nome;
+        } else {
+            nomeUser = @appUser.Nome.Substring(0, appUser.Nome.IndexOf(" "));
+        }
+    }
 }
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
 <head>
     <meta charset="UTF-8">
@@ -38,6 +64,30 @@
 
     <!--Plugin JavaScript file-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/ion-rangeslider/2.3.1/js/ion.rangeSlider.min.js"></script>
+
+    
+    <!--PATH CORREÇÃO DE ESTILO-->
+    <style>
+        button#btn-login-adm,
+        #logout{
+            border: none;
+            background: none;
+            box-shadow: none;
+        }
+
+        button#btn-login-adm{
+            cursor: auto
+        }
+
+        #login-control{
+            display: flex;
+            margin-right: 30px
+        }
+
+        #btn-adm-sys{
+            margin-right: 10px
+        }
+    </style>
 </head>
 
 <body>
@@ -127,9 +177,11 @@
         <div id="conteudo-principal" class="col">
             <header>
                 <div>
-                    <button id="btn-login">
-                        Login
-                    </button>
+                    <a href="/Logar" id="btn-login">
+                        <button id="abtn-login">
+                            Login
+                        </button>
+                    </a>
                     <span id="traco-1">|</span>
                     <span id="novos-produtos">
                         Novos produtos
@@ -139,15 +191,32 @@
                         <input value="@Model.termoBusca" id="pesquisa-produto" placeholder="Procurar por produtos..." type="text">
                     </span>
                 </div>
-                <div>
-                    <button id="btn-login-adm">
-                        Login Adm
-                    </button>
-                    <i id="carrinho-compras" class="bi bi-cart"></i>
-                    <span id="traco-2">
-                        |
-                    </span>
-                    <i id ="btn-logout" class="bi bi-box-arrow-right"></i>
+                <div id="login-control">
+                    @if (SignInManager.IsSignedIn(User)) {
+                        <button id="btn-login-adm">
+                            Olá, @nomeUser
+                        </button>
+                        @if (isInRoleAdmin) {
+                            <a id="btn-adm-sys" title="Administrar dados do sistema" href="/ProdutoCRUD/Listar">
+                                <i class="bi bi-person-workspace"></i>
+                            </a>
+                        }else{
+                            <i id="carrinho-compras" class="bi bi-cart"></i>
+                        }
+                        <span id="traco-2">
+                            |   
+                        </span>
+                        
+                        <form id="logoutForm" class="form-inline" asp-area="" asp-page="/Login" asp-page-handler="logout" asp-route-returnURL="@Url.Page("/Index", new { area = "" })">
+                            <button id="logout" type="submit" title="Sair do Sistema"><i class="bi bi-box-arrow-right"></i></button>
+                        </form>
+                    }else{
+                        <a href="/Logar" id="btn-login" style="margin-right: 30px">
+                            <button id="abtn-login">
+                                Login
+                            </button>
+                        </a>
+                    }
                 </div>
             </header>
 

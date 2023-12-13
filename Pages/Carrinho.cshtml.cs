@@ -130,21 +130,19 @@ namespace Ecommerce_CyberKnight.Pages{
                 }
 
                 var itemPedido = Pedido.ItensDoPedido.FirstOrDefault(ip => ip.IdProduto == id);
-                if (itemPedido == null)
-                {
+                
+                if (itemPedido == null){
                     Pedido.ItensDoPedido.Add(new itemDoPedido{
-                        IdProduto = id.Value,
-                        Quantidade = qtde,
-                        ValorItem = produto.preco
-                    });
-                }
-                else
-                {
+                            IdProduto = id.Value,
+                            Quantidade = qtde,
+                            ValorItem = produto.preco
+                        }
+                    );
+                }else{
                     itemPedido.Quantidade += qtde;
                 }
 
-                if (_context.SaveChanges() <= 0)
-                {
+                if (_context.SaveChanges() <= 0){
                     ModelState.AddModelError("", "Ocorreu um erro ao adicionar o item ao carrinho.");
                 }
             }

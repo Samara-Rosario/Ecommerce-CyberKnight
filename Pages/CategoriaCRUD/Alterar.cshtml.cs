@@ -6,7 +6,8 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Ecommerce_CyberKnight.Pages.CategoriaCRUD
 {
-    public class AlterarModel : PageModel{
+    public class AlterarModel : PageModel
+    {
         private readonly ApplicationDbContext _context;
 
         public AlterarModel(ApplicationDbContext context) {
@@ -31,9 +32,11 @@ namespace Ecommerce_CyberKnight.Pages.CategoriaCRUD
         }
 
         public async Task<IActionResult> OnPostAsync() {
-            if (!ModelState.IsValid) {
+            
+                if (!ModelState.IsValid) {
                 return Page();
             }
+
             _context.Attach(categorias).State = EntityState.Modified;
 
             try {

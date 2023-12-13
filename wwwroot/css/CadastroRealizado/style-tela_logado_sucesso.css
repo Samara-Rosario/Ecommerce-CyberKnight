@@ -1,0 +1,18 @@
+body {
+    background-image: url(../../img/asset/CadastroRealizado/background.webp);
+    background-size: cover;
+}
+.flex-container{
+    margin-top: 230px;
+    display: flex;
+    justify-content: center;
+}
+
+#logo{
+    position: absolute;
+    bottom: 10px;
+    left: 100px;
+    
+}
+
+

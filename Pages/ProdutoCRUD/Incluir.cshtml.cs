@@ -24,7 +24,7 @@ namespace Ecommerce_CyberKnight.Pages.ProdutoCRUD
         [Required(ErrorMessage = "0 Campo \"{0}\"é de preenchimento obrigatório,")]
         public IFormFile ImagemProduto { get; set; }
 
-        public List<UnidadeMedida> listaUnidadeMedidas { get; set; }
+        public List<UnidadeDeMedida> listaUnidadeMedidas { get; set; }
         public List<Categoria> listaCategoria { get; set; }
         
         [BindProperty]

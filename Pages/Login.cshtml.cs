@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using System.ComponentModel.DataAnnotations;
 
 namespace Ecommerce_CyberKnight.Pages {
-    public class DadosLogin {
+    public class DadosLoginVelho {
         [Required(ErrorMessage = "O campo \"{0}\" deve ser preenchido.")]
         [EmailAddress(ErrorMessage = "Você deve digitar no formato de um email.")]
         [Display(Name = "E-mails")]
