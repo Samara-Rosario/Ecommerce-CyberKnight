@@ -3,11 +3,12 @@ using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using System.ComponentModel.DataAnnotations;
 
-namespace Ecommerce_CyberKnight.Pages {
-    public class DadosLoginVelho {
+namespace Ecommerce_CyberKnight.Pages
+{
+
+    public class DadosLogin {
         [Required(ErrorMessage = "O campo \"{0}\" deve ser preenchido.")]
         [EmailAddress(ErrorMessage = "Você deve digitar no formato de um email.")]
         [Display(Name = "E-mails")]
@@ -25,7 +26,9 @@ namespace Ecommerce_CyberKnight.Pages {
         public bool Lembrar { get; set; }
 
     }
-    public class LoginModel : PageModel {
+
+    public class LogarModel : PageModel
+    {
         [BindProperty]
 
         public DadosLogin Dados { get; set; }
@@ -38,7 +41,7 @@ namespace Ecommerce_CyberKnight.Pages {
 
         private readonly SignInManager<AppUser> _signInManager;
 
-        public LoginModel(SignInManager<AppUser> _singInManager) {
+        public LogarModel(SignInManager<AppUser> _singInManager) {
             _signInManager = _singInManager;
 
         }
@@ -66,8 +69,8 @@ namespace Ecommerce_CyberKnight.Pages {
             if (ModelState.IsValid) {
                 var result = await _signInManager.PasswordSignInAsync(Dados.Email, Dados.Senha, Dados.Lembrar, lockoutOnFailure: false);
                 if (result.Succeeded) {
-                   return LocalRedirect(returnURL);
-                }else{
+                    return LocalRedirect(returnURL);
+                } else {
                     ModelState.AddModelError(string.Empty, "Tentativa de login inválida.");
                     return Page();
                 }
@@ -88,3 +91,4 @@ namespace Ecommerce_CyberKnight.Pages {
 
     }
 }
+
