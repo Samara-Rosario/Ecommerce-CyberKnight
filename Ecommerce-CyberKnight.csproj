@@ -70,6 +70,10 @@
     <Folder Include="wwwroot\css\incluir-cliente\" />
     <Folder Include="wwwroot\css\alterar-cliente\" />
     <Folder Include="wwwroot\img\assets\home\" />
+    <Content Update="wwwroot\css\alterar\alter.css">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
   </ItemGroup>
 
 </Project>

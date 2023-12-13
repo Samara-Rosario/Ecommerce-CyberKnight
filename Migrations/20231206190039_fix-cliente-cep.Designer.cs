@@ -3,6 +3,7 @@ using System;
 using Ecommerce_CyberKnight.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Ecommerce_CyberKnight.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20231206190039_fix-cliente-cep")]
+    partial class fixclientecep
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -97,6 +100,9 @@ namespace Ecommerce_CyberKnight.Migrations
                         .IsRequired()
                         .HasMaxLength(200)
                         .HasColumnType("varchar(200)");
+
+                    b.Property<int?>("IdProduto")
+                        .HasColumnType("int");
 
                     b.Property<string>("Nome")
                         .IsRequired()
@@ -211,12 +217,19 @@ namespace Ecommerce_CyberKnight.Migrations
                     b.Property<int?>("IdCliente")
                         .HasColumnType("int");
 
+                    b.Property<int?>("IdClientes")
+                        .HasColumnType("int");
+
                     b.Property<int?>("IdEndereco")
                         .HasColumnType("int");
 
+                    b.Property<string>("itensDoPedido")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
                     b.HasKey("Id");
 
-                    b.HasIndex("IdCliente");
+                    b.HasIndex("IdClientes");
 
                     b.HasIndex("IdEndereco");
 
@@ -441,7 +454,7 @@ namespace Ecommerce_CyberKnight.Migrations
                 {
                     b.HasOne("Ecommerce_CyberKnight.Models.Clientes", "Clientes")
                         .WithMany()
-                        .HasForeignKey("IdCliente");
+                        .HasForeignKey("IdClientes");
 
                     b.HasOne("Ecommerce_CyberKnight.Models.Endereco", "Endereco")
                         .WithMany()
@@ -455,7 +468,7 @@ namespace Ecommerce_CyberKnight.Migrations
             modelBuilder.Entity("Ecommerce_CyberKnight.Models.Produto", b =>
                 {
                     b.HasOne("Ecommerce_CyberKnight.Models.Categoria", "categoria")
-                        .WithMany()
+                        .WithMany("Produtos")
                         .HasForeignKey("IdCategoria");
 
                     b.HasOne("Ecommerce_CyberKnight.Models.UnidadeDeMedida", "unidadeMedida")
@@ -535,6 +548,11 @@ namespace Ecommerce_CyberKnight.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("Ecommerce_CyberKnight.Models.Categoria", b =>
+                {
+                    b.Navigation("Produtos");
                 });
 
             modelBuilder.Entity("Ecommerce_CyberKnight.Models.Pedido", b =>

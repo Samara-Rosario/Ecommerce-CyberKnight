@@ -6,15 +6,15 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Ecommerce_CyberKnight.Pages.UnidadeMedidaCRUD
 {
-    public class AlterarModel : PageModel
+    public class AlterarVelhoModel : PageModel
     {
 		private readonly ApplicationDbContext _context;
 
-		public AlterarModel(ApplicationDbContext context) {
+		public AlterarVelhoModel(ApplicationDbContext context) {
 			_context = context;
 		}
 
-		// o "[BindProperty]" configura a aplicaï¿½ï¿½o para relacionar o atributo 'unidadeMedida' aos dados que estï¿½o vindo do front-end*/
+		// o "[BindProperty]" configura a aplicação para relacionar o atributo 'unidadeMedida' aos dados que estão vindo do front-end*/
 		[BindProperty]
 		public UnidadeDeMedida unidadeMedida { get; set; }
 

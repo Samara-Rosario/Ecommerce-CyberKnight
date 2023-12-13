@@ -3,21 +3,20 @@ using Ecommerce_CyberKnight.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Diagnostics.HealthChecks;
 
-namespace Ecommerce_CyberKnight.Pages.CategoriaCRUD
+namespace Ecommerce_CyberKnight.Pages.UnidadeMedidaCRUD
 {
-    public class ListarModel : PageModel
+    public class ListarModelVelho : PageModel
     {
         private readonly ApplicationDbContext _context;
 
-        public ListarModel(ApplicationDbContext context) {
+        public ListarModelVelho(ApplicationDbContext context) {
             _context = context;
         }
 
-        public IList<Categoria> Categorias { get; set; }
+        public IList<UnidadeDeMedida> unidadeMedidas { get; set; }
         public async Task<IActionResult> OnGet() {
-            Categorias = await _context.Categorias.ToListAsync();
+            unidadeMedidas = await _context.unidadeMedidas.ToListAsync();
 
             return Page();
         }
@@ -28,11 +27,11 @@ namespace Ecommerce_CyberKnight.Pages.CategoriaCRUD
             }
 
             //Busca no banco de dados o Produto com o mesmo id procurado
-            var CategoriaParaDeletar = await _context.Categorias.FirstOrDefaultAsync(c => c.Id == id);
+            var UnidadeMedidaParaDeletar = await _context.unidadeMedidas.FirstOrDefaultAsync(u => u.Id == id);
 
             //Verifica se foi retornado algum Produto do banco de dados
-            if (CategoriaParaDeletar != null) {
-                _context.Categorias.Remove(CategoriaParaDeletar);
+            if (UnidadeMedidaParaDeletar != null) {
+                _context.unidadeMedidas.Remove(UnidadeMedidaParaDeletar);
                 await _context.SaveChangesAsync();
             }
 
