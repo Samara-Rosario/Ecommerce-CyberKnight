@@ -18,6 +18,5 @@ namespace Ecommerce_CyberKnight.Models {
         [MaxLength(200, ErrorMessage = "O campo \"{0}\" deve ter tamanho igual a {1}")]
         [Required(ErrorMessage = "O campo \"{0}\" é de preenchimento obrigatório.")]
         public string? Descricao { get; set; }
-
     }
 }

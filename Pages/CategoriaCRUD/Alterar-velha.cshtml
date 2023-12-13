@@ -1,0 +1,28 @@
+﻿@page
+@model Ecommerce_CyberKnight.Pages.CategoriaCRUD.AlterarModel
+@{
+}
+
+<h1>Editar Categoria</h1>
+
+<form method="post">
+    <input class="form-control" type="hidden" asp-for="categorias.Id" />
+
+    <div class="row">
+
+        <div class="col-4">
+            <label asp-for="categorias.Nome">Nome:</label>
+            <input class="form-control" asp-for="categorias.Nome" />
+            <span asp-validation-for="categorias.Nome" class="text-danger"></span>
+        </div>
+        <br />
+        <div class="col-5">
+            <label asp-for="categorias.Descricao">Descrição:</label>
+            <input class="form-control" asp-for="categorias.Descricao" />
+            <span asp-validation-for="categorias.Descricao" class="text-danger"></span>
+        </div>
+    </div>
+    <br />
+    <br />
+    <input type="submit" class="btn btn-outline-success" value="Enviar" />
+</form>
