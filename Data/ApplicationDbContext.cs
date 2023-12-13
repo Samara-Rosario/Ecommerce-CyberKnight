@@ -14,6 +14,7 @@ namespace Ecommerce_CyberKnight.Data {
         public DbSet<Categoria> Categorias { get; set; }
         public DbSet<UnidadeDeMedida> unidadeMedidas { get; set; }
         public object Produto { get; internal set; }
+        public object unidadeMedida { get; internal set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder) {
             base.OnModelCreating(modelBuilder);

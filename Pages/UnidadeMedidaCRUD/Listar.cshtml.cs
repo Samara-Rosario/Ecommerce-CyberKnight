@@ -8,6 +8,10 @@ namespace Ecommerce_CyberKnight.Pages.UnidadeMedidaCRUD {
             public class ListarModel : PageModel {
             private readonly ApplicationDbContext _context;
 
+        public IList<UnidadeDeMedida> unidadeMedidas { get; set; }
+        public async Task<IActionResult> OnGet() {
+            unidadeMedidas = await _context.unidadeMedidas.ToListAsync();
+
             public string MsgError { get; set; }
 
             public ListarModel(ApplicationDbContext context) {
@@ -36,14 +40,14 @@ namespace Ecommerce_CyberKnight.Pages.UnidadeMedidaCRUD {
                         await _context.SaveChangesAsync();
                     }
                 }catch (DbUpdateException ex) {
-                    this.MsgError = "A unidade n„o pode ser excluida pois possui produto utilizando-a";
+                    this.MsgError = "A unidade n√£o pode ser excluida pois possui produto utilizando-a";
                     unidadeMedidas = await _context.unidadeMedidas.ToListAsync();
 			        
                     return Page();
                 }
                 return RedirectToPage("./Listar");
 
-                //Redireciona para a p·gina de listagem de Produto
+                //Redireciona para a p√°gina de listagem de Produto
             }
         }
     }

@@ -50,7 +50,7 @@ namespace Ecommerce_CyberKnight.Pages{
                         Response.Cookies.Delete(COOKIE_NAME);
                         return RedirectToPage("/Index");
                     }
-                    TotalPedido = Pedido.ItensPedido.Sum(x => x.Quantidade * x.ValorUnitario);
+                    TotalPedido = Pedido.ItensDoPedido.Sum(x => x.Quantidade * x.ValorItem);
                 }
                 else
                 {
@@ -110,9 +110,9 @@ namespace Ecommerce_CyberKnight.Pages{
                     Pedido = new Pedido
                     {
                         IdCarrinho = cartId,
-                        DataHoraPedido = DateTime.UtcNow,
+                        DataeHora = DateTime.UtcNow,
                         Situacao = Pedido.SituacaoPedido.Carrinho,
-                        ItensPedido = new List<ItemPedido>()
+                        ItensDoPedido = new List<itemDoPedido>()
                     };
 
                     AppUser appUser = _signInManager.IsSignedIn(User) ?
@@ -120,37 +120,34 @@ namespace Ecommerce_CyberKnight.Pages{
 
                     if (appUser != null)
                     {
-                        Cliente cliente = await _context.Clientes.FirstOrDefaultAsync<Cliente>(
+                        Clientes cliente = await _context.Clientes.FirstOrDefaultAsync<Clientes>(
                             c => c.Email.ToLower().Equals(appUser.Email.ToLower()));
 
-                        if (cliente != null) Pedido.IdCliente = cliente.IdCliente;
+                        if (cliente != null) Pedido.IdCliente = cliente.Id;
                     }
 
                     _context.Pedidos.Add(Pedido);
                 }
 
-                var itemPedido = Pedido.ItensPedido.FirstOrDefault(ip => ip.IdProduto == id);
-                if (itemPedido == null)
-                {
-                    Pedido.ItensPedido.Add(new ItemPedido
-                    {
-                        IdProduto = id.Value,
-                        Quantidade = qtde,
-                        ValorUnitario = produto.Preco.Value
-                    });
-                }
-                else
-                {
+                var itemPedido = Pedido.ItensDoPedido.FirstOrDefault(ip => ip.IdProduto == id);
+                
+                if (itemPedido == null){
+                    Pedido.ItensDoPedido.Add(new itemDoPedido{
+                            IdProduto = id.Value,
+                            Quantidade = qtde,
+                            ValorItem = produto.preco
+                        }
+                    );
+                }else{
                     itemPedido.Quantidade += qtde;
                 }
 
-                if (_context.SaveChanges() <= 0)
-                {
+                if (_context.SaveChanges() <= 0){
                     ModelState.AddModelError("", "Ocorreu um erro ao adicionar o item ao carrinho.");
                 }
             }
 
-            TotalPedido = Pedido.ItensPedido.Sum(x => x.Quantidade * x.ValorUnitario);
+            TotalPedido = Pedido.ItensDoPedido.Sum(x => x.Quantidade * x.ValorItem);
 
             return Page();
         }
