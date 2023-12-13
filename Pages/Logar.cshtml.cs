@@ -75,7 +75,7 @@ namespace Ecommerce_CyberKnight.Pages
                 cliente.Cep = "00000000";
                 cliente.Cpf = "00000000000";
                 cliente.Email = emailDefault;
-                cliente.Situacao = Clientes.SituacaoCliente.Aprovado;
+                //cliente.Situacao = Clientes.SituacaoCliente.Aprovado;
                 cliente.Nome = "Root";
 
                 cliente.Endereco = null;
@@ -117,10 +117,6 @@ namespace Ecommerce_CyberKnight.Pages
                     //adiciona o novo objeto cliente ao contexto de banco de dados atual e salva no banco de dados
                     _context.Clientes.Add(cliente);
                     int afetados = await _context.SaveChangesAsync();
-                    //se salvou o cliente no banco de dados
-                    Debug.WriteLine($"Efeito no DB: {afetados}");
-                    Debug.WriteLine($"Result no DB: {reult}");
-
                 }
 
             }

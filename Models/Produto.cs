@@ -29,6 +29,6 @@ namespace Ecommerce_CyberKnight.Models
         public Categoria? categoria { get; set; }
 
         [ForeignKey("IdUnidadeMedida")]
-        public UnidadeDeMedida? unidadeMedida { get; set; }
+        public UnidadeMedida? unidadeMedida { get; set; }
     }
 }

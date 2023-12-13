@@ -67,7 +67,7 @@ namespace Ecommerce_CyberKnight.Pages
             var cliente = new Clientes();
             cliente.Endereco = null;
 
-            cliente.Situacao = Clientes.SituacaoCliente.Cadastrado;
+            //cliente.Situacao = Clientes.SituacaoCliente.Cadastrado;
 
             Debug.WriteLine(ModelState.IsValid);
 

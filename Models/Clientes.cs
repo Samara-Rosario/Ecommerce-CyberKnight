@@ -40,7 +40,8 @@ namespace Ecommerce_CyberKnight.Models {
         [DataType(DataType.Date, ErrorMessage = "O campo {0} não estar no formato correto")]
 		public DateTime DataDeNascimento { get; set; }
 
-        public SituacaoCliente Situacao { get; set; } = SituacaoCliente.Aprovado;
+        //TEMPORAREAMENTE DESABILITADA POR CONTA DA NÃO CORRESPONDÊNCIA COM O DB
+        //public SituacaoCliente Situacao { get; set; } = SituacaoCliente.Aprovado;
 
 		[ForeignKey("IdEndereco")]
         public Endereco? Endereco {  get; set; }
