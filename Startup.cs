@@ -60,7 +60,7 @@ namespace Ecommerce_CyberKnight {
 						options => options.UseMySql(
 											Configuration.GetConnectionString("ApplicationDbContext"),
 											_mySQLServerVersion,
-											opt => opt.EnableRetryOnFailure()
+											opt => opt.EnableRetryOnFailure(7)
 										)
 						);
 		}
@@ -97,7 +97,5 @@ namespace Ecommerce_CyberKnight {
 
 			app.Run();
 		}
-
 	}
 }
-

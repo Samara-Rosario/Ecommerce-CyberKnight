@@ -14,7 +14,7 @@ namespace Ecommerce_CyberKnight.Pages.UnidadeMedidaCRUD
             _context = context;
         }
 
-        public IList<UnidadeMedida> unidadeMedidas { get; set; }
+        public IList<UnidadeDeMedida> unidadeMedidas { get; set; }
         public async Task<IActionResult> OnGet() {
             unidadeMedidas = await _context.unidadeMedidas.ToListAsync();
 
