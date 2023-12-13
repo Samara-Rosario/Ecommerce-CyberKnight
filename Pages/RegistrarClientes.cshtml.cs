@@ -50,22 +50,24 @@ namespace Ecommerce_CyberKnight.Pages
 
         public UserManager<AppUser> UserManager { get; }
         public RoleManager<IdentityRole> RoleManager { get; }
-        public IList<Clientes> Clientes { get; set; } = new List<Clientes>();
+        // public IList<Clientes> Clientes { get; set; } = new List<Clientes>();
 
-        public async Task<IActionResult> OnGet()
+        public async Task<IActionResult> OnGetAsync()
         {
-            Clientes = await _context.Clientes.ToListAsync();
-
+            
+            //Clientes = await _context.Clientes.ToListAsync();
+            
             return Page();
         }
 
 
-        public async Task<IActionResult> OnPostAsync()
-        {
+        public async Task<IActionResult> OnPostAsync(){
 
             //cria um novo objeto Cliente
             var cliente = new Clientes();
-            cliente.Endereco = new Endereco();
+            cliente.Endereco = null;
+
+            cliente.Situacao = Clientes.SituacaoCliente.Cadastrado;
 
             Debug.WriteLine(ModelState.IsValid);
 
