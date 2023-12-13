@@ -1,33 +1,28 @@
-var inputRua = document.getElementById('rua');
+var endereco = document.getElementById('endereco');
 
 function limpa_formulário_cep() {
     //Limpa valores do formulário de cep.
-    inputRua.value = ("");
-    document.getElementById('bairro').value = ("");
-    document.getElementById('cidade').value = ("");
-    document.getElementById('uf').value = ("");
-    document.getElementById('ibge').value = ("");
+    endereco.innerText = ("");
+    
 }
 
-function meu_callback(conteudo) {
+function mostrarCep(conteudo) {
+    console.log(conteudo);
+
     if (!("erro" in conteudo)) {
         //Atualiza os campos com os valores.
-        inputRua.value = (conteudo.logradouro);
-        document.getElementById('bairro').value = (conteudo.bairro);
-        document.getElementById('cidade').value = (conteudo.localidade);
-        document.getElementById('uf').value = (conteudo.uf);
-        document.getElementById('ibge').value = (conteudo.ibge);
+        endereco.innerText = (conteudo.logradouro);
+        endereco.innerText += ", "+ (conteudo.bairro);
+        endereco.innerText += ", " + (conteudo.localidade);
+        endereco.innerText += "/" + (conteudo.uf);
     } //end if.
     else {
         //CEP não Encontrado.
         limpa_formulário_cep();
-        alert("CEP não encontrado.");
+        endereco.innerText = "CEP não encontrado.";
     }
 }
 
-function mostrarCep(conteudo){
-    console.log(conteudo)
-}
 
 function pesquisacep(valor) {
 
@@ -59,15 +54,19 @@ function pesquisacep(valor) {
             //Insere script no documento e carrega o conteúdo.
             document.body.appendChild(script);
 
+            endereco.classList.remove("text-danger");
+
         } //end if.
         else {
             //cep é inválido.
             // limpa_formulário_cep();
-            alert("Formato de CEP inválido.");
+            endereco.innerText = ("Formato de CEP inválido.");
+            endereco.classList.add("text-danger");
         }
     } //end if.
     else {
         //cep sem valor, limpa formulário.
-        // limpa_formulário_cep();
+        limpa_formulário_cep();
+        endereco.classList.add("text-danger");
     }
 };

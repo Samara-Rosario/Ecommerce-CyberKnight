@@ -28,14 +28,11 @@
 
                 var IdDoProduto = item.IdProduto.ToString("D6");
 
-                var caminhoArquivoImagem = System.IO.Path.Combine(
-                    "img\\produto",
-                    item.IdProduto.ToString() + ".jpg");
+                var caminhoArquivoImagem = System.IO.Path.Combine("img\\produto",item.IdProduto.ToString() + ".jpg");
 
-                <div class="row" id="@($"divItem{item.IdProduto}")">
-
+                <div class="row" id="divItem@(item.IdProduto)">
                     <div class="col-sm-3 col-md-2 text-center mb-2 mb-sm-0">
-                        <img class="img-thumbnail" src="@caminhoArquivoImagem">
+                        <img class="img-thumbnail" alt="Imagem do produto" src="@caminhoArquivoImagem" />
                     </div>
                     <div class="col-sm-9 col-md-4 col-lg-5 text-left">
                         <h4 class="product-name"><strong>@item.Produto.Nome</strong></h4>
@@ -47,7 +44,7 @@
                         <div class="row">
                             <div class="col-4 text-md-right pt-2 text-right">
                                 <h6>
-<                                   strong id="@($"valorUnit{item.IdProduto}")">R$ @item.Pedido=?.ToString("F2")</strong>
+                                    <strong id="valorUnit@(item.IdProduto)">R$ @(item.ValorItem.ToString("F2"))</strong>
 
                                     <b><span class="text-muted">x</span></b>
                                 </h6>

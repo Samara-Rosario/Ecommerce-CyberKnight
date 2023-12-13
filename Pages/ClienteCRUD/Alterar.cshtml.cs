@@ -1,25 +1,30 @@
 using Ecommerce_CyberKnight.Data;
 using Ecommerce_CyberKnight.Models;
+using Ecommerce_CyberKnight.Utils;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 
 namespace Ecommerce_CyberKnight.Pages.ClienteCRUD
 {
-    public class AlterarModelNovo : PageModel
-    {
-            private readonly ApplicationDbContext _context;
+    public class AlterarModelNovo : PageModel{
+        private readonly ApplicationDbContext _context;
+        private AuthVerify authVerify;
 
-        public AlterarModelNovo(ApplicationDbContext context)
-        {
+        public AlterarModelNovo(ApplicationDbContext context, UserManager<AppUser> userManager){
             _context = context;
-
+            authVerify = new AuthVerify(userManager);
         }
         [BindProperty]
 
         public Clientes clientes { get; set; }
-        public async Task<IActionResult> OnGetAsync(int? Id)
-        {
+        public async Task<IActionResult> OnGetAsync(int? Id){
+            if (!await authVerify.Test(User, "admin")) {
+                return Redirect(AuthVerify.LoginUrl);
+            }
+
+
             if (Id == null)
             {
                 return NotFound();
@@ -34,8 +39,11 @@ namespace Ecommerce_CyberKnight.Pages.ClienteCRUD
             return Page();
         }
 
-        public async Task<IActionResult> OnPostAsync()
-        {
+        public async Task<IActionResult> OnPostAsync(){
+            if (!await authVerify.Test(User, "admin")) {
+                return Redirect(AuthVerify.LoginUrl);
+            }
+
             if (!ModelState.IsValid)
             {
                 return Page();

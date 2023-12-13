@@ -24,7 +24,7 @@ namespace Ecommerce_CyberKnight.Pages.ProdutoCRUD
         [Display(Name = "Imagem do Produto")]
         public IFormFile ImagemProduto { get; set; }
 
-        public List<UnidadeMedida> listaUnidadeMedidas { get; set; }
+        public List<UnidadeDeMedida> listaUnidadeMedidas { get; set; }
         public List<Categoria> listaCategoria { get; set; }
 
         [BindProperty]
@@ -59,10 +59,6 @@ namespace Ecommerce_CyberKnight.Pages.ProdutoCRUD
 
             return Page();
         }
-
-
-
-
 
 
         public async Task<IActionResult> OnPostAsync() {

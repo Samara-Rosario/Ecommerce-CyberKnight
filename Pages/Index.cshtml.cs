@@ -1,5 +1,6 @@
 using Ecommerce_CyberKnight.Data;
 using Ecommerce_CyberKnight.Models;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
@@ -17,6 +18,8 @@ namespace Ecommerce_CyberKnight.Pages
         public IList<Produto> Produtos;
         public IList<Categoria> categorias;
 
+        public bool isInRoleAdmin { get; private set; }
+
 
         private int paginaAtual = 1;
         public int? _valorMinimo = 0 ;
@@ -33,6 +36,7 @@ namespace Ecommerce_CyberKnight.Pages
             _logger = logger;
             _contextDb = context;
 
+            // isInRoleAdmin = _userManager.IsInRoleAsync(user, "Admin");
         }
 
         public async Task<IActionResult> OnGetAsync(
@@ -45,6 +49,8 @@ namespace Ecommerce_CyberKnight.Pages
         )
         {
 
+
+
             this.termoBusca = TermoBusca;
             this._valorMinimo = valorMinimo ?? 0;
             this._valorMaximo = valorMaximo ?? 30;
@@ -56,6 +62,16 @@ namespace Ecommerce_CyberKnight.Pages
 
             var query = _contextDb.Produtos.AsQueryable();
             categorias = await _contextDb.Categorias.ToListAsync();
+
+
+
+            //Obtem o valor do produto mais caro para ser usado no range de filtrgem de produto
+            int qtdProd = query.Count();
+            if (qtdProd > 0)
+            {
+                this._valorProdMaximo = Convert.ToInt32(query.Max(q => q.preco));
+                this._valorProdMaximo = (int)Math.Ceiling(this._valorProdMaximo / 10.0) * 10;
+            }
 
             if (!string.IsNullOrEmpty(TermoBusca)){
                 query = query.Where(
@@ -122,13 +138,6 @@ namespace Ecommerce_CyberKnight.Pages
                         break;
                 }
             
-            }
-
-            //Obtem o valor do produto mais caro para ser usado no range de filtrgem de produto
-            int qtdProd = query.Count();
-            if (qtdProd > 0){
-                this._valorProdMaximo = Convert.ToInt32(query.Max(q => q.preco));
-                this._valorProdMaximo = (int)Math.Ceiling(this._valorProdMaximo / 10.0) * 10;
             }
 
 

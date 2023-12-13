@@ -73,6 +73,8 @@
                         <td>@cliente.Cep</td>
                         <td>@cliente.DataDeNascimento</td>
                         <td>
+                            <div style="display: flex">
+
                                 <a asp-page="../ClienteCRUD/Alterar"
                                         asp-route-id="@cliente.Id" id="btn-editar" class="btn btn-primary">
                                     Editar
@@ -83,6 +85,41 @@
                                         asp-route-id="@cliente.Id">
                                     <button id="btn-excluir" class="btn btn-danger">Excluir</button>
                                 </form>
+
+                                @if (Model.EmailsAdmins.Contains(cliente.Email)) {
+                                    <!--RETIRAR DA FUNÇÃO ADMINISTRADOR-->
+                                    <form class="d-inline-block"
+                                        asp-page-handler="deladmin"
+                                        asp-route-id="@cliente.Id"
+                                         method="post">
+                                        
+                                         <button
+                                             class="btn btn-danger btn-sm"
+                                             onclick="confirmarExclusao(this);"
+                                             type="button"
+                                             title="Clique aqui de você desejar retirar o usuário \"@cliente.Nome\" da função de Administrador"
+                                         >
+                                            Remover Admin
+                                        </button>
+                                    </form>
+                                } else {
+
+                                    <!--TORNAR ADMINISTRADOR-->
+                                    <form class="d-inline-block"
+                                          asp-page-handler="setadmin"
+                                          asp-route-id="@cliente.Id"
+                                          method="post">
+                                        <button
+                                            class="btn btn-danger btn-sm"
+                                            onclick="confirmarExclusao(this);"
+                                            type="button"
+                                            title="Clique aqui de você desejar tornar o usuário \" @cliente.Nome\" um Administrador">
+                                                Tornar Admin
+                                        </button>
+                                    </form>
+
+                                }
+                            </div>
                         </td>
                     </tr>
                     }

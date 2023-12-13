@@ -1,0 +1,42 @@
+﻿@page
+@model Ecommerce_CyberKnight.Pages.CategoriaCRUD.ListarModel
+@{
+}
+<h1>Listagem de Categorias</h1>
+
+<a class="btn btn-outline-primary" asp-page="./Incluir">
+	Incluir
+</a>
+
+<table class="table">
+	<thead>
+		<tr>
+			<td>Id</td>
+			<td>Nome</td>
+			<td>Descrição</td>
+			<td>Ações</td>
+		</tr>
+	</thead>
+	<tbody>
+		@foreach (var Categoria in Model.Categorias) {
+			<tr>
+				<td>@Categoria.Id</td>
+				<td>@Categoria.Nome</td>
+				<td>@Categoria.Descricao</td>
+				<td>
+					<a asp-page="./Alterar"
+					   asp-route-id="@Categoria.Id"
+					   class="btn btn-outline-primary">
+						Editar
+					</a>
+					<form method="post"
+						  asp-page-handler="delete"
+						  asp-route-id="@Categoria.Id">
+						<button class="btn btn-outline-primary">Excluir</button>
+					</form>
+				</td>
+			</tr>
+		}
+	</tbody>
+</table>
+

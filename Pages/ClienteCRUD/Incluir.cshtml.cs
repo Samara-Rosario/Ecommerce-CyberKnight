@@ -1,29 +1,38 @@
 using Ecommerce_CyberKnight.Data;
 using Ecommerce_CyberKnight.Models;
+using Ecommerce_CyberKnight.Utils;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.Diagnostics;
 
-namespace Ecommerce_CyberKnight.Pages.ClienteCRUD
-{
-    public class IncluirModelNovo : PageModel
-    {
+namespace Ecommerce_CyberKnight.Pages.ClienteCRUD {
+    public class IncluirModelNovo : PageModel {
         private readonly ApplicationDbContext _context;
+        private AuthVerify authVerify;
 
-        public IncluirModelNovo(ApplicationDbContext context)
-        {
+        public IncluirModelNovo(ApplicationDbContext context, UserManager<AppUser> userManager) {
             _context = context;
+            authVerify = new AuthVerify(userManager);
         }
 
         [BindProperty]
         public Clientes cliente { get; set; }
-        public void OnGet()
-        {
+        public async Task<IActionResult> OnGetAsync(){
+            if (!await authVerify.Test(User, "admin")) {
+                return Redirect(AuthVerify.LoginUrl);
+            }else{
+                return Page();
+           }
 
         }
 
         public async Task<IActionResult> OnPostAsync()
         {
+            if (!await authVerify.Test(User, "admin")) {
+                return Redirect(AuthVerify.LoginUrl);
+            }
+
             var cliente = new Clientes();
 
             bool validado = await TryUpdateModelAsync<Clientes>(

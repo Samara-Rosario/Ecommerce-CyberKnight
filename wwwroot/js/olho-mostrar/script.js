@@ -1,8 +1,5 @@
-﻿const password = document.getElementById('password');
-const icon = document.getElementById('icon');
-
-var btnSenha = document.getElementById("btnSenha");
-var inputSenha = document.getElementById('senha');
+﻿var btnSenha = document.getElementById("btnSenha");
+var inputSenha = document.getElementById('inputSenha');
 
 function hideSenha() {
     if (btnSenha.classList.contains("bi-eye-slash")) {

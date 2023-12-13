@@ -22,6 +22,24 @@
 	<link rel="stylesheet" href="~/css/logar/signin.css">
 	<link rel="stylesheet" href="~/css/olhinho/signin.css">
 
+	<!--PATCH PARA FUNCOINAMENTO DA FUNÇÃO SHOW HIDE PASSWORD-->
+	<style>
+		
+		#eye-icon-ctn{
+			position: absolute;
+			right: 1em;
+			top: 0.2em;
+		}
+
+		#eye-icon-ctn:hover{
+			color: deepskyblue;
+		}
+
+		#inputSenha {
+			padding-right: 2em;
+		}
+	</style>
+
 
 	<title>Sign-in</title>
 </head>
@@ -48,13 +66,18 @@
 						<label for="exampleFormControlInput1" class="form-label">Email</label>
 						<input asp-for="Dados.Email" type="email" class="form-control" id="exampleFormControlInput1"
 							   placeholder="Digite seu e-mail">
+							  <br />
+						<span asp-validation-for="Dados.Email" class="text-danger"></span>
 					</div>
 
 					<div class="mb-3">
 						<label for="exampleFormControlInput1" class="form-label">Senha</label>
 						<div style="position: relative" style="rigth: 15vw;">
-							<input asp-for="Dados.Senha" type="password" class="form-control" id="exampleFormControlInput1" placeholder="Digite sua senha">
-							<i onclick="hideSenha()" id="btnSenha" class="bi bi-eye-slash"></i>
+							<input asp-for="Dados.Senha" type="password" class="form-control" id="inputSenha" placeholder="Digite sua senha">
+							<div id="eye-icon-ctn">
+								<i onclick="hideSenha()" id="btnSenha" class="bi bi-eye-slash"></i>
+							</div>
+							<span asp-validation-for="Dados.Senha" class="text-danger"></span>
 						</div>
 
 					</div>
@@ -62,12 +85,13 @@
 						<input type="checkbox" class="form-check-input" id="exampleCheck1">
 						<label class="form-check-label" for="exampleCheck1">Lembrar de mim</label>
 					</div>
+					
+					<input type="hidden" name="returnUrl" value="@Model.ReturnURL" />
 
 					<div class="d-grid gap-2 mx-auto">
 						<button id="btn-entrar" type="submit" class="btn btn-outline-info">Entrar</button>
 					</div>
 				</form>
-				<script src="~/js/olho-mostrar/script.js"></script>
 
 				<div class="justify-center">
 					<hr />
@@ -75,12 +99,12 @@
 
 				<p id="link-senha" src="signin.html" alt="" style="width: 202px;">
 					<a href="./signup.html">
-						Esqueceu sua senha?
+						
 					</a>
 				</p>
 
 				<p id="link-cad" src="signin.html" alt="" style="width: 202px">
-					<a href="./signup.html">
+					<a asp-page="/RegistrarClientes">
 						Cadastre-se
 					</a>
 				</p>
@@ -88,7 +112,8 @@
 		</div>
 	</div>
 
-	<script src="../js/signin.js"></script>
+	<script src="~/js/olho-mostrar/script.js"></script>
+	<!-- script src="../js/signin.js"></script -->
 </body>
 
 </html>

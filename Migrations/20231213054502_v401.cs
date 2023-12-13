@@ -7,27 +7,12 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Ecommerce_CyberKnight.Migrations
 {
     /// <inheritdoc />
-    public partial class v101 : Migration
+    public partial class v401 : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropColumn(
-                name: "Login",
-                table: "Clientes");
-
-            migrationBuilder.RenameColumn(
-                name: "Senha",
-                table: "Clientes",
-                newName: "DataDeNascimento");
-
-            migrationBuilder.AddColumn<string>(
-                name: "Referencia",
-                table: "Enderecoes",
-                type: "varchar(150)",
-                maxLength: 150,
-                nullable: false,
-                defaultValue: "")
+            migrationBuilder.AlterDatabase()
                 .Annotation("MySql:CharSet", "utf8mb4");
 
             migrationBuilder.CreateTable(
@@ -83,6 +68,68 @@ namespace Ecommerce_CyberKnight.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_AspNetUsers", x => x.Id);
+                })
+                .Annotation("MySql:CharSet", "utf8mb4");
+
+            migrationBuilder.CreateTable(
+                name: "Categorias",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    Nome = table.Column<string>(type: "varchar(100)", maxLength: 100, nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    Descricao = table.Column<string>(type: "varchar(200)", maxLength: 200, nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4")
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Categorias", x => x.Id);
+                })
+                .Annotation("MySql:CharSet", "utf8mb4");
+
+            migrationBuilder.CreateTable(
+                name: "Enderecoes",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    Cep = table.Column<string>(type: "varchar(8)", maxLength: 8, nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    Cidade = table.Column<string>(type: "varchar(100)", maxLength: 100, nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    Bairro = table.Column<string>(type: "varchar(100)", maxLength: 100, nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    Rua = table.Column<string>(type: "varchar(100)", maxLength: 100, nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    Numero = table.Column<int>(type: "int", nullable: false),
+                    Logradouro = table.Column<string>(type: "varchar(100)", maxLength: 100, nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    Complemento = table.Column<string>(type: "varchar(150)", maxLength: 150, nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    Referencia = table.Column<string>(type: "varchar(150)", maxLength: 150, nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4")
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Enderecoes", x => x.Id);
+                })
+                .Annotation("MySql:CharSet", "utf8mb4");
+
+            migrationBuilder.CreateTable(
+                name: "unidadeMedidas",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    Sigla = table.Column<string>(type: "longtext", nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    NomeExtenso = table.Column<string>(type: "longtext", nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4")
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_unidadeMedidas", x => x.Id);
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
 
@@ -213,6 +260,127 @@ namespace Ecommerce_CyberKnight.Migrations
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
 
+            migrationBuilder.CreateTable(
+                name: "Clientes",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    Cpf = table.Column<string>(type: "longtext", nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    IdEndereco = table.Column<int>(type: "int", nullable: true),
+                    Nome = table.Column<string>(type: "longtext", nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    Email = table.Column<string>(type: "longtext", nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    Cep = table.Column<string>(type: "longtext", nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    Telefone = table.Column<string>(type: "longtext", nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    DataDeNascimento = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    Situacao = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Clientes", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Clientes_Enderecoes_IdEndereco",
+                        column: x => x.IdEndereco,
+                        principalTable: "Enderecoes",
+                        principalColumn: "Id");
+                })
+                .Annotation("MySql:CharSet", "utf8mb4");
+
+            migrationBuilder.CreateTable(
+                name: "Produtos",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    Nome = table.Column<string>(type: "varchar(100)", maxLength: 100, nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    descricao = table.Column<string>(type: "varchar(200)", maxLength: 200, nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    IdCategoria = table.Column<int>(type: "int", nullable: false),
+                    preco = table.Column<double>(type: "double", nullable: false),
+                    IdUnidadeMedida = table.Column<int>(type: "int", nullable: true),
+                    estoque = table.Column<float>(type: "float", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Produtos", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Produtos_Categorias_IdCategoria",
+                        column: x => x.IdCategoria,
+                        principalTable: "Categorias",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Produtos_unidadeMedidas_IdUnidadeMedida",
+                        column: x => x.IdUnidadeMedida,
+                        principalTable: "unidadeMedidas",
+                        principalColumn: "Id");
+                })
+                .Annotation("MySql:CharSet", "utf8mb4");
+
+            migrationBuilder.CreateTable(
+                name: "Pedidos",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    IdCliente = table.Column<int>(type: "int", nullable: true),
+                    IdEndereco = table.Column<int>(type: "int", nullable: true),
+                    IdCarrinho = table.Column<string>(type: "longtext", nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    FormaPagamento = table.Column<int>(type: "int", nullable: false),
+                    DataeHora = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    Situacao = table.Column<int>(type: "int", nullable: false),
+                    IdClientes = table.Column<int>(type: "int", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Pedidos", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Pedidos_Clientes_IdClientes",
+                        column: x => x.IdClientes,
+                        principalTable: "Clientes",
+                        principalColumn: "Id");
+                    table.ForeignKey(
+                        name: "FK_Pedidos_Enderecoes_IdEndereco",
+                        column: x => x.IdEndereco,
+                        principalTable: "Enderecoes",
+                        principalColumn: "Id");
+                })
+                .Annotation("MySql:CharSet", "utf8mb4");
+
+            migrationBuilder.CreateTable(
+                name: "itemDoPedidos",
+                columns: table => new
+                {
+                    IdPedido = table.Column<int>(type: "int", nullable: false),
+                    IdProduto = table.Column<int>(type: "int", nullable: false),
+                    ValorItem = table.Column<double>(type: "double", nullable: false),
+                    Quantidade = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_itemDoPedidos", x => new { x.IdPedido, x.IdProduto });
+                    table.ForeignKey(
+                        name: "FK_itemDoPedidos_Pedidos_IdPedido",
+                        column: x => x.IdPedido,
+                        principalTable: "Pedidos",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_itemDoPedidos_Produtos_IdProduto",
+                        column: x => x.IdProduto,
+                        principalTable: "Produtos",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                })
+                .Annotation("MySql:CharSet", "utf8mb4");
+
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
                 table: "AspNetRoleClaims",
@@ -249,6 +417,36 @@ namespace Ecommerce_CyberKnight.Migrations
                 table: "AspNetUsers",
                 column: "NormalizedUserName",
                 unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Clientes_IdEndereco",
+                table: "Clientes",
+                column: "IdEndereco");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_itemDoPedidos_IdProduto",
+                table: "itemDoPedidos",
+                column: "IdProduto");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Pedidos_IdClientes",
+                table: "Pedidos",
+                column: "IdClientes");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Pedidos_IdEndereco",
+                table: "Pedidos",
+                column: "IdEndereco");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Produtos_IdCategoria",
+                table: "Produtos",
+                column: "IdCategoria");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Produtos_IdUnidadeMedida",
+                table: "Produtos",
+                column: "IdUnidadeMedida");
         }
 
         /// <inheritdoc />
@@ -270,26 +468,31 @@ namespace Ecommerce_CyberKnight.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
+                name: "itemDoPedidos");
+
+            migrationBuilder.DropTable(
                 name: "AspNetRoles");
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");
 
-            migrationBuilder.DropColumn(
-                name: "Referencia",
-                table: "Enderecoes");
+            migrationBuilder.DropTable(
+                name: "Pedidos");
 
-            migrationBuilder.RenameColumn(
-                name: "DataDeNascimento",
-                table: "Clientes",
-                newName: "Senha");
+            migrationBuilder.DropTable(
+                name: "Produtos");
 
-            migrationBuilder.AddColumn<string>(
-                name: "Login",
-                table: "Clientes",
-                type: "longtext",
-                nullable: false)
-                .Annotation("MySql:CharSet", "utf8mb4");
+            migrationBuilder.DropTable(
+                name: "Clientes");
+
+            migrationBuilder.DropTable(
+                name: "Categorias");
+
+            migrationBuilder.DropTable(
+                name: "unidadeMedidas");
+
+            migrationBuilder.DropTable(
+                name: "Enderecoes");
         }
     }
 }
