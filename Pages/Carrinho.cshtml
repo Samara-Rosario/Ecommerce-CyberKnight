@@ -1,5 +1,5 @@
 ﻿@page
-@model QuitandaOnline.Pages.CarrinhoModel
+@model Ecommerce_CyberKnight.Pages.CarrinhoModel
 @{
     ViewData["titulo"] = "Carrinho de Compras";
 }
@@ -22,9 +22,9 @@
     </div>
 
     <div class="card-body">
-        @if ((Model.Pedido != null) && (Model.Pedido.ItensPedido.Count > 0))
+        @if ((Model.Pedido != null) && (Model.Pedido.ItensDoPedido.Count > 0))
         {
-            @foreach (var item in Model.Pedido.ItensPedido)
+            @foreach (var item in Model.Pedido.ItensDoPedido)
             {
 
                 var caminhoArquivoImagem = System.IO.Path.Combine(
@@ -38,14 +38,14 @@
                     <div class="col-sm-9 col-md-4 col-lg-5 text-left">
                         <h4 class="product-name"><strong>@item.Produto.Nome</strong></h4>
                         <h4>
-                            <small>@item.Produto.Descricao</small>
+                            <small>@item.Produto.descricao</small>
                         </h4>
                     </div>
                     <div class="col-sm-12 col-md-6 col-lg-5">
                         <div class="row">
                             <div class="col-4 text-md-right pt-2 text-right">
                                 <h6>
-                                    <strong id="@($"valorUnit{item.IdProduto}")">R$ @item.ValorUnitario.ToString("F2")</strong>
+                                    <strong id="@($"valorUnit{item.IdProduto}")">R$ @item.ValorItem.ToString("F2")</strong>
                                     <b><span class="text-muted">x</span></b>
                                 </h6>
                             </div>
@@ -82,7 +82,7 @@
             <div class="pull-right mb-2">
                 Valor Total: <b id="valorPedido">R$ @(Model.TotalPedido.ToString("F2"))</b>
             </div>
-            @if (Model.Pedido?.ItensPedido?.Count > 0)
+            @if (Model.Pedido?.ItensDoPedido?.Count > 0)
             {
                 <a asp-page="/ConfirmarPedido" class="btn btn-sm btn-success pull-right">Fechar Pedido</a>
             }

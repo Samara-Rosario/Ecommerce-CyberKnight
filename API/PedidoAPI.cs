@@ -3,18 +3,17 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
-using QuitandaOnline.Data;
+using Ecommerce_CyberKnight.Data;
 
-namespace QuitandaOnline.API
+namespace Ecommerce_CyberKnight.API
 {
     [Route("api/[controller]/[action]")]
     [ApiController]
     public class PedidoAPIController : ControllerBase
     {
-        private QuitandaOnlineContext _context;
+        private ApplicationDbContext _context;
 
-        public PedidoAPIController(QuitandaOnlineContext context)
-        {
+        public PedidoAPIController(ApplicationDbContext context){
             _context = context;
         }
 
@@ -28,13 +27,13 @@ namespace QuitandaOnline.API
             var pedido = await _context.Pedidos
                 .Include("ItensPedido")
                 .Include("ItensPedido.Produto")
-                .FirstOrDefaultAsync(p => p.IdPedido == idPedido);
+                .FirstOrDefaultAsync(p => p.Id == idPedido);
 
             if (pedido != null)
             {
                 if (pedido.Situacao != Models.Pedido.SituacaoPedido.Carrinho)
                 {
-                    var itemPedido = pedido.ItensPedido.FirstOrDefault(ip => ip.IdProduto == idProduto);
+                    var itemPedido = pedido.ItensDoPedido.FirstOrDefault(ip => ip.IdProduto == idProduto);
 
                     if (itemPedido != null)
                     {
@@ -42,8 +41,8 @@ namespace QuitandaOnline.API
 
                         if (_context.SaveChanges() > 0)
                         {
-                            double valorPedido = pedido.ItensPedido.Sum(ip => ip.ValorItem);
-                            var item = pedido.ItensPedido.Select(
+                            double valorPedido = pedido.ItensDoPedido.Sum(ip => ip.ValorItem);
+                            var item = pedido.ItensDoPedido.Select(
                                 x => new { id = x.IdProduto, q = x.Quantidade, v = x.ValorItem }).
                                 FirstOrDefault(ip => ip.id == idProduto);
                             var jsonRes = new JsonResult(new { v = valorPedido, item });
@@ -63,20 +62,20 @@ namespace QuitandaOnline.API
             if ((!idPedido.HasValue) || (idProduto <= 0)) return new JsonResult(false);
 
             var pedido = await _context.Pedidos.Include("ItensPedido").
-                FirstOrDefaultAsync(p => p.IdPedido == idPedido);
+                FirstOrDefaultAsync(p => p.Id == idPedido);
 
             if (pedido != null)
             {
                 if (pedido.Situacao != Models.Pedido.SituacaoPedido.Carrinho)
                 {
-                    var itemPedido = pedido.ItensPedido.FirstOrDefault(ip => ip.IdProduto == idProduto);
+                    var itemPedido = pedido.ItensDoPedido.FirstOrDefault(ip => ip.IdProduto == idProduto);
                     if (itemPedido != null)
                     {
-                        pedido.ItensPedido.Remove(itemPedido);
+                        pedido.ItensDoPedido.Remove(itemPedido);
 
                         if (_context.SaveChanges() > 0)
                         {
-                            double valorPedido = pedido.ItensPedido.Sum(ip => ip.ValorItem);
+                            double valorPedido = pedido.ItensDoPedido.Sum(ip => ip.ValorItem);
                             var jsonRes = new JsonResult(new { v = valorPedido, id = idProduto });
                             return jsonRes;
                         }
