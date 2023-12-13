@@ -40,7 +40,6 @@ namespace Ecommerce_CyberKnight.Pages {
 
         public LoginModel(SignInManager<AppUser> _singInManager) {
             _signInManager = _singInManager;
-
         }
 
 

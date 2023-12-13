@@ -60,7 +60,11 @@
                                     <option selected>Selecione a categoria</option>
                                     <span asp-validation-for="produtos.categoria" class="text-danger msg-erro"></span>
                                     @foreach (var categoria in Model.listaCategoria) {
-                                        <option value="@categoria.Id">@categoria.Nome</option>
+                                        if (categoria.Id == Model.produtos.IdCategoria){
+                                            <option selected value="@categoria.Id">@categoria.Nome</option>
+                                        }else{
+                                            <option value="@categoria.Id">@categoria.Nome</option>
+                                        }
                                     }
                                 </select>
                             </div>
@@ -91,7 +95,13 @@
                                     <option selected>Selecione a unidade de medida</option>
                                     <span asp-validation-for="produtos.unidadeMedida" class="text-danger"></span>
                                     @foreach (var unidadeDeMedida in Model.listaUnidadeMedidas) {
-                                        <option value="@unidadeDeMedida.Id">@unidadeDeMedida.Sigla</option>
+                                        if (unidadeDeMedida.Id == Model.produtos.IdUnidadeMedida){
+                                            <option selected value="@unidadeDeMedida.Id">@unidadeDeMedida.Sigla</option>
+                                        }
+                                        else
+                                        {
+                                            <option value="@unidadeDeMedida.Id">@unidadeDeMedida.Sigla</option>
+                                        }
                                     }
                                 </select>
                             </div>
