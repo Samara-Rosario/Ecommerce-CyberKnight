@@ -9,9 +9,18 @@
 
   <ItemGroup>
     <Compile Remove="crud-produto\**" />
+    <Compile Remove="wwwroot\img\dtlhs-produto\**" />
     <Content Remove="crud-produto\**" />
+    <Content Remove="wwwroot\img\dtlhs-produto\**" />
     <EmbeddedResource Remove="crud-produto\**" />
+    <EmbeddedResource Remove="wwwroot\img\dtlhs-produto\**" />
     <None Remove="crud-produto\**" />
+    <None Remove="wwwroot\img\dtlhs-produto\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="wwwroot\bgd-preto-lateral.png" />
+    <Content Remove="wwwroot\img\produto\kiwi.webp" />
   </ItemGroup>
 
   <ItemGroup>
@@ -52,6 +61,7 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
     <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="7.0.0" />
     <PackageReference Include="SixLabors.ImageSharp" Version="3.0.2" />
   </ItemGroup>

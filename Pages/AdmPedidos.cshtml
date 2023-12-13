@@ -1,0 +1,96 @@
+﻿@page
+@model Ecommerce_CyberKnight.Pages.AdmPedidosModel
+@{
+    Layout = "";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="~/css/adm-pedidos/style-tela-adm-pedidos.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <title>Adm Pedidos</title>
+</head>
+
+<body>
+    <header>
+        <div>
+            <button>Início</button>
+            <span id="traco">|</span>
+            <span id="produto">Produtos</span>
+            <span id="clientes">Clientes</span>
+            <span id="categoria">Categorias</span>
+            <span id="unid">Unidade de Medida</span>
+        </div>
+        <div>
+            <i class="bi bi-bell-fill"></i>
+            <span id="traco-dois">|</span>
+            <i class="bi bi-bag-fill"></i>
+            <span id="traco-tres">|</span>
+            <i id="sair" class="bi bi-box-arrow-right"></i>
+        </div>
+    </header>
+    <div class="row">
+        <div class="col-12">
+            <br>
+            <h1>Página de gerenciamento de pedidos do admnistrador</h1>
+            <p>Detalhes do pedido</p>
+            <h5>Todos os Pedidos (@Model.Pedidos.Count())</h5>
+            <div onclick="classificar(this, 1)">
+                <h6>Filtrar por <i class="bi bi-arrow-left-right"></i> <br> data e hora em ordem crescente</h6>
+            </div>
+            <div onclick="classificar(this, 2)">
+                <h6 id="filtro-status">Filtrar por <i class="bi bi-arrow-left-right"></i> <br>data e hora por ordem decrescente</h6>
+            </div>
+            <div class="flex-container">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th class="col-1" scope="col"><span>ID do pedido</span></th>
+                            <th class="col-3" scope="col"><span>Cliente</span></th>
+                            <th class="col-2" scope="col"><span>Endereço</span></th>
+                            <th class="col-2" scope="col"><span>Forma de pagamento</span></th>
+                            <th class="col-2" scope="col"><span>Data e hora</span></th>
+                            <th class="col-2" scope="col"><span>Total do pedido</span></th>
+                            <th hidden class="col-2" scope="col"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var Pedido in Model.Pedidos) {    
+                        <tr>
+                            <td scope="row">@Pedido.Id</td>
+                            <td>@Pedido.Clientes.Nome</td>
+                            <td>@Pedido.Endereco.Rua, @Pedido.Endereco.Numero</td>
+                            <td>@Pedido.FormaPagamento</td>
+                            <td>@Pedido.DataeHora</td>
+                            <td>@Pedido.ValorPedido().ToString("C2")</td>
+                        </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+            <form id="form-filtro" hidden method="get">
+                <input type="hidden" name="o" value="0" id="o"/>
+            </form>
+
+            <script>
+                var formFiltro = document.getElementById("form-filtro");
+
+                function classificar(elemento, ordem) {
+                    console.log(elemento);
+                    console.log(ordem);
+
+                    formFiltro.o.value = ordem;
+
+                    formFiltro.submit();
+                }
+
+            </script>
+</body>
+
+</html>

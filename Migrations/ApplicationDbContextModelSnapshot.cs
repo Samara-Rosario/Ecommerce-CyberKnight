@@ -98,9 +98,6 @@ namespace Ecommerce_CyberKnight.Migrations
                         .HasMaxLength(200)
                         .HasColumnType("varchar(200)");
 
-                    b.Property<int?>("IdProduto")
-                        .HasColumnType("int");
-
                     b.Property<string>("Nome")
                         .IsRequired()
                         .HasMaxLength(100)
@@ -214,19 +211,12 @@ namespace Ecommerce_CyberKnight.Migrations
                     b.Property<int?>("IdCliente")
                         .HasColumnType("int");
 
-                    b.Property<int?>("IdClientes")
-                        .HasColumnType("int");
-
                     b.Property<int?>("IdEndereco")
                         .HasColumnType("int");
 
-                    b.Property<string>("itensDoPedido")
-                        .IsRequired()
-                        .HasColumnType("longtext");
-
                     b.HasKey("Id");
 
-                    b.HasIndex("IdClientes");
+                    b.HasIndex("IdCliente");
 
                     b.HasIndex("IdEndereco");
 
@@ -451,7 +441,7 @@ namespace Ecommerce_CyberKnight.Migrations
                 {
                     b.HasOne("Ecommerce_CyberKnight.Models.Clientes", "Clientes")
                         .WithMany()
-                        .HasForeignKey("IdClientes");
+                        .HasForeignKey("IdCliente");
 
                     b.HasOne("Ecommerce_CyberKnight.Models.Endereco", "Endereco")
                         .WithMany()
@@ -465,7 +455,7 @@ namespace Ecommerce_CyberKnight.Migrations
             modelBuilder.Entity("Ecommerce_CyberKnight.Models.Produto", b =>
                 {
                     b.HasOne("Ecommerce_CyberKnight.Models.Categoria", "categoria")
-                        .WithMany("Produtos")
+                        .WithMany()
                         .HasForeignKey("IdCategoria");
 
                     b.HasOne("Ecommerce_CyberKnight.Models.UnidadeDeMedida", "unidadeMedida")
@@ -545,11 +535,6 @@ namespace Ecommerce_CyberKnight.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-                });
-
-            modelBuilder.Entity("Ecommerce_CyberKnight.Models.Categoria", b =>
-                {
-                    b.Navigation("Produtos");
                 });
 
             modelBuilder.Entity("Ecommerce_CyberKnight.Models.Pedido", b =>
