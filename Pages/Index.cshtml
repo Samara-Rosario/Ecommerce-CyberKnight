@@ -12,6 +12,13 @@
 
     var appUser = await UserManager.GetUserAsync(User);
 
+    bool isInRoleAdmin = false;
+
+    if (User.Identity.IsAuthenticated) {
+        isInRoleAdmin = await UserManager.IsInRoleAsync(appUser, "Admin");
+    }
+
+
     string nomeUser = "";
 
     if (appUser != null) {
@@ -186,8 +193,8 @@
                         <button id="btn-login-adm">
                             Olá, @nomeUser
                         </button>
-                        @if(){
-                            <a>
+                        @if (isInRoleAdmin) {
+                            <a href="/ProdutoCRUD/Listar">
                                 <i class="bi bi-person-workspace"></i>
                             </a>
                         }else{
