@@ -5,11 +5,11 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace Ecommerce_CyberKnight.Pages.CategoriaCRUD
 {
-    public class IncluirModel : PageModel
+    public class Incluir2Model : PageModel
     {
         private readonly ApplicationDbContext _context;
 
-        public IncluirModel(ApplicationDbContext context) {
+        public Incluir2Model(ApplicationDbContext context) {
             _context = context;
         }
 
@@ -33,6 +33,9 @@ namespace Ecommerce_CyberKnight.Pages.CategoriaCRUD
                 return Page();
 
             }
+
+
+
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿using Ecommerce_CyberKnight.Data;
+using Ecommerce_CyberKnight.Data;
 using Ecommerce_CyberKnight.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
