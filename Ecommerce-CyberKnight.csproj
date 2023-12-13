@@ -24,6 +24,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Content Remove="wwwroot\css\alterar\alterarnovo.css" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Include="wwwroot\lib\globalize\dist\globalize-runtime.js" />
     <None Include="wwwroot\lib\globalize\dist\globalize-runtime\currency.js" />
     <None Include="wwwroot\lib\globalize\dist\globalize-runtime\date.js" />
@@ -63,7 +67,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="wwwroot\img\assets\home\" />
+    <Content Update="wwwroot\css\alterar\alter.css">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
   </ItemGroup>
 
 </Project>
