@@ -1,0 +1,104 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+h1{
+   text-align: center;
+   font-size: 30px;
+   font-weight: bold;
+   color: #252EFF;
+}
+label{
+    margin-left: 40px;
+}
+input{
+    margin-left: 40px;
+    margin-right: 40px;
+    width: 40vw;
+}
+body{
+    overflow: hidden;
+}
+.flex-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+#card-login{
+    box-shadow: 10px 0 20px black;
+    margin-top: 100px;
+    padding-bottom: 110px;
+}
+#barra-lateral{
+    height: 100vh;
+    background-image: url(../img/bg-degrade.webp);
+    background-size: 100%;
+}
+#logo{
+    position: absolute;
+    margin-top: 30px;
+    margin-left: 50px;    
+}
+#btn-enviar{
+    width: 100px;
+    margin-left: 45px;
+    border-radius: 4px;
+    margin-top: 100px;
+    border-radius: 6px;
+    height: 1.7em;
+    padding: 0!important;
+}
+#letreiro{
+    font-size: 20px;
+    font-weight: bold;
+    margin-left: 180px;
+    margin-top: 40px;
+}
+/*CÓDIGO DO CABEÇALHO-ADM*/
+header{
+    display: flex;
+    justify-content: space-between;
+    height: 7vh;
+    align-items: center;
+    background-color: #f6f6f6;
+    margin-left: -11px;
+
+}
+header button{
+background-color: #00A2FC;
+box-shadow: none;
+border: 1px solid black;
+border-radius: 7px;
+padding-left: 8px;
+padding-right: 8px;
+padding-bottom: 2px;
+padding-top: 2px;
+}
+#produto{
+    margin-left: 10px;
+}
+#unidadeMedidas{
+    margin-left: 100px;
+}
+#categoria{
+    margin-left: 100px;
+}
+#unid{
+    margin-left: 100px;
+}
+#sair{
+    padding-right: 20px;
+}
+#traco{
+    margin-left: 15px;
+    color: #a89d9d;
+    font-weight: bold;  
+}
+#traco-dois{
+    margin-left: 15px;
+    margin-right: 15px ;
+    color: #a89d9d;
+    font-weight: bold;
+}

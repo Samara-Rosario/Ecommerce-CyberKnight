@@ -3,6 +3,7 @@ using System;
 using Ecommerce_CyberKnight.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Ecommerce_CyberKnight.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20231206203303_fix-clienteDoPedido")]
+    partial class fixclienteDoPedido
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -136,9 +139,6 @@ namespace Ecommerce_CyberKnight.Migrations
                         .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.Property<int>("Situacao")
-                        .HasColumnType("int");
-
                     b.Property<string>("Telefone")
                         .IsRequired()
                         .HasColumnType("longtext");
@@ -208,12 +208,8 @@ namespace Ecommerce_CyberKnight.Migrations
                     b.Property<DateTime>("DataeHora")
                         .HasColumnType("datetime(6)");
 
-                    b.Property<int>("FormaPagamento")
-                        .HasColumnType("int");
-
-                    b.Property<string>("IdCarrinho")
-                        .IsRequired()
-                        .HasColumnType("longtext");
+                    b.Property<double>("FormaPagamento")
+                        .HasColumnType("double");
 
                     b.Property<int?>("IdCliente")
                         .HasColumnType("int");
@@ -221,8 +217,6 @@ namespace Ecommerce_CyberKnight.Migrations
                     b.Property<int?>("IdEndereco")
                         .HasColumnType("int");
 
-                    b.Property<int>("Situacao")
-                        .HasColumnType("int");
                     b.HasKey("Id");
 
                     b.HasIndex("IdCliente");
@@ -238,7 +232,7 @@ namespace Ecommerce_CyberKnight.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<int>("IdCategoria")
+                    b.Property<int?>("IdCategoria")
                         .HasColumnType("int");
 
                     b.Property<int?>("IdUnidadeMedida")
@@ -269,7 +263,7 @@ namespace Ecommerce_CyberKnight.Migrations
                     b.ToTable("Produtos");
                 });
 
-            modelBuilder.Entity("Ecommerce_CyberKnight.Models.UnidadeDeMedida", b =>
+            modelBuilder.Entity("Ecommerce_CyberKnight.Models.UnidadeMedida", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -290,10 +284,10 @@ namespace Ecommerce_CyberKnight.Migrations
 
             modelBuilder.Entity("Ecommerce_CyberKnight.Models.itemDoPedido", b =>
                 {
-                    b.Property<int>("IdPedido")
+                    b.Property<int?>("IdPedido")
                         .HasColumnType("int");
 
-                    b.Property<int>("IdProduto")
+                    b.Property<int?>("IdProduto")
                         .HasColumnType("int");
 
                     b.Property<int>("Quantidade")
@@ -465,11 +459,9 @@ namespace Ecommerce_CyberKnight.Migrations
                 {
                     b.HasOne("Ecommerce_CyberKnight.Models.Categoria", "categoria")
                         .WithMany()
-                        .HasForeignKey("IdCategoria")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("IdCategoria");
 
-      b.HasOne("Ecommerce_CyberKnight.Models.UnidadeDeMedida", "unidadeMedida")
+                    b.HasOne("Ecommerce_CyberKnight.Models.UnidadeMedida", "unidadeMedida")
                         .WithMany()
                         .HasForeignKey("IdUnidadeMedida");
 

@@ -9,7 +9,7 @@ namespace Ecommerce_CyberKnight.Data {
         public DbSet<itemDoPedido> itemDoPedidos { get; set; }
         public DbSet <Pedido> Pedidos { get; set; }
         public DbSet<Produto> Produtos { get; set; }
-        public DbSet<Endereco> Enderecoes { get; set; } 
+        public DbSet<Endereco> Enderecoes { get; set; }  
         public DbSet<Clientes> Clientes { get; set; }
         public DbSet<Categoria> Categorias { get; set; }
         public DbSet<UnidadeDeMedida> unidadeMedidas { get; set; }
