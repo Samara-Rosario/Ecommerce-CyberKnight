@@ -1,0 +1,64 @@
+﻿@page
+@model Ecommerce_CyberKnight.Pages.ProdutoCRUD.AlterarModel
+@{
+}
+<h1>Editar Produto "@Model.produtos.Nome"</h1>
+
+<form method="post" class="mt-3" enctype="multipart/form-data">
+  <input class="form-control" type="hidden" asp-for="produtos.Id" />
+
+  <div class="row">
+
+    <div class="col-4">
+        <label asp-for="produtos.Nome">Nome:</label>
+        <input class="form-control" asp-for="produtos.Nome" />
+        <span asp-validation-for="produtos.Nome" class="text-danger"></span>
+    </div>
+    <br />
+    <div class="col-5">
+        <label asp-for="produtos.descricao">Descrição:</label>
+        <input class="form-control" asp-for="produtos.descricao" />
+        <span asp-validation-for="produtos.descricao" class="text-danger"></span>
+    </div>
+  </div>
+    <br />
+    <div class="col-4">
+        <label asp-for="produtos.categoria">Categoria:</label>
+        <input class="form-control" asp-for="produtos.categoria" />
+        <span asp-validation-for="produtos.categoria" class="text-danger"></span>
+    </div>
+    <br />
+    <div class="col-4">
+        <label asp-for="produtos.preco">Preço:</label>
+        <input class="form-control" asp-for="produtos.preco" />
+        <span asp-validation-for="produtos.preco" class="text-danger"></span>
+    </div>
+    <br />
+    <div class="col-4">
+        <label asp-for="produtos.unidadeMedida">Unidade de Medida:</label>
+        <input class="form-control" asp-for="produtos.unidadeMedida" />
+        <span asp-validation-for="produtos.unidadeMedida" class="text-danger"></span>
+    </div>
+    <br />
+    <div class="col-4">
+        <label asp-for="produtos.estoque">Estoque:</label>
+        <input class="form-control" asp-for="produtos.estoque" />
+        <span asp-validation-for="produtos.estoque" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="ImagemProduto" class="control-label"></label>
+        <div class="custom-file col-4 d-block">
+            <input asp-for="ImagemProduto" class="custom-file-input" accept="image/*" />
+            <label class="custom-file-label">Clique aqui para alterar</label>
+        </div>
+        <span asp-validation-for="ImagemProduto" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <img src="@Model.CaminhoImagem" class="image-thumbnail" asp-append-version="true" />
+    </div>
+    <br />
+    <br />
+    <input type="submit" class="btn btn-outline-success" value="Enviar" />
+</form>
