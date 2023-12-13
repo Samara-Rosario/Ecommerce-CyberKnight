@@ -73,6 +73,7 @@ namespace Ecommerce_CyberKnight.Pages
                 var cliente = new Clientes();
                 cliente.Telefone = "99999999999";
                 cliente.Cep = "00000000";
+                cliente.Cep = "00000000000";
                 cliente.Email = emailDefault;
                 cliente.Situacao = Clientes.SituacaoCliente.Aprovado;
                 cliente.Nome = "Root";

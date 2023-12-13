@@ -84,6 +84,9 @@
             margin-right: 30px
         }
 
+        #btn-adm-sys{
+            margin-right: 10px
+        }
     </style>
 </head>
 
@@ -194,7 +197,7 @@
                             Olá, @nomeUser
                         </button>
                         @if (isInRoleAdmin) {
-                            <a href="/ProdutoCRUD/Listar">
+                            <a id="btn-adm-sys" title="Administrar dados do sistema" href="/ProdutoCRUD/Listar">
                                 <i class="bi bi-person-workspace"></i>
                             </a>
                         }else{
