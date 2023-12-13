@@ -1,5 +1,6 @@
 using Ecommerce_CyberKnight.Data;
 using Ecommerce_CyberKnight.Models;
+using Ecommerce_CyberKnight.Utils;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -13,6 +14,9 @@ namespace Ecommerce_CyberKnight.Pages.ClienteCRUD
         private readonly ApplicationDbContext _context;
         public readonly UserManager<AppUser> _userManager;
         private readonly RoleManager<IdentityRole> _roleManager;
+        AuthVerify authVerify;
+
+        public List<string> EmailsAdmins { get; private set; }
 
 
         public ListarModel(ApplicationDbContext context, UserManager<AppUser> userManager, RoleManager<IdentityRole> roleManager)
@@ -20,19 +24,28 @@ namespace Ecommerce_CyberKnight.Pages.ClienteCRUD
             _context = context;
             _userManager = userManager;
             _roleManager = roleManager;
+            authVerify = new AuthVerify(userManager);
         }
 
         public IList<Clientes> Clientes { get; set; } = new List<Clientes>();
 
-        public async Task<IActionResult> OnGet()
-        {
+        public async Task<IActionResult> OnGet(){
+            if (!await authVerify.Test(User, "admin")) {
+                return Redirect(AuthVerify.LoginUrl);
+            }
+
+            EmailsAdmins = (await _userManager.GetUsersInRoleAsync("admin"))
+                                  .Select(x => x.Email).ToList();
+
             Clientes = await _context.Clientes.ToListAsync();
 
             return Page();
         }
 
-        public async Task<IActionResult> OnPostDeleteAsync(int? id)
-        {
+        public async Task<IActionResult> OnPostDeleteAsync(int? id){
+            if (!await authVerify.Test(User, "admin")) {
+                return Redirect(AuthVerify.LoginUrl);
+            }
 
             if (id == null)
             {
@@ -53,8 +66,11 @@ namespace Ecommerce_CyberKnight.Pages.ClienteCRUD
             return RedirectToPage("/ClienteCRUD/Listar");
         }
 
-        public async Task<IActionResult> OnPostDelAdminAsync(int? id)
-        {
+        public async Task<IActionResult> OnPostDelAdminAsync(int? id){
+            if (!await authVerify.Test(User, "admin")) {
+                return Redirect(AuthVerify.LoginUrl);
+            }
+
             if (id == null)
             {
                 return NotFound();
@@ -74,8 +90,11 @@ namespace Ecommerce_CyberKnight.Pages.ClienteCRUD
             return RedirectToPage("/ClienteCRUD/Listar");
         }
 
-        public async Task<IActionResult> OnPostSetAdminAsync(int? id)
-        {
+        public async Task<IActionResult> OnPostSetAdminAsync(int? id){
+            if (!await authVerify.Test(User, "admin")) {
+                return Redirect(AuthVerify.LoginUrl);
+            }
+
             if (id == null)
             {
                 return NotFound();
